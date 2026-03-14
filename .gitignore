@@ -41,3 +41,7 @@ Thumbs.db
 firebase-debug.log
 homepage-full.png
 sobre-full.png
+
+# Large video files (too large for GitHub — store locally or use external hosting)
+public/hero.mp4
+*.mp4
