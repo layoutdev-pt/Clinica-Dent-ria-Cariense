@@ -544,28 +544,10 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Locations + Form grid */}
-          <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-            {/* LEFT — clinic image + location cards stacked */}
+            {/* LEFT — location cards com foto da clínica */}
             <ScrollReveal variant="slide-left" className="flex flex-col gap-3">
-
-              {/* Clinic photo */}
-              <div className="relative rounded-[20px] overflow-hidden h-[220px] flex-shrink-0">
-                <Image
-                  src="/img/clinic-caria.jpg"
-                  alt="Clínica Dentária Cariense"
-                  fill
-                  sizes="50vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <div className="text-white font-bold text-base">Clínica Dentária Cariense</div>
-                  <div className="text-white/70 text-xs mt-0.5">3 localidades ao seu serviço</div>
-                </div>
-              </div>
-
-              {/* Location cards — foto + info, estilo referência */}
               {[
                 { name: "Clínica Dentária Caria", address: "Cerca do Conde, Lote 41, Loja B/D", postal: "6250-111", phone: "275 471 751", mobile: "927 402 729", img: "/img/clinic-caria.jpg", featured: true },
                 { name: "Clínica Dentária Unhais da Serra", address: "Avenida 1º de Maio, 43-A", postal: "6215-517", phone: "275 971 342", mobile: "927 402 728", img: "/img/clinic-unhais.jpg", featured: false },
@@ -579,28 +561,28 @@ export default function Home() {
                       : "bg-white border-[#EEF4F8] hover:border-[#1C9FD6]/30 hover:shadow-[0_4px_20px_rgba(28,159,214,0.08)]"
                   }`}
                 >
-                  {/* Photo */}
-                  <div className="relative w-[130px] flex-shrink-0">
+                  {/* Clinic photo */}
+                  <div className="relative w-[120px] flex-shrink-0">
                     <Image
                       src={loc.img}
                       alt={loc.name}
                       fill
-                      sizes="130px"
+                      sizes="120px"
                       className="object-cover"
                     />
                   </div>
 
                   {/* Info */}
                   <div className="flex flex-col justify-center px-5 py-4 flex-1 min-w-0">
-                    <div className={`font-display font-bold text-[1.05rem] leading-snug mb-2 ${loc.featured ? "text-white" : "text-[#0D1E2C]"}`}>
+                    <div className={`font-bold text-[0.95rem] leading-snug mb-2 ${loc.featured ? "text-white" : "text-[#0D1E2C]"}`}>
                       {loc.name}
                     </div>
-                    <div className={`flex items-center gap-2 text-sm mb-1 ${loc.featured ? "text-white/80" : "text-[#1C9FD6]"}`}>
-                      <Phone size={13} className="flex-shrink-0" />
+                    <div className={`flex items-center gap-2 text-xs mb-1 ${loc.featured ? "text-white/80" : "text-[#1C9FD6]"}`}>
+                      <Phone size={12} className="flex-shrink-0" />
                       <span>{loc.phone} // {loc.mobile}</span>
                     </div>
-                    <div className={`flex items-center gap-2 text-sm ${loc.featured ? "text-white/70" : "text-[#5E7387]"}`}>
-                      <MapPin size={13} className="flex-shrink-0" />
+                    <div className={`flex items-center gap-2 text-xs ${loc.featured ? "text-white/70" : "text-[#5E7387]"}`}>
+                      <MapPin size={12} className="flex-shrink-0" />
                       <span>{loc.address}, {loc.postal}</span>
                     </div>
                   </div>
