@@ -10,7 +10,10 @@ const BASE_URL = "https://www.clinicacariense.pt";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   icons: {
-    icon: "/img/logo-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/img/logo-icon.png", type: "image/png" },
+    ],
     apple: "/img/logo-icon.png",
   },
   title: {
