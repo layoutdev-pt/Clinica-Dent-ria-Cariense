@@ -184,7 +184,7 @@ export default function FeaturedServicesCarousel({ items }: { items: Service[] }
                 </div>
 
                 <h3
-                  className="font-['Fraunces',serif] font-bold leading-[1.15] mb-4"
+                  className="font-display font-bold leading-[1.15] mb-4"
                   style={{ fontSize: "2rem", color: "#0D1E2C" }}
                 >
                   {current.title}
@@ -283,7 +283,7 @@ export default function FeaturedServicesCarousel({ items }: { items: Service[] }
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full inline-block mb-2" style={{ background: "rgba(28,159,214,0.9)", color: "white" }}>
               {String(active + 1).padStart(2, "0")} / {String(N).padStart(2, "0")}
             </span>
-            <h3 className="font-['Fraunces',serif] text-2xl font-bold text-white">{current.title}</h3>
+            <h3 className="font-display text-2xl font-bold text-white">{current.title}</h3>
           </div>
         </div>
 
