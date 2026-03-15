@@ -74,6 +74,67 @@ const STEPS = [
   },
 ];
 
+// Height of each step row — connector line fills the gap between icon centers
+const STEP_HEIGHT = 140;
+const NODE_SIZE = 60;
+// Line runs from bottom of node to top of next node
+const LINE_HEIGHT = STEP_HEIGHT - NODE_SIZE;
+
+function ConnectorLine({ isVisible, delay }: { isVisible: boolean; delay: number }) {
+  const [glowing, setGlowing] = useState(false);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    // Start glow sweep after the fill animation completes
+    const t = setTimeout(() => setGlowing(true), (delay + 0.3 + 0.7) * 1000);
+    return () => clearTimeout(t);
+  }, [isVisible, delay]);
+
+  return (
+    <div
+      style={{
+        width: 2,
+        height: LINE_HEIGHT,
+        background: "#EEF4F8",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
+      {/* Fill animation */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "#1C9FD6",
+          transform: isVisible ? "scaleY(1)" : "scaleY(0)",
+          transformOrigin: "top",
+          transition: `transform 0.7s ease ${delay + 0.3}s`,
+        }}
+      />
+      {/* Glow sweep — repeating shimmer */}
+      {glowing && (
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            height: "40%",
+            background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.85), transparent)",
+            animation: "glowSweep 2.4s ease-in-out infinite",
+            animationDelay: `${delay * 0.5}s`,
+          }}
+        />
+      )}
+      <style>{`
+        @keyframes glowSweep {
+          0%   { top: -40%; }
+          100% { top: 140%; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 function TimelineStep({
   step,
   index,
@@ -89,12 +150,12 @@ function TimelineStep({
   isVisible: boolean;
   onClick: () => void;
 }) {
-  const delay = `${index * 0.1}s`;
+  const delay = index * 0.1;
 
   return (
     <div
       className={`relative flex items-start md:gap-0 gap-5 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
-      style={{ minHeight: 140 }}
+      style={{ minHeight: STEP_HEIGHT }}
     >
       {/* Content card */}
       <div
@@ -102,13 +163,10 @@ function TimelineStep({
         style={{
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "none" : `translateX(${isEven ? "32px" : "-32px"})`,
-          transition: `opacity 0.6s ease ${delay}, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}`,
+          transition: `opacity 0.6s ease ${delay}s, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
         }}
       >
-        <button
-          onClick={onClick}
-          className="text-left w-full group"
-        >
+        <button onClick={onClick} className="text-left w-full group">
           <div className={`inline-flex items-center gap-1.5 mb-2 ${isEven ? "md:flex-row-reverse md:w-full md:justify-start" : ""}`}>
             <span
               className="text-[10px] font-bold tracking-[0.18em] uppercase px-2.5 py-0.5 rounded-full transition-colors duration-300"
@@ -129,7 +187,6 @@ function TimelineStep({
           <p className="text-[#5E7387] text-sm leading-relaxed max-w-[260px] inline-block">
             {step.desc}
           </p>
-          {/* Detail panel — expands on active */}
           <div
             style={{
               maxHeight: isActive ? 100 : 0,
@@ -158,8 +215,8 @@ function TimelineStep({
           onClick={onClick}
           className="focus:outline-none"
           style={{
-            width: 60,
-            height: 60,
+            width: NODE_SIZE,
+            height: NODE_SIZE,
             borderRadius: "50%",
             display: "flex",
             alignItems: "center",
@@ -173,27 +230,21 @@ function TimelineStep({
               ? `0 0 0 4px ${step.color}12`
               : "none",
             transform: isVisible ? "scale(1)" : "scale(0.7)",
-            transition: `all 0.55s cubic-bezier(0.34,1.56,0.64,1) ${delay}`,
+            transition: `all 0.55s cubic-bezier(0.34,1.56,0.64,1) ${delay}s`,
             cursor: "pointer",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.18)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
           }}
         >
           {step.icon}
         </button>
 
-        {/* Animated connector line */}
         {index < STEPS.length - 1 && (
-          <div style={{ width: 2, height: 80, background: "#EEF4F8", overflow: "hidden" }}>
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                background: `linear-gradient(to bottom, ${step.color}, ${STEPS[index + 1].color})`,
-                transform: isVisible ? "scaleY(1)" : "scaleY(0)",
-                transformOrigin: "top",
-                transition: `transform 0.7s ease ${parseFloat(delay) + 0.3}s`,
-              }}
-            />
-          </div>
+          <ConnectorLine isVisible={isVisible} delay={delay} />
         )}
       </div>
 
@@ -254,7 +305,6 @@ export default function PatientTimeline() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  // Progress bar width based on visible steps
   const progress = (visibleSteps.filter(Boolean).length / STEPS.length) * 100;
 
   return (
