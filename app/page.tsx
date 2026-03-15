@@ -432,77 +432,65 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Mosaic grid — large left + right column with photo + CTA */}
-          <div
-            className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-3"
-            style={{ height: "560px" }}
-          >
-            {/* LEFT — featured photo, full height */}
-            <ScrollReveal variant="slide-left" className="h-full">
-              <div className="group relative w-full h-full rounded-[24px] overflow-hidden bg-[#0D1E2C]">
-                <Image
-                  src={TEAM_MEMBERS[0].img}
-                  alt={TEAM_MEMBERS[0].name}
-                  fill
-                  sizes="(max-width:768px) 100vw, 55vw"
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-7">
-                  <div className="text-white font-bold text-xl leading-snug">{TEAM_MEMBERS[0].name}</div>
-                  <div className="text-[#1C9FD6] text-sm font-medium mt-1">{TEAM_MEMBERS[0].role}</div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-3" style={{ height: "580px" }}>
+
+            {/* LEFT — featured photo, explicit height */}
+            <div className="group relative rounded-[24px] overflow-hidden bg-[#0D1E2C]" style={{ height: "580px" }}>
+              <Image
+                src={TEAM_MEMBERS[0].img}
+                alt={TEAM_MEMBERS[0].name}
+                fill
+                sizes="(max-width:768px) 100vw, 55vw"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-7">
+                <div className="text-white font-bold text-xl leading-snug">{TEAM_MEMBERS[0].name}</div>
+                <div className="text-[#1C9FD6] text-sm font-medium mt-1">{TEAM_MEMBERS[0].role}</div>
               </div>
-            </ScrollReveal>
+            </div>
 
             {/* RIGHT column — top photo + bottom CTA */}
-            <div className="flex flex-col gap-3 h-full">
+            <div className="flex flex-col gap-3" style={{ height: "580px" }}>
 
-              {/* Top — second team member photo */}
-              <ScrollReveal delay={80} className="flex-1">
-                <div className="group relative w-full h-full rounded-[20px] overflow-hidden bg-[#0D1E2C]">
-                  <Image
-                    src={TEAM_MEMBERS[1].img}
-                    alt={TEAM_MEMBERS[1].name}
-                    fill
-                    sizes="(max-width:768px) 100vw, 30vw"
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="text-white font-bold text-sm leading-snug">{TEAM_MEMBERS[1].name}</div>
-                    <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{TEAM_MEMBERS[1].role}</div>
+              {/* Top — second team member, 60% height */}
+              <div className="group relative rounded-[20px] overflow-hidden bg-[#0D1E2C]" style={{ height: "340px" }}>
+                <Image
+                  src={TEAM_MEMBERS[1].img}
+                  alt={TEAM_MEMBERS[1].name}
+                  fill
+                  sizes="(max-width:768px) 100vw, 30vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="text-white font-bold text-sm leading-snug">{TEAM_MEMBERS[1].name}</div>
+                  <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{TEAM_MEMBERS[1].role}</div>
+                </div>
+              </div>
+
+              {/* Bottom — CTA card */}
+              <Link
+                href="/sobre"
+                className="group relative flex flex-col justify-between rounded-[20px] overflow-hidden p-7 flex-1"
+                style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
+              >
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="text-white/70 text-xs font-bold uppercase tracking-[0.18em] mb-2">A nossa equipa</div>
+                  <div className="font-display text-white text-[1.3rem] font-bold leading-[1.2]">
+                    Conheça todos os<br />
+                    <span className="text-white/80 font-normal italic">nossos especialistas</span>
                   </div>
                 </div>
-              </ScrollReveal>
-
-              {/* Bottom — CTA card (mirror of services CTA) */}
-              <ScrollReveal delay={160}>
-                <Link
-                  href="/sobre"
-                  className="group relative flex flex-col justify-between rounded-[20px] overflow-hidden p-7 h-[200px]"
-                  style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
-                >
-                  {/* Dot pattern */}
-                  <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                  {/* Glow */}
-                  <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
-
-                  <div className="relative z-10">
-                    <div className="text-white/70 text-xs font-bold uppercase tracking-[0.18em] mb-2">A nossa equipa</div>
-                    <div className="font-display text-white text-[1.3rem] font-bold leading-[1.2]">
-                      Conheça todos os<br />
-                      <span className="text-white/80 font-normal italic">nossos especialistas</span>
-                    </div>
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-white/70 text-xs">6 profissionais dedicados</span>
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                    <ArrowRight size={16} className="text-[#1C9FD6]" />
                   </div>
-
-                  <div className="relative z-10 flex items-center justify-between">
-                    <span className="text-white/70 text-xs">6 profissionais dedicados</span>
-                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                      <ArrowRight size={16} className="text-[#1C9FD6]" />
-                    </div>
-                  </div>
-                </Link>
-              </ScrollReveal>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -542,8 +530,10 @@ export default function Home() {
       <section className="py-24 bg-[#F7FAFC]">
         <div className="max-w-[1100px] mx-auto px-8 md:px-16">
           <ScrollReveal className="text-center mb-14">
-            <div className="inline-block text-xs font-bold text-[#5E7387] uppercase tracking-[0.15em] bg-white px-4 py-1.5 rounded-full mb-4">
-              Onde Estamos
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="w-8 h-px bg-[#1C9FD6]/40" />
+              <span className="text-[#1C9FD6] text-xs font-bold uppercase tracking-[0.2em]">Onde Estamos</span>
+              <span className="w-8 h-px bg-[#1C9FD6]/40" />
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] mb-4">
               Estamos perto de si
@@ -553,32 +543,74 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <ContactForm />
-            <ScrollReveal delay={150} className="space-y-3">
+          {/* Locations + Form grid */}
+          <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-stretch">
+
+            {/* LEFT — clinic image + location cards stacked */}
+            <ScrollReveal variant="slide-left" className="flex flex-col gap-3">
+
+              {/* Clinic photo */}
+              <div className="relative rounded-[20px] overflow-hidden h-[220px] flex-shrink-0">
+                <Image
+                  src="/img/clinic-caria.jpg"
+                  alt="Clínica Dentária Cariense"
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="text-white font-bold text-base">Clínica Dentária Cariense</div>
+                  <div className="text-white/70 text-xs mt-0.5">3 localidades ao seu serviço</div>
+                </div>
+              </div>
+
+              {/* Location cards — foto + info, estilo referência */}
               {[
-                { name: "Clínica Dentária Caria", address: "Cerca do Conde, Lote 41, Loja B/D, 6250-111", phone: "275 471 751", tag: "Sede Principal" },
-                { name: "Unhais da Serra", address: "Avenida 1º de Maio, 43-A, 6215-517", phone: "275 971 342", tag: "" },
-                { name: "Espaço Saúde do Peso", address: "Rua Santa Maria Madalena, nº10, 6200-622", phone: "275 954 182", tag: "" },
+                { name: "Clínica Dentária Caria", address: "Cerca do Conde, Lote 41, Loja B/D", postal: "6250-111", phone: "275 471 751", mobile: "927 402 729", img: "/img/clinic-caria.jpg", featured: true },
+                { name: "Clínica Dentária Unhais da Serra", address: "Avenida 1º de Maio, 43-A", postal: "6215-517", phone: "275 971 342", mobile: "927 402 728", img: "/img/clinic-unhais.jpg", featured: false },
+                { name: "Espaço Saúde do Peso", address: "Rua Santa Maria Madalena, nº10", postal: "6200-622", phone: "275 954 182", mobile: "927 402 728", img: "/img/clinic-peso.jpg", featured: false },
               ].map((loc, i) => (
-                <div key={i} className="group flex items-start gap-4 p-5 bg-white rounded-2xl border border-[#EEF4F8] hover:border-[#1C9FD6]/25 hover:shadow-[0_8px_32px_rgba(13,30,44,0.07)] transition-all duration-250">
-                  <div className="w-10 h-10 bg-[#E8F6FC] rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#1C9FD6] transition-colors duration-200">
-                    <MapPin size={16} className="text-[#1C9FD6] group-hover:text-white transition-colors duration-200" />
+                <div
+                  key={i}
+                  className={`flex rounded-[18px] overflow-hidden border transition-all duration-200 ${
+                    loc.featured
+                      ? "bg-[#0D4E8A] border-[#0D4E8A] shadow-[0_4px_24px_rgba(13,78,138,0.25)]"
+                      : "bg-white border-[#EEF4F8] hover:border-[#1C9FD6]/30 hover:shadow-[0_4px_20px_rgba(28,159,214,0.08)]"
+                  }`}
+                >
+                  {/* Photo */}
+                  <div className="relative w-[130px] flex-shrink-0">
+                    <Image
+                      src={loc.img}
+                      alt={loc.name}
+                      fill
+                      sizes="130px"
+                      className="object-cover"
+                    />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="font-semibold text-[#0D1E2C] text-sm">{loc.name}</div>
-                      {loc.tag && (
-                        <span className="text-[9px] font-bold text-[#1C9FD6] bg-[#E8F6FC] px-2 py-0.5 rounded-full uppercase tracking-wide">{loc.tag}</span>
-                      )}
+
+                  {/* Info */}
+                  <div className="flex flex-col justify-center px-5 py-4 flex-1 min-w-0">
+                    <div className={`font-display font-bold text-[1.05rem] leading-snug mb-2 ${loc.featured ? "text-white" : "text-[#0D1E2C]"}`}>
+                      {loc.name}
                     </div>
-                    <div className="text-[#5E7387] text-xs mb-2 leading-snug">{loc.address}</div>
-                    <a href={`tel:${loc.phone.replace(/ /g, "")}`} className="text-[#1C9FD6] text-xs font-semibold hover:underline">
-                      {loc.phone}
-                    </a>
+                    <div className={`flex items-center gap-2 text-sm mb-1 ${loc.featured ? "text-white/80" : "text-[#1C9FD6]"}`}>
+                      <Phone size={13} className="flex-shrink-0" />
+                      <span>{loc.phone} // {loc.mobile}</span>
+                    </div>
+                    <div className={`flex items-center gap-2 text-sm ${loc.featured ? "text-white/70" : "text-[#5E7387]"}`}>
+                      <MapPin size={13} className="flex-shrink-0" />
+                      <span>{loc.address}, {loc.postal}</span>
+                    </div>
                   </div>
                 </div>
               ))}
+            </ScrollReveal>
+
+            {/* RIGHT — contact form */}
+            <ScrollReveal delay={150}>
+              <ContactForm />
             </ScrollReveal>
           </div>
         </div>

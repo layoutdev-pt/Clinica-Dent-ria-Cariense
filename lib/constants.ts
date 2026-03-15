@@ -12,8 +12,11 @@ export const CLINICS = [
   {
     key: "caria",
     name: "Clínica Dentária Caria",
-    phone: "275 471 751 // 927 402 729",
-    address: "Cerca do Conde, Lote 41, Loja B/D, 6250-111",
+    tag: "Sede Principal",
+    phone: "275 471 751",
+    mobile: "927 402 729",
+    address: "Cerca do Conde, Lote 41, Loja B/D",
+    postal: "6250-111 Caria",
     img: "/img/clinic-caria.jpg",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3052.3!2d-7.3761!3d40.2955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3b97dbd7c8b0ff%3A0x0!2zQ2FyaWE!5e0!3m2!1spt!2spt!4v1",
@@ -21,8 +24,11 @@ export const CLINICS = [
   {
     key: "unhais",
     name: "Clínica Dentária Unhais da Serra",
-    phone: "275 971 342 // 927 402 728",
-    address: "Avenida 1º de Maio, 43-A, 6215-517",
+    tag: "",
+    phone: "275 971 342",
+    mobile: "927 402 728",
+    address: "Avenida 1º de Maio, 43-A",
+    postal: "6215-517 Unhais da Serra",
     img: "/img/clinic-unhais.jpg",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060!2d-7.8530!3d40.2200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVW5oYWlz!5e0!3m2!1spt!2spt!4v2",
@@ -30,8 +36,11 @@ export const CLINICS = [
   {
     key: "peso",
     name: "Espaço Saúde do Peso",
-    phone: "275 954 182 // 927 402 728",
-    address: "Rua Santa Maria Madalena, nº10, 6200-622",
+    tag: "",
+    phone: "275 954 182",
+    mobile: "927 402 728",
+    address: "Rua Santa Maria Madalena, nº10",
+    postal: "6200-622 Peso da Régua",
     img: "/img/clinic-peso.jpg",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058!2d-7.6300!3d40.1720!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUGVzbw!5e0!3m2!1spt!2spt!4v3",
