@@ -9,6 +9,10 @@ const BASE_URL = "https://www.clinicacariense.pt";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  icons: {
+    icon: "/img/logo-icon.png",
+    apple: "/img/logo-icon.png",
+  },
   title: {
     default: "Clínica Dentária Cariense | Implantes, Ortodontia e Estética em Caria, Unhais da Serra e Peso",
     template: "%s | Clínica Dentária Cariense",
