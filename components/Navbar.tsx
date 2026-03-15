@@ -58,7 +58,8 @@ export default function Navbar() {
             className="flex-shrink-0 absolute left-1/2 -translate-x-1/2"
             aria-label="Clínica Dentária Cariense — Início"
           >
-            <Image src="/img/logo.png" alt="Clínica Dentária Cariense" width={180} height={44} className="h-10 w-auto object-contain" priority />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/img/logo.png" alt="Clínica Dentária Cariense" className="h-10 w-auto object-contain" />
           </Link>
 
           {/* Right actions */}
