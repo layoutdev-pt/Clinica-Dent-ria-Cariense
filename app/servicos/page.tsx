@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Serviços — Implantologia, Ortodontia, Estética e Mais",
@@ -14,209 +15,139 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "https://www.clinicacariense.pt/servicos" },
 };
+
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionTag from "@/components/SectionTag";
 import CtaBanner from "@/components/CtaBanner";
 
-const ICON_MAP: Record<string, React.ReactNode> = {
-  Implantologia: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <circle cx="20" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
-      <path d="M20 17v16M16 25h8M15 33h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M14 12c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="2"/>
-    </svg>
-  ),
-  Ortodontia: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <rect x="8" y="14" width="6" height="12" rx="3" stroke="currentColor" strokeWidth="2"/>
-      <rect x="17" y="12" width="6" height="14" rx="3" stroke="currentColor" strokeWidth="2"/>
-      <rect x="26" y="14" width="6" height="12" rx="3" stroke="currentColor" strokeWidth="2"/>
-      <path d="M14 20h3M23 20h3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  "Branqueamento Dentário": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M20 8l2.5 5h5.5l-4.5 3.5 1.5 5.5L20 19l-5 3 1.5-5.5L12 13h5.5L20 8z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-      <path d="M20 22v10M15 27h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4"/>
-    </svg>
-  ),
-  "Cirurgia Oral": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M12 28L28 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M24 8l8 8-4 4-8-8 4-4z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-      <path d="M12 28c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  "Dentisteria Conservadora": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <rect x="10" y="8" width="20" height="24" rx="6" stroke="currentColor" strokeWidth="2"/>
-      <path d="M15 16h10M15 21h7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  Endodontia: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M14 8c-2 0-6 2-6 8 0 4 2 6 4 8l2 10h4l1-8h2l1 8h4l2-10c2-2 4-4 4-8 0-6-4-8-6-8-2 0-3 1-6 1s-4-1-6-1z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-      <path d="M16 18v6M20 16v8M24 18v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
-    </svg>
-  ),
-  Periodontologia: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M8 28c4-8 20-8 24 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M12 22c3-6 13-6 16 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="20" cy="14" r="4" stroke="currentColor" strokeWidth="2"/>
-    </svg>
-  ),
-  Odontopediatria: (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <circle cx="20" cy="14" r="6" stroke="currentColor" strokeWidth="2"/>
-      <path d="M10 34c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="18" cy="15" r="1" fill="currentColor"/>
-      <circle cx="22" cy="15" r="1" fill="currentColor"/>
-    </svg>
-  ),
-  "Prótese Dentária": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M8 18c0-5.523 5.373-10 12-10s12 4.477 12 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <rect x="10" y="18" width="6" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
-      <rect x="17" y="16" width="6" height="12" rx="2" stroke="currentColor" strokeWidth="2"/>
-      <rect x="24" y="18" width="6" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
-    </svg>
-  ),
-  "Estética Dentária": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M20 10c-6 0-12 4-12 10 0 4 3 7 7 8l5 6 5-6c4-1 7-4 7-8 0-6-6-10-12-10z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-      <path d="M16 22c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  ),
-  "Reabilitação Oral": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <path d="M20 8v4M20 28v4M8 20h4M28 20h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="20" cy="20" r="8" stroke="currentColor" strokeWidth="2"/>
-      <path d="M16 20l2.5 2.5L24 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "Medicina Oral": (
-    <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-      <circle cx="20" cy="20" r="12" stroke="currentColor" strokeWidth="2"/>
-      <path d="M20 14v6l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-};
+/* ─── Dados ─────────────────────────── */
 
-const SERVICE_COLORS: Record<string, string> = {
-  Implantologia: "#1C9FD6",
-  Ortodontia: "#1C9FD6",
-  "Branqueamento Dentário": "#1C9FD6",
-  "Cirurgia Oral": "#1C9FD6",
-  "Dentisteria Conservadora": "#1C9FD6",
-  Endodontia: "#1C9FD6",
-  Periodontologia: "#1C9FD6",
-  Odontopediatria: "#1C9FD6",
-  "Prótese Dentária": "#1C9FD6",
-  "Estética Dentária": "#1C9FD6",
-  "Reabilitação Oral": "#1C9FD6",
-  "Medicina Oral": "#1C9FD6",
-};
-
-const SERVICES_FULL = [
+const FEATURED_SERVICES = [
   {
     title: "Implantologia",
-    icon: "🦷",
-    desc: "A implantologia é a solução definitiva para a substituição de dentes perdidos. Os implantes de titânio integram-se naturalmente no osso, funcionando e tendo a aparência de dentes naturais.",
-    benefits: ["Resultado permanente e natural", "Preservação do osso maxilar", "Função mastigatória completa", "Sem necessidade de remover à noite"],
-    highlight: "A solução mais duradoura",
+    desc: "Soluções fixas e definitivas para substituir dentes perdidos. Utilizamos implantes de titânio altamente biocompatíveis para recuperar a sua função mastigatória e devolver-lhe um sorriso 100% natural, sem comprometer os dentes vizinhos.",
+    img: "/img/service-implant.png",
+    photos: ["/img/service-surgery.png", "/img/service-ortho.png", "/img/service-endo.png"],
   },
   {
     title: "Ortodontia",
-    icon: "😁",
-    desc: "Tratamento de alinhamento dentário para crianças, adolescentes e adultos. Dispomos de aparelhos fixos metálicos, estéticos (cerâmicos) e alinhadores transparentes (invisíveis).",
-    benefits: ["Aparelhos fixos ou removíveis", "Alinhadores transparentes disponíveis", "Tratamento para todas as idades", "Acompanhamento contínuo"],
-    highlight: "Para todas as idades",
+    desc: "Corrigimos o posicionamento dos dentes e maxilares para uma mordida perfeita e esteticamente harmoniosa. Dispomos de várias soluções, desde os aparelhos metálicos tradicionais aos sistemas estéticos e invisíveis, adaptados a crianças, jovens e adultos.",
+    img: "/img/service-ortho.png",
+    photos: ["/img/service-implant.png", "/img/service-whitening.png", "/img/service-kids.png"],
+  },
+  {
+    title: "Prótese Fixa",
+    desc: "Reabilitação estética e funcional através de coroas e pontes dentárias altamente resistentes. Ideal para dentes muito danificados ou enfraquecidos, devolvendo a força, a forma e a cor natural ao seu sorriso com materiais de última geração.",
+    img: "/img/service-endo.png",
+    photos: ["/img/service-ortho.png", "/img/service-surgery.png", "/img/service-implant.png"],
+  },
+  {
+    title: "Prótese Removível",
+    desc: "Soluções práticas, confortáveis e personalizadas (acrílicas ou esqueléticas) para a substituição de dentes ausentes. Garantimos um planeamento rigoroso para uma adaptação fácil, melhorando a sua mastigação e estética no dia a dia.",
+    img: "/img/service-surgery.png",
+    photos: ["/img/service-whitening.png", "/img/service-endo.png", "/img/service-kids.png"],
   },
   {
     title: "Branqueamento Dentário",
-    icon: "✨",
-    desc: "Procedimento estético seguro e eficaz para clarear a cor natural dos dentes. Disponível em consultório (resultado imediato) ou domiciliar (mais gradual).",
-    benefits: ["Clareamento em consultório (1 sessão)", "Kit domiciliar personalizado", "Resultados de até 8 tons mais claros", "Sem danos no esmalte"],
-    highlight: "Resultados visíveis",
-  },
-  {
-    title: "Cirurgia Oral",
-    icon: "🔬",
-    desc: "Procedimentos cirúrgicos orais realizados com máximo conforto e segurança. Incluem extracções simples e complexas, cirurgia de sisos e biópsias orais.",
-    benefits: ["Extracções simples e complexas", "Cirurgia de terceiros molares", "Biópsias e cirurgia periodontal", "Sedação consciente disponível"],
-    highlight: "Com máximo conforto",
-  },
-  {
-    title: "Dentisteria Conservadora",
-    icon: "🏥",
-    desc: "Tratamento e restauração de cáries e lesões dentárias com materiais estéticos de última geração. Incluímos restaurações a composite e inlays/onlays cerâmicos.",
-    benefits: ["Restaurações a composite estético", "Inlays e onlays cerâmicos", "Tratamento de cáries minimamente invasivo", "Correspondência de cor natural"],
-    highlight: "Estética e resistência",
-  },
-  {
-    title: "Endodontia",
-    icon: "💉",
-    desc: "Tratamento de canais para salvar dentes com polpa infetada ou necrosada. Com técnicas modernas e instrumentação rotatória, o tratamento é rápido e indolor.",
-    benefits: ["Tratamento em 1 a 2 sessões", "Instrumentação rotatória", "Procedimento indolor", "Preservação do dente natural"],
-    highlight: "Salva o dente natural",
-  },
-  {
-    title: "Periodontologia",
-    icon: "🫀",
-    desc: "Diagnóstico e tratamento de doenças das gengivas e do osso de suporte dos dentes. A saúde periodontal é fundamental para o sucesso de qualquer tratamento dentário.",
-    benefits: ["Destartarização profissional", "Curetagem e alisamento radicular", "Cirurgia periodontal", "Manutenção preventiva"],
-    highlight: "Saúde gengival total",
-  },
-  {
-    title: "Odontopediatria",
-    icon: "👶",
-    desc: "Cuidados dentários especializados para bebés, crianças e adolescentes. Criamos um ambiente amigo e descontraído para que os mais novos cresçam com uma boa relação com a saúde oral.",
-    benefits: ["Consulta de bebé e 1ª infância", "Selantes de fissuras preventivos", "Espaço acolhedor para crianças", "Orientação para pais"],
-    highlight: "Para os mais pequenos",
-  },
-  {
-    title: "Prótese Dentária",
-    icon: "🦴",
-    desc: "Reabilitação de pacientes com ausência parcial ou total de dentes através de próteses fixas (coroas e pontes) ou removíveis (parciais e totais).",
-    benefits: ["Coroas e pontes cerâmicas", "Próteses removíveis parciais e totais", "Próteses sobre implantes", "Overdentures implanto-suportadas"],
-    highlight: "Sorrisos completos",
-  },
-  {
-    title: "Estética Dentária",
-    icon: "🌟",
-    desc: "Transformação do sorriso através de facetas de porcelana, coroas estéticas e outros procedimentos de design do sorriso. Resultados naturais e harmoniosos.",
-    benefits: ["Facetas de porcelana e composite", "Design digital do sorriso", "Coroas estéticas totais em cerâmica", "Resultados naturais e duradouros"],
-    highlight: "O sorriso dos seus sonhos",
-  },
-  {
-    title: "Reabilitação Oral",
-    icon: "🔄",
-    desc: "Tratamento global para pacientes com perda severa de estrutura dentária, disfunção oclusal ou que necessitam de reconstrução total da dentição.",
-    benefits: ["Avaliação oclusal completa", "Plano de tratamento integrado", "Reabilitação com implantes", "Follow-up de longa duração"],
-    highlight: "Reconstrução total",
-  },
-  {
-    title: "Medicina Oral",
-    icon: "🔍",
-    desc: "Diagnóstico e tratamento de lesões e patologias da mucosa oral, glândulas salivares, ossos maxilares e articulação temporomandibular (ATM).",
-    benefits: ["Diagnóstico de lesões orais", "Tratamento de bruxismo (goteira oclusal)", "Xerostomia e patologia salivar", "Articulação temporomandibular (ATM)"],
-    highlight: "Diagnóstico especializado",
+    desc: "Tratamentos clínicos seguros e eficazes para eliminar manchas e pigmentações causadas pelo tempo e pela alimentação. Recupere a luminosidade e a brancura do seu sorriso através de um procedimento controlado que protege o seu esmalte natural.",
+    img: "/img/service-whitening.png",
+    photos: ["/img/service-implant.png", "/img/service-ortho.png", "/img/service-surgery.png"],
   },
 ];
+
+/* ─── Ícones inline ──────────────────── */
+const IcoScalpel = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22l8-8-9-9-8 8 9 9z"/><path d="M2 22l4-4"/>
+  </svg>
+);
+const IcoTooth = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2C9.2 2 7 4.2 7 7c0 1.5.6 2.8 1.5 3.8L10 21h4l1.5-10.2C16.4 9.8 17 8.5 17 7c0-2.8-2.2-5-5-5z"/>
+  </svg>
+);
+const IcoKid = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+    <circle cx="12" cy="8" r="4"/><path d="M6 21c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+    <circle cx="9" cy="9" r="0.8" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="0.8" fill="currentColor" stroke="none"/>
+  </svg>
+);
+const IcoGum = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+    <path d="M5 17c3-6 11-6 14 0"/><path d="M7 13c2-4 8-4 10 0"/><circle cx="12" cy="7" r="3"/>
+  </svg>
+);
+const IcoStar = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/>
+  </svg>
+);
+const IcoCanal = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+    <path d="M12 2C9.2 2 7 4.2 7 7c0 1.5.6 2.8 1.5 3.8L10 21h4l1.5-10.2C16.4 9.8 17 8.5 17 7c0-2.8-2.2-5-5-5z"/>
+    <path d="M10 12l2 2 2-2" strokeOpacity="0.5"/>
+  </svg>
+);
+const IcoSmile = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+    <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+    <circle cx="9" cy="10" r="0.8" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="0.8" fill="currentColor" stroke="none"/>
+  </svg>
+);
+const IcoShield = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2l8 3v6c0 5-3.6 9.3-8 10.5C7.6 20.3 4 16 4 11V5l8-3z"/>
+    <path d="M9 12l2 2 4-4"/>
+  </svg>
+);
+const IcoCog = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+  </svg>
+);
+
+const SECONDARY_SERVICES = [
+  { title: "Cirurgia Oral", desc: "Procedimentos seguros, da extração de dentes do siso ao tratamento de lesões complexas.", icon: <IcoScalpel /> },
+  { title: "Dentisteria", desc: "Tratamento de cáries e restaurações estéticas focadas na preservação da estrutura original do dente.", icon: <IcoTooth /> },
+  { title: "Endodontia", desc: "Desvitalizações seguras para tratar infeções e salvar dentes que, de outra forma, teriam de ser extraídos.", icon: <IcoCanal /> },
+  { title: "Odontopediatria", desc: "Cuidados preventivos num ambiente descontraído, garantindo que as crianças crescem sem medos.", icon: <IcoKid /> },
+  { title: "Periodontologia", desc: "Diagnóstico e tratamento de doenças das gengivas, fundamentais para a estabilidade da sua saúde oral.", icon: <IcoGum /> },
+  { title: "Estética Dentária", desc: "Tratamentos personalizados focados em melhorar a harmonia e a cor do seu sorriso de forma natural.", icon: <IcoStar /> },
+  { title: "Reabilitação Oral", desc: "A abordagem completa e integrada para restaurar a função mastigatória, a fonética e a estética de sorrisos com grandes desgastes.", icon: <IcoCog /> },
+  { title: "Medicina Oral", desc: "A área focada na prevenção, diagnóstico e tratamento de lesões nos tecidos moles da cavidade oral.", icon: <IcoShield /> },
+];
+
+const WHY_US = [
+  {
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/></svg>,
+    title: "+28 Anos de História",
+    desc: "A confiança de gerações a cuidar do seu sorriso com rigor.",
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M12 22C8.13 22 5 18.87 5 15c0-5.25 7-13 7-13s7 7.75 7 13c0 3.87-3.13 7-7 7z"/><circle cx="12" cy="15" r="2.5"/></svg>,
+    title: "3 Clínicas ao seu dispor",
+    desc: "Sempre perto de si: Caria, Peso e Unhais da Serra.",
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 014 0v2M12 12v4M10 14h4"/></svg>,
+    title: "Tecnologia Avançada",
+    desc: "Equipamentos modernos para tratamentos seguros e sem dor.",
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><circle cx="9" cy="7" r="4"/><circle cx="17" cy="9" r="3"/><path d="M1 21c0-4 3.6-7 8-7M16 21c0-3 1.8-5.5 4-6.5"/></svg>,
+    title: "Equipa Multidisciplinar",
+    desc: "Todas as especialidades dentárias concentradas num só lugar.",
+  },
+];
+
+/* ─── Página ─────────────────────────── */
 
 export default function ServicosPage() {
   return (
     <>
-      {/* ── PAGE HERO ── */}
+      {/* ── HERO ── */}
       <section className="relative bg-[#0D1E2C] py-28 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse at 30% 50%, rgba(28,159,214,0.2) 0%, transparent 60%)",
-          }}
-        />
+        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, rgba(28,159,214,0.2) 0%, transparent 60%)" }} />
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <SectionTag light centered>Os Nossos Serviços</SectionTag>
           <h1 className="font-['DM Serif Display',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
@@ -229,93 +160,63 @@ export default function ServicosPage() {
         </div>
       </section>
 
-      {/* ── SERVICES LIST ── */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
-          <div className="grid md:grid-cols-2 gap-5">
-            {SERVICES_FULL.map((svc, i) => {
-              const color = SERVICE_COLORS[svc.title] ?? "#1C9FD6";
-              return (
-                <ScrollReveal key={i} delay={(i % 2) * 80}>
-                  <div className="group bg-white border border-[#EEF4F8] rounded-[20px] p-7 hover:border-transparent hover:shadow-[0_12px_48px_rgba(13,30,44,0.1)] hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
-                    {/* Header */}
-                    <div className="flex items-center gap-4 mb-5">
-                      <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                        style={{ background: color + "15", color }}
-                      >
-                        {ICON_MAP[svc.title] ?? (
-                          <svg viewBox="0 0 40 40" fill="none" className="w-9 h-9">
-                            <circle cx="20" cy="20" r="10" stroke="currentColor" strokeWidth="2"/>
-                          </svg>
-                        )}
-                      </div>
-                      <div>
-                        <div
-                          className="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full mb-1.5"
-                          style={{ background: color + "15", color }}
-                        >
-                          {svc.highlight}
-                        </div>
-                        <h2 className="font-bold text-[#0D1E2C] text-lg leading-snug">{svc.title}</h2>
-                      </div>
-                    </div>
-                    <p className="text-[#5E7387] text-sm leading-relaxed mb-5">{svc.desc}</p>
-                    <ul className="mt-auto space-y-2.5">
-                      {svc.benefits.map((b, j) => (
-                        <li key={j} className="flex items-center gap-2.5 text-sm text-[#2A3A4A]">
-                          <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: color + "20" }}>
-                            <CheckCircle size={10} style={{ color }} />
-                          </span>
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY CHOOSE US ── */}
-      <section className="py-24 bg-[#F7FAFC]">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal className="text-center mb-14">
-            <SectionTag>Porquê escolher-nos?</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
-              A diferença Cariense
+      {/* ── SECÇÃO 1: TRATAMENTOS DE EXCELÊNCIA (layout horizontal com fotos) ── */}
+      <section className="py-24 bg-[#F0F6FA]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <ScrollReveal className="text-center mb-16">
+            <SectionTag>Os Nossos Tratamentos Principais</SectionTag>
+            <h2 className="font-['DM Serif Display',serif] text-4xl md:text-5xl font-bold text-[#0D1E2C] mt-4 mb-4">
+              Tratamentos de Excelência
             </h2>
+            <p className="text-[#5E7387] text-base max-w-2xl mx-auto">
+              Descubra as nossas soluções mais procuradas para reabilitar, corrigir e iluminar o seu sorriso, sempre com o máximo conforto e segurança.
+            </p>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              {
-                icon: <svg viewBox="0 0 40 40" fill="none" className="w-6 h-6"><path d="M20 6l3 8h8l-6.5 5 2.5 8L20 22l-7 5 2.5-8L9 14h8l3-8z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/></svg>,
-                title: "Experiência comprovada",
-                desc: "Mais de 20 anos de prática clínica e milhares de casos tratados com sucesso.",
-              },
-              {
-                icon: <svg viewBox="0 0 40 40" fill="none" className="w-6 h-6"><circle cx="20" cy="20" r="12" stroke="currentColor" strokeWidth="2"/><path d="M15 20h10M20 15v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
-                title: "Tecnologia de ponta",
-                desc: "Equipamentos digitais de última geração para diagnóstico e tratamento precisos.",
-              },
-              {
-                icon: <svg viewBox="0 0 40 40" fill="none" className="w-6 h-6"><circle cx="14" cy="14" r="5" stroke="currentColor" strokeWidth="2"/><circle cx="26" cy="14" r="5" stroke="currentColor" strokeWidth="2"/><path d="M6 32c0-6.627 3.582-12 8-12M18 32c0-6.627 3.582-12 8-12M26 20c4.418 0 8 5.373 8 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
-                title: "Equipa especializada",
-                desc: "Cada especialidade é exercida por um profissional com formação específica na área.",
-              },
-              {
-                icon: <svg viewBox="0 0 40 40" fill="none" className="w-6 h-6"><path d="M20 6C14 6 9 11 9 17c0 9 11 17 11 17s11-8 11-17c0-6-5-11-11-11z" stroke="currentColor" strokeWidth="2"/><circle cx="20" cy="17" r="3" stroke="currentColor" strokeWidth="2"/></svg>,
-                title: "3 localizações",
-                desc: "Presente em Caria, Unhais da Serra e Peso para a sua comodidade.",
-              },
-            ].map((item, i) => (
-              <ScrollReveal key={i} delay={i * 80}>
-                <div className="value-card bg-white border border-[#D5E4EE] rounded-[20px] p-7 text-center">
-                  <div className="w-12 h-12 bg-[#E8F6FC] rounded-xl flex items-center justify-center mx-auto mb-4 text-[#1C9FD6]">{item.icon}</div>
-                  <h3 className="font-bold text-[#0D1E2C] mb-2 text-sm">{item.title}</h3>
-                  <p className="text-[#5E7387] text-xs leading-relaxed">{item.desc}</p>
+
+          <div className="flex flex-col gap-3">
+            {FEATURED_SERVICES.map((svc, i) => (
+              <ScrollReveal key={i} delay={i * 60}>
+                <div className="group bg-white rounded-[20px] overflow-hidden border border-[#E2ECF4] hover:border-[#1C9FD6]/30 hover:shadow-[0_8px_40px_rgba(28,159,214,0.1)] transition-all duration-300">
+                  <div className="grid md:grid-cols-[280px_1fr_auto] items-stretch">
+                    {/* Foto principal */}
+                    <div className="relative h-56 md:h-auto overflow-hidden">
+                      <Image
+                        src={svc.img}
+                        alt={svc.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="280px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10" />
+                    </div>
+
+                    {/* Texto */}
+                    <div className="px-8 py-7 flex flex-col justify-center">
+                      <h3 className="font-['DM Serif Display',serif] text-2xl font-bold text-[#0D1E2C] mb-3">{svc.title}</h3>
+                      <p className="text-[#5E7387] text-sm leading-relaxed mb-5 max-w-md">{svc.desc}</p>
+                      <a
+                        href="#contacto"
+                        className="inline-flex items-center gap-2 text-[#1C9FD6] text-sm font-semibold hover:gap-3 transition-all duration-200"
+                      >
+                        Marcar consulta <ArrowRight size={14} />
+                      </a>
+                    </div>
+
+                    {/* Galeria de fotos lateral */}
+                    <div className="hidden md:flex flex-col gap-1 w-[180px] overflow-hidden">
+                      {svc.photos.map((photo, j) => (
+                        <div key={j} className="relative flex-1 overflow-hidden">
+                          <Image
+                            src={photo}
+                            alt=""
+                            fill
+                            className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            sizes="180px"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -323,8 +224,123 @@ export default function ServicosPage() {
         </div>
       </section>
 
-      {/* ── INSURANCE STRIP ── */}
-      <section className="py-14 bg-white border-t border-[#D5E4EE]">
+      {/* ── SECÇÃO 2: MAIS ESPECIALIDADES — grelha mista com CTA 2×1 ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <ScrollReveal className="text-center mb-14">
+            <SectionTag>Mais Especialidades Clínicas</SectionTag>
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+              Todas as especialidades,<br />
+              <span className="text-[#1C9FD6] italic">num só lugar</span>
+            </h2>
+          </ScrollReveal>
+
+          {/* Grid: col-esquerda [card + CTA grande + card] / col-direita [4 cards] */}
+          <div className="grid md:grid-cols-2 gap-4">
+
+            {/* Coluna esquerda */}
+            <div className="flex flex-col gap-4">
+              {/* Card pequeno — Cirurgia Oral */}
+              <ScrollReveal>
+                <ServiceSmallCard svc={SECONDARY_SERVICES[0]} />
+              </ScrollReveal>
+
+              {/* CTA card grande (ocupa espaço de 2 linhas) */}
+              <ScrollReveal delay={80}>
+                <Link href="/contactos" className="block group">
+                  <div
+                    className="relative rounded-[20px] overflow-hidden p-8 flex flex-col justify-between"
+                    style={{
+                      background: "linear-gradient(155deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)",
+                      minHeight: 340,
+                    }}
+                  >
+                    {/* Dot pattern */}
+                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+                    {/* Glow */}
+                    <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
+
+                    <div className="relative z-10">
+                      <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-6">
+                        <ArrowRight size={18} className="text-white" />
+                      </div>
+                      <h3 className="font-['DM Serif Display',serif] text-2xl font-bold text-white leading-tight mb-3">
+                        Pronto para cuidar<br />do seu sorriso?
+                      </h3>
+                      <p className="text-white/75 text-sm leading-relaxed max-w-xs">
+                        A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
+                      </p>
+                    </div>
+
+                    {/* Phone image */}
+                    <div className="relative z-10 h-36 mt-4">
+                      <Image
+                        src="/img/asertyuior.png"
+                        alt="Marque consulta"
+                        fill
+                        className="object-contain object-bottom group-hover:scale-105 transition-transform duration-500"
+                        sizes="400px"
+                      />
+                    </div>
+
+                    {/* Bottom button */}
+                    <div className="relative z-10 mt-4">
+                      <span className="inline-flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
+                        Agendar Consulta <ArrowRight size={14} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+
+              {/* Card pequeno — Dentisteria */}
+              <ScrollReveal delay={120}>
+                <ServiceSmallCard svc={SECONDARY_SERVICES[1]} />
+              </ScrollReveal>
+            </div>
+
+            {/* Coluna direita — 4 cards */}
+            <div className="flex flex-col gap-4">
+              {SECONDARY_SERVICES.slice(2, 6).map((svc, i) => (
+                <ScrollReveal key={i} delay={i * 60}>
+                  <ServiceSmallCard svc={svc} />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Linha extra — 2 especialidades adicionais */}
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
+            {SECONDARY_SERVICES.slice(6).map((svc, i) => (
+              <ScrollReveal key={i} delay={i * 60}>
+                <ServiceSmallCard svc={svc} />
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECÇÃO 3: PORQUÊ ESCOLHER-NOS — barra 4 blocos ── */}
+      <section className="py-16 bg-[#F7FAFC] border-t border-[#E2ECF4]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {WHY_US.map((item, i) => (
+              <ScrollReveal key={i} delay={i * 80}>
+                <div className="flex flex-col items-center text-center p-6">
+                  <div className="w-12 h-12 bg-[#E8F6FC] rounded-2xl flex items-center justify-center text-[#1C9FD6] mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-[#0D1E2C] text-base mb-1.5">{item.title}</h3>
+                  <p className="text-[#5E7387] text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEGUROS ── */}
+      <section className="py-14 bg-white border-t border-[#D5E4EE]" id="contacto">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <ScrollReveal>
             <p className="text-sm font-semibold text-[#5E7387] uppercase tracking-widest mb-4">Trabalhamos com os principais seguros e subsistemas</p>
@@ -339,5 +355,25 @@ export default function ServicosPage() {
         <CtaBanner title="Qual tratamento precisa? Fale connosco." />
       </section>
     </>
+  );
+}
+
+/* ─── Sub-componente: card pequeno de serviço ── */
+function ServiceSmallCard({ svc }: { svc: { title: string; desc: string; icon: React.ReactNode } }) {
+  return (
+    <div className="group bg-white border border-[#EEF4F8] rounded-[16px] p-6 hover:border-[#1C9FD6]/30 hover:shadow-[0_8px_32px_rgba(28,159,214,0.09)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col gap-3">
+      <div className="flex items-start gap-4">
+        <div className="w-10 h-10 rounded-xl bg-[#E8F6FC] flex items-center justify-center text-[#1C9FD6] flex-shrink-0 group-hover:bg-[#1C9FD6] group-hover:text-white transition-colors duration-300">
+          {svc.icon}
+        </div>
+        <div className="flex-1">
+          <h3 className="font-bold text-[#0D1E2C] text-sm mb-1">{svc.title}</h3>
+          <p className="text-[#5E7387] text-xs leading-relaxed">{svc.desc}</p>
+        </div>
+      </div>
+      <a href="#contacto" className="inline-flex items-center gap-1.5 text-[#1C9FD6] text-xs font-semibold hover:gap-2.5 transition-all duration-200 ml-14">
+        Saber mais <ArrowRight size={12} />
+      </a>
+    </div>
   );
 }
