@@ -74,33 +74,19 @@ const STEPS = [
   },
 ];
 
-// Height of each step row — connector line fills the gap between icon centers
-const STEP_HEIGHT = 140;
 const NODE_SIZE = 60;
-// Line runs from bottom of node to top of next node
-const LINE_HEIGHT = STEP_HEIGHT - NODE_SIZE;
 
 function ConnectorLine({ isVisible, delay }: { isVisible: boolean; delay: number }) {
   const [glowing, setGlowing] = useState(false);
 
   useEffect(() => {
     if (!isVisible) return;
-    // Start glow sweep after the fill animation completes
-    const t = setTimeout(() => setGlowing(true), (delay + 0.3 + 0.7) * 1000);
+    const t = setTimeout(() => setGlowing(true), (delay + 1.1) * 1000);
     return () => clearTimeout(t);
   }, [isVisible, delay]);
 
   return (
-    <div
-      style={{
-        width: 2,
-        height: LINE_HEIGHT,
-        background: "#EEF4F8",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
-      {/* Fill animation */}
+    <div style={{ width: 2, flex: 1, background: "#EEF4F8", overflow: "hidden", position: "relative", minHeight: 40 }}>
       <div
         style={{
           position: "absolute",
@@ -111,7 +97,6 @@ function ConnectorLine({ isVisible, delay }: { isVisible: boolean; delay: number
           transition: `transform 0.7s ease ${delay + 0.3}s`,
         }}
       />
-      {/* Glow sweep — repeating shimmer */}
       {glowing && (
         <div
           style={{
@@ -141,6 +126,7 @@ function TimelineStep({
   isEven,
   isActive,
   isVisible,
+  isLast,
   onClick,
 }: {
   step: (typeof STEPS)[0];
@@ -148,25 +134,25 @@ function TimelineStep({
   isEven: boolean;
   isActive: boolean;
   isVisible: boolean;
+  isLast: boolean;
   onClick: () => void;
 }) {
   const delay = index * 0.1;
 
   return (
     <div
-      className={`relative flex items-start md:gap-0 gap-5 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
-      style={{ minHeight: STEP_HEIGHT }}
+      className={`relative flex items-stretch md:gap-0 gap-5 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
     >
       {/* Content card */}
       <div
-        className={`flex-1 pb-12 ${isEven ? "md:pr-20 md:text-right" : "md:pl-20"}`}
+        className={`flex-1 py-6 ${isEven ? "md:pr-20 md:text-right" : "md:pl-20"} ${isLast ? "" : "pb-10"}`}
         style={{
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "none" : `translateX(${isEven ? "32px" : "-32px"})`,
           transition: `opacity 0.6s ease ${delay}s, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
         }}
       >
-        <button onClick={onClick} className="text-left w-full group">
+        <button onClick={onClick} className="text-left w-full">
           <div className={`inline-flex items-center gap-1.5 mb-2 ${isEven ? "md:flex-row-reverse md:w-full md:justify-start" : ""}`}>
             <span
               className="text-[10px] font-bold tracking-[0.18em] uppercase px-2.5 py-0.5 rounded-full transition-colors duration-300"
@@ -209,11 +195,12 @@ function TimelineStep({
         </button>
       </div>
 
-      {/* Center node — desktop */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 flex-col items-center z-10">
+      {/* Center column — node + connector line, stretches full row height */}
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-0 bottom-0 flex-col items-center z-10">
+        {/* Node */}
         <button
           onClick={onClick}
-          className="focus:outline-none"
+          className="focus:outline-none flex-shrink-0"
           style={{
             width: NODE_SIZE,
             height: NODE_SIZE,
@@ -233,25 +220,20 @@ function TimelineStep({
             transition: `all 0.55s cubic-bezier(0.34,1.56,0.64,1) ${delay}s`,
             cursor: "pointer",
           }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.18)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.18)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)"; }}
         >
           {step.icon}
         </button>
 
-        {index < STEPS.length - 1 && (
-          <ConnectorLine isVisible={isVisible} delay={delay} />
-        )}
+        {/* Connector line — flex-1 fills remaining height of the row */}
+        {!isLast && <ConnectorLine isVisible={isVisible} delay={delay} />}
       </div>
 
       {/* Mobile node */}
       <button
         onClick={onClick}
-        className="md:hidden flex-shrink-0 mt-1 focus:outline-none"
+        className="md:hidden flex-shrink-0 mt-1 focus:outline-none self-start"
         style={{
           width: 48,
           height: 48,
@@ -337,7 +319,7 @@ export default function PatientTimeline() {
                 className="h-full rounded-full"
                 style={{
                   width: `${progress}%`,
-                  background: "linear-gradient(to right, #1C9FD6, #0FA876)",
+                  background: "linear-gradient(to right, #1C9FD6, #0D7DB5)",
                   transition: "width 0.8s ease",
                 }}
               />
@@ -345,25 +327,21 @@ export default function PatientTimeline() {
           </div>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Static background line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#E2ECF4] -translate-x-1/2 hidden md:block" />
-
-          <div className="flex flex-col gap-0">
-            {STEPS.map((step, i) => (
-              <div key={i} ref={(el) => { refs.current[i] = el; }}>
-                <TimelineStep
-                  step={step}
-                  index={i}
-                  isEven={i % 2 === 0}
-                  isActive={activeStep === i}
-                  isVisible={visibleSteps[i]}
-                  onClick={() => setActiveStep(activeStep === i ? null : i)}
-                />
-              </div>
-            ))}
-          </div>
+        {/* Timeline — NO background line, connectors are inline */}
+        <div className="flex flex-col">
+          {STEPS.map((step, i) => (
+            <div key={i} ref={(el) => { refs.current[i] = el; }}>
+              <TimelineStep
+                step={step}
+                index={i}
+                isEven={i % 2 === 0}
+                isActive={activeStep === i}
+                isVisible={visibleSteps[i]}
+                isLast={i === STEPS.length - 1}
+                onClick={() => setActiveStep(activeStep === i ? null : i)}
+              />
+            </div>
+          ))}
         </div>
 
         {/* Bottom CTA */}
