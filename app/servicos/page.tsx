@@ -205,32 +205,39 @@ export default function ServicosPage() {
             {/* Row 1 */}
             <ScrollReveal delay={0}><ServiceSquareCard svc={SECONDARY_SERVICES[0]} /></ScrollReveal>
             <ScrollReveal delay={60}><ServiceSquareCard svc={SECONDARY_SERVICES[1]} /></ScrollReveal>
-            {/* Row 2–4: CTA spans 3 rows, col 1 */}
+            {/* Row 2–4: CTA spans 3 rows, col 1 — mesmo design da homepage */}
             <Link href="/contactos" className="group" style={{ gridRow: "span 3", gridColumn: "1" }}>
               <div
-                className="relative rounded-[20px] overflow-hidden p-7 flex flex-col h-full"
+                className="relative rounded-[24px] overflow-hidden h-full flex flex-col p-8"
                 style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
               >
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
-                {/* Texto — topo, z acima da imagem */}
+                <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/15 blur-[60px] pointer-events-none" />
+
+                {/* Texto topo */}
                 <div className="relative z-10">
-                  <h3 className="font-display text-[1.45rem] font-bold text-white leading-[1.2] mb-2">
-                    Pronto para cuidar<br />
-                    <span className="text-white/80 font-normal italic">do seu sorriso?</span>
-                  </h3>
-                  <p className="text-white/70 text-sm leading-relaxed max-w-[220px]">
-                    A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
+                  <h2 className="font-display text-[1.55rem] font-bold text-white leading-[1.2] mb-3">
+                    Marque a sua consulta<br />
+                    <span className="text-white/80 font-normal italic">diretamente pelo telemóvel</span>
+                  </h2>
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    Resposta garantida em menos de 24h. Sem esperas — a sua saúde oral começa aqui.
                   </p>
                 </div>
 
-                {/* Imagem — absoluta, do meio ao fundo do card */}
-                <div className="absolute bottom-0 z-0" style={{ top: "0px", left: "15%", right: "-10%" }}>
-                  <Image src="/img/asertyuior.png" alt="Marque consulta" fill className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500" sizes="50vw" />
+                {/* Imagem centrada */}
+                <div className="absolute bottom-0 left-0 right-0 z-0 overflow-hidden" style={{ top: "180px" }}>
+                  <Image
+                    src="/img/asertyuior.png"
+                    alt="Clínica Dentária Cariense"
+                    fill
+                    className="object-contain object-bottom transition-transform duration-500 ease-out group-hover:scale-110"
+                    sizes="50vw"
+                  />
                 </div>
 
-                {/* Botão — fixo no fundo, z acima da imagem */}
-                <div className="absolute bottom-6 left-6 right-6 z-10">
+                {/* Botão */}
+                <div className="relative z-10 mt-auto">
                   <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
                     Agendar Consulta <ArrowRight size={14} />
                   </span>
