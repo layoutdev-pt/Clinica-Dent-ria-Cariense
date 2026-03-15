@@ -206,6 +206,7 @@ export default function ServicosPage() {
               >
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
                 <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
+                {/* Texto — topo, z acima da imagem */}
                 <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-5">
                   <ArrowRight size={18} className="text-white" />
                 </div>
@@ -218,11 +219,14 @@ export default function ServicosPage() {
                     A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
                   </p>
                 </div>
-                <div className="absolute bottom-14 left-0 right-0 z-0 h-[280px]">
+
+                {/* Imagem — absoluta, do meio ao fundo do card */}
+                <div className="absolute bottom-0 left-0 right-0 z-0" style={{ top: "160px" }}>
                   <Image src="/img/asertyuior.png" alt="Marque consulta" fill className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500" sizes="50vw" />
                 </div>
-                <div className="flex-1" />
-                <div className="relative z-10">
+
+                {/* Botão — fixo no fundo, z acima da imagem */}
+                <div className="absolute bottom-6 left-6 right-6 z-10">
                   <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
                     Agendar Consulta <ArrowRight size={14} />
                   </span>
