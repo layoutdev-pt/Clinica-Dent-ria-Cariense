@@ -12,7 +12,7 @@ const CLINICS = [
     phone: "275 471 751",
     mobile: "927 402 729",
     img: "/img/clinic-caria.jpg",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3018.24!2d-7.507!3d40.338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3b8c4b8b8b8b8b%3A0x0!2sCaria%2C+Portugal!5e0!3m2!1spt!2spt!4v1&q=Cerca+do+Conde+Lote+41+Loja+B%2FD+6250-111+Caria+Portugal",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d268.5!2d-7.3679504!3d40.2958249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d196bd57c11a5%3A0x322f263faff1fe34!2sCl%C3%ADnica+Dent%C3%A1ria+Cariense!5e0!3m2!1spt!2spt!4v1",
   },
   {
     name: "Clínica Dentária Unhais da Serra",
@@ -21,7 +21,7 @@ const CLINICS = [
     phone: "275 971 342",
     mobile: "927 402 728",
     img: "/img/clinic-unhais.jpg",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024!2d-7.853!3d40.220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sUnhais+da+Serra!5e0!3m2!1spt!2spt!4v2&q=Avenida+1+de+Maio+43-A+6215-517+Unhais+da+Serra+Portugal",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d-7.62233!3d40.25881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sUnhais+da+Serra!5e0!3m2!1spt!2spt!4v2",
   },
   {
     name: "Espaço Saúde do Peso",
@@ -30,7 +30,7 @@ const CLINICS = [
     phone: "275 954 182",
     mobile: "927 402 728",
     img: "/img/clinic-peso.jpg",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3028!2d-7.630!3d40.172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPeso+da+Regua!5e0!3m2!1spt!2spt!4v3&q=Rua+Santa+Maria+Madalena+10+6200-622+Peso+da+Regua+Portugal",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d400!2d-7.5624421!3d40.1951342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d3b1b382981c3%3A0xe33c98de915576fd!2sCentro+Social+Comunit%C3%A1rio+do+Peso!5e0!3m2!1spt!2spt!4v3",
   },
 ];
 
