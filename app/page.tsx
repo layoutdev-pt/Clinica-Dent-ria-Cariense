@@ -544,35 +544,32 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Locations + Form grid */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-10 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-10 items-stretch">
 
-            {/* LEFT — location cards */}
-            <div className="flex flex-col gap-3">
+            {/* LEFT — location cards, mesma altura do form */}
+            <div className="flex flex-col gap-3 h-full">
               {[
-                { name: "Clínica Dentária Caria", address: "Cerca do Conde, Lote 41, Loja B/D", postal: "6250-111", phone: "275 471 751", mobile: "927 402 729", img: "/img/clinic-caria.jpg", featured: true },
-                { name: "Clínica Dentária Unhais da Serra", address: "Avenida 1º de Maio, 43-A", postal: "6215-517", phone: "275 971 342", mobile: "927 402 728", img: "/img/clinic-unhais.jpg", featured: false },
-                { name: "Espaço Saúde do Peso", address: "Rua Santa Maria Madalena, nº10", postal: "6200-622", phone: "275 954 182", mobile: "927 402 728", img: "/img/clinic-peso.jpg", featured: false },
+                { name: "Clínica Dentária Caria", address: "Cerca do Conde, Lote 41, Loja B/D", postal: "6250-111", phone: "275 471 751", mobile: "927 402 729", img: "/img/clinic-caria.jpg" },
+                { name: "Clínica Dentária Unhais da Serra", address: "Avenida 1º de Maio, 43-A", postal: "6215-517", phone: "275 971 342", mobile: "927 402 728", img: "/img/clinic-unhais.jpg" },
+                { name: "Espaço Saúde do Peso", address: "Rua Santa Maria Madalena, nº10", postal: "6200-622", phone: "275 954 182", mobile: "927 402 728", img: "/img/clinic-peso.jpg" },
               ].map((loc, i) => (
                 <div
                   key={i}
-                  className={`flex rounded-[18px] overflow-hidden border transition-all duration-200 ${
-                    loc.featured
-                      ? "bg-[#0D4E8A] border-[#0D4E8A] shadow-[0_4px_24px_rgba(13,78,138,0.25)]"
-                      : "bg-white border-[#EEF4F8] hover:border-[#1C9FD6]/30 hover:shadow-[0_4px_20px_rgba(28,159,214,0.08)]"
-                  }`}
+                  className="flex flex-1 rounded-[18px] overflow-hidden border border-[#EEF4F8] bg-white hover:border-[#1C9FD6]/30 hover:shadow-[0_4px_20px_rgba(28,159,214,0.08)] transition-all duration-200"
                 >
-                  <div className="relative w-[120px] h-[100px] flex-shrink-0">
-                    <Image src={loc.img} alt={loc.name} fill sizes="120px" className="object-cover" />
+                  {/* Clinic photo — fills card height */}
+                  <div className="relative w-[140px] flex-shrink-0">
+                    <Image src={loc.img} alt={loc.name} fill sizes="140px" className="object-cover" />
                   </div>
                   <div className="flex flex-col justify-center px-5 py-4 flex-1 min-w-0">
-                    <div className={`font-bold text-[0.95rem] leading-snug mb-2 ${loc.featured ? "text-white" : "text-[#0D1E2C]"}`}>
+                    <div className="font-bold text-[0.95rem] leading-snug mb-2 text-[#0D1E2C]">
                       {loc.name}
                     </div>
-                    <div className={`flex items-center gap-2 text-xs mb-1 ${loc.featured ? "text-white/80" : "text-[#1C9FD6]"}`}>
+                    <div className="flex items-center gap-2 text-xs mb-1 text-[#1C9FD6]">
                       <Phone size={12} className="flex-shrink-0" />
                       <span>{loc.phone} // {loc.mobile}</span>
                     </div>
-                    <div className={`flex items-center gap-2 text-xs ${loc.featured ? "text-white/70" : "text-[#5E7387]"}`}>
+                    <div className="flex items-center gap-2 text-xs text-[#5E7387]">
                       <MapPin size={12} className="flex-shrink-0" />
                       <span>{loc.address}, {loc.postal}</span>
                     </div>
