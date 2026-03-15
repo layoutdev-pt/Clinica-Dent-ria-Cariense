@@ -298,7 +298,7 @@ export default function Home() {
             {/* LEFT — CTA card */}
             <ScrollReveal variant="slide-left">
               <div
-                className="relative rounded-[24px] overflow-hidden h-full min-h-[520px] flex flex-col p-8"
+                className="group relative rounded-[24px] overflow-hidden h-full min-h-[520px] flex flex-col p-8"
                 style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
               >
                 {/* Subtle dot pattern */}
@@ -318,12 +318,12 @@ export default function Home() {
                 </div>
 
                 {/* Image — absolute, bottom-anchored, behind buttons */}
-                <div className="absolute bottom-0 left-0 right-0 z-0 flex items-end justify-center" style={{ top: "180px" }}>
+                <div className="absolute bottom-0 left-0 right-0 z-0 overflow-hidden" style={{ top: "180px" }}>
                   <Image
                     src="/img/asertyuior.png"
                     alt="Clínica Dentária Cariense"
                     fill
-                    className="object-contain object-bottom"
+                    className="object-contain object-bottom transition-transform duration-500 ease-out group-hover:scale-110"
                     sizes="340px"
                   />
                 </div>
