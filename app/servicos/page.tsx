@@ -205,8 +205,8 @@ export default function ServicosPage() {
             {/* Row 1 */}
             <ScrollReveal delay={0}><ServiceSquareCard svc={SECONDARY_SERVICES[0]} /></ScrollReveal>
             <ScrollReveal delay={60}><ServiceSquareCard svc={SECONDARY_SERVICES[1]} /></ScrollReveal>
-            {/* Row 2–3: CTA spans 2 rows, col 1 */}
-            <Link href="/contactos" className="group" style={{ gridRow: "span 2", gridColumn: "1" }}>
+            {/* Row 2–4: CTA spans 3 rows, col 1 */}
+            <Link href="/contactos" className="group" style={{ gridRow: "span 3", gridColumn: "1" }}>
               <div
                 className="relative rounded-[20px] overflow-hidden p-7 flex flex-col h-full"
                 style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
@@ -237,17 +237,15 @@ export default function ServicosPage() {
                 </div>
               </div>
             </Link>
-            {/* Row 2, col 2 */}
+            {/* Rows 2-4, col 2 (ao lado do CTA) */}
             <ScrollReveal delay={100}><ServiceSquareCard svc={SECONDARY_SERVICES[2]} /></ScrollReveal>
-            {/* Row 3, col 2 */}
             <ScrollReveal delay={120}><ServiceSquareCard svc={SECONDARY_SERVICES[3]} /></ScrollReveal>
-            {/* Row 4 */}
             <ScrollReveal delay={140}><ServiceSquareCard svc={SECONDARY_SERVICES[4]} /></ScrollReveal>
-            <ScrollReveal delay={160}><ServiceSquareCard svc={SECONDARY_SERVICES[5]} /></ScrollReveal>
             {/* Row 5 */}
+            <ScrollReveal delay={160}><ServiceSquareCard svc={SECONDARY_SERVICES[5]} /></ScrollReveal>
             <ScrollReveal delay={180}><ServiceSquareCard svc={SECONDARY_SERVICES[6]} /></ScrollReveal>
+            {/* Row 6 — Reabilitação Oral sozinho col 1, Imagiologia col 2 */}
             <ScrollReveal delay={200}><ServiceSquareCard svc={SECONDARY_SERVICES[7]} /></ScrollReveal>
-            {/* Row 6 — Imagiologia ocupa col 1, col 2 vazia */}
             <ScrollReveal delay={220}><ServiceSquareCard svc={SECONDARY_SERVICES[8]} /></ScrollReveal>
           </div>
 
