@@ -235,57 +235,50 @@ export default function ServicosPage() {
             </h2>
           </ScrollReveal>
 
-          {/* Grid: col-esquerda [card + CTA grande + card] / col-direita [4 cards] */}
+          {/* Grid: col-esquerda [card + CTA + card] / col-direita [4 cards] */}
           <div className="grid md:grid-cols-2 gap-4">
 
             {/* Coluna esquerda */}
             <div className="flex flex-col gap-4">
-              {/* Card pequeno — Cirurgia Oral */}
               <ScrollReveal>
-                <ServiceSmallCard svc={SECONDARY_SERVICES[0]} />
+                <ServiceSquareCard svc={SECONDARY_SERVICES[0]} />
               </ScrollReveal>
 
-              {/* CTA card grande (ocupa espaço de 2 linhas) */}
+              {/* CTA card — mesma proporção do da homepage */}
               <ScrollReveal delay={80}>
                 <Link href="/contactos" className="block group">
                   <div
-                    className="relative rounded-[20px] overflow-hidden p-8 flex flex-col justify-between"
-                    style={{
-                      background: "linear-gradient(155deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)",
-                      minHeight: 340,
-                    }}
+                    className="relative rounded-[20px] overflow-hidden p-7 flex flex-col"
+                    style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
                   >
-                    {/* Dot pattern */}
-                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
-                    {/* Glow */}
-                    <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
+                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                    <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
 
+                    {/* Text */}
                     <div className="relative z-10">
-                      <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-6">
-                        <ArrowRight size={18} className="text-white" />
-                      </div>
-                      <h3 className="font-['DM Serif Display',serif] text-2xl font-bold text-white leading-tight mb-3">
-                        Pronto para cuidar<br />do seu sorriso?
+                      <h3 className="font-['DM Serif Display',serif] text-[1.55rem] font-bold text-white leading-[1.2] mb-2">
+                        Pronto para cuidar<br />
+                        <span className="text-white/80 font-normal italic">do seu sorriso?</span>
                       </h3>
-                      <p className="text-white/75 text-sm leading-relaxed max-w-xs">
+                      <p className="text-white/70 text-sm leading-relaxed">
                         A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
                       </p>
                     </div>
 
-                    {/* Phone image */}
-                    <div className="relative z-10 h-36 mt-4">
+                    {/* Image */}
+                    <div className="relative z-0 h-44 mt-2">
                       <Image
                         src="/img/asertyuior.png"
                         alt="Marque consulta"
                         fill
-                        className="object-contain object-bottom group-hover:scale-105 transition-transform duration-500"
-                        sizes="400px"
+                        className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500"
+                        sizes="500px"
                       />
                     </div>
 
-                    {/* Bottom button */}
-                    <div className="relative z-10 mt-4">
-                      <span className="inline-flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
+                    {/* Button */}
+                    <div className="relative z-10">
+                      <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
                         Agendar Consulta <ArrowRight size={14} />
                       </span>
                     </div>
@@ -293,17 +286,16 @@ export default function ServicosPage() {
                 </Link>
               </ScrollReveal>
 
-              {/* Card pequeno — Dentisteria */}
               <ScrollReveal delay={120}>
-                <ServiceSmallCard svc={SECONDARY_SERVICES[1]} />
+                <ServiceSquareCard svc={SECONDARY_SERVICES[1]} />
               </ScrollReveal>
             </div>
 
             {/* Coluna direita — 4 cards */}
-            <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {SECONDARY_SERVICES.slice(2, 6).map((svc, i) => (
                 <ScrollReveal key={i} delay={i * 60}>
-                  <ServiceSmallCard svc={svc} />
+                  <ServiceSquareCard svc={svc} />
                 </ScrollReveal>
               ))}
             </div>
@@ -313,7 +305,7 @@ export default function ServicosPage() {
           <div className="grid md:grid-cols-2 gap-4 mt-4">
             {SECONDARY_SERVICES.slice(6).map((svc, i) => (
               <ScrollReveal key={i} delay={i * 60}>
-                <ServiceSmallCard svc={svc} />
+                <ServiceSquareCard svc={svc} />
               </ScrollReveal>
             ))}
           </div>
@@ -358,20 +350,16 @@ export default function ServicosPage() {
   );
 }
 
-/* ─── Sub-componente: card pequeno de serviço ── */
-function ServiceSmallCard({ svc }: { svc: { title: string; desc: string; icon: React.ReactNode } }) {
+/* ─── Sub-componente: card quadrado igual homepage ── */
+function ServiceSquareCard({ svc }: { svc: { title: string; desc: string; icon: React.ReactNode } }) {
   return (
-    <div className="group bg-white border border-[#EEF4F8] rounded-[16px] p-6 hover:border-[#1C9FD6]/30 hover:shadow-[0_8px_32px_rgba(28,159,214,0.09)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col gap-3">
-      <div className="flex items-start gap-4">
-        <div className="w-10 h-10 rounded-xl bg-[#E8F6FC] flex items-center justify-center text-[#1C9FD6] flex-shrink-0 group-hover:bg-[#1C9FD6] group-hover:text-white transition-colors duration-300">
-          {svc.icon}
-        </div>
-        <div className="flex-1">
-          <h3 className="font-bold text-[#0D1E2C] text-sm mb-1">{svc.title}</h3>
-          <p className="text-[#5E7387] text-xs leading-relaxed">{svc.desc}</p>
-        </div>
+    <div className="group bg-white rounded-[20px] p-6 border border-[#EEF4F8] hover:border-[#1C9FD6]/20 hover:shadow-[0_12px_40px_rgba(28,159,214,0.1)] hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
+      <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 bg-[#E8F6FC] text-[#1C9FD6]">
+        {svc.icon}
       </div>
-      <a href="#contacto" className="inline-flex items-center gap-1.5 text-[#1C9FD6] text-xs font-semibold hover:gap-2.5 transition-all duration-200 ml-14">
+      <h3 className="font-bold text-[#0D1E2C] text-[1rem] mb-2">{svc.title}</h3>
+      <p className="text-[#5E7387] text-sm leading-relaxed flex-1">{svc.desc}</p>
+      <a href="#contacto" className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#1C9FD6] hover:gap-2.5 transition-all duration-200">
         Saber mais <ArrowRight size={12} />
       </a>
     </div>
