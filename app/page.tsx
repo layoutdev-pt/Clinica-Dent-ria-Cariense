@@ -8,6 +8,7 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 import FaqAccordion from "@/components/FaqAccordion";
 import CtaBanner from "@/components/CtaBanner";
 import ContactForm from "@/components/ContactForm";
+import ClinicCards from "@/components/ClinicCards";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
 /* ─── Data ─────────────────────────────────────────────────── */
@@ -546,37 +547,8 @@ export default function Home() {
           {/* Locations + Form grid */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-10 items-stretch">
 
-            {/* LEFT — location cards, mesma altura do form */}
-            <div className="flex flex-col gap-3 h-full">
-              {[
-                { name: "Clínica Dentária Caria", address: "Cerca do Conde, Lote 41, Loja B/D", postal: "6250-111", phone: "275 471 751", mobile: "927 402 729", img: "/img/clinic-caria.jpg" },
-                { name: "Clínica Dentária Unhais da Serra", address: "Avenida 1º de Maio, 43-A", postal: "6215-517", phone: "275 971 342", mobile: "927 402 728", img: "/img/clinic-unhais.jpg" },
-                { name: "Espaço Saúde do Peso", address: "Rua Santa Maria Madalena, nº10", postal: "6200-622", phone: "275 954 182", mobile: "927 402 728", img: "/img/clinic-peso.jpg" },
-              ].map((loc, i) => (
-                <div
-                  key={i}
-                  className="flex flex-1 rounded-[18px] overflow-hidden border border-[#EEF4F8] bg-white hover:border-[#1C9FD6]/30 hover:shadow-[0_4px_20px_rgba(28,159,214,0.08)] transition-all duration-200"
-                >
-                  {/* Clinic photo — fills card height */}
-                  <div className="relative w-[140px] flex-shrink-0">
-                    <Image src={loc.img} alt={loc.name} fill sizes="140px" className="object-cover" />
-                  </div>
-                  <div className="flex flex-col justify-center px-5 py-4 flex-1 min-w-0">
-                    <div className="font-bold text-[0.95rem] leading-snug mb-2 text-[#0D1E2C]">
-                      {loc.name}
-                    </div>
-                    <div className="flex items-center gap-2 text-xs mb-1 text-[#1C9FD6]">
-                      <Phone size={12} className="flex-shrink-0" />
-                      <span>{loc.phone} // {loc.mobile}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-[#5E7387]">
-                      <MapPin size={12} className="flex-shrink-0" />
-                      <span>{loc.address}, {loc.postal}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* LEFT — clinic cards + map */}
+            <ClinicCards />
 
             {/* RIGHT — contact form */}
             <ContactForm />
