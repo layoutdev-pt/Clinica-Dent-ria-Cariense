@@ -221,12 +221,12 @@ export default function ServicosPage() {
                     <span className="text-white/80 font-normal italic">diretamente pelo telemóvel</span>
                   </h2>
                   <p className="text-white/70 text-sm leading-relaxed">
-                    Resposta garantida em menos de 24h. Sem esperas — a sua saúde oral começa aqui.
+                    Resposta garantida em menos de 24h.<br />Sem esperas, a sua saúde oral começa aqui.
                   </p>
                 </div>
 
                 {/* Imagem centrada */}
-                <div className="absolute bottom-0 left-0 right-0 z-0 overflow-hidden" style={{ top: "180px" }}>
+                <div className="absolute bottom-0 left-0 right-0 z-0 overflow-hidden" style={{ top: "140px" }}>
                   <Image
                     src="/img/asertyuior.png"
                     alt="Clínica Dentária Cariense"
