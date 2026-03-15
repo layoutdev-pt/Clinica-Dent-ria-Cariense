@@ -6,32 +6,38 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 
 const N = TESTIMONIALS.length;
-
-// How many side cards to render on each side
 const SIDE = 2;
 
 export default function TestimonialsSlider() {
-  // virtualIdx can go negative or beyond N — wraps with modulo
   const [virtualIdx, setVirtualIdx] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const [prevVirtual, setPrevVirtual] = useState<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchX = useRef(0);
   const isAnimating = useRef(false);
 
   const realIdx = ((virtualIdx % N) + N) % N;
 
-  const goNext = useCallback(() => {
+  // Which real index just left center (for exit animation)
+  const prevReal = prevVirtual !== null ? ((prevVirtual % N) + N) % N : null;
+
+  const go = useCallback((delta: 1 | -1) => {
     if (isAnimating.current) return;
     isAnimating.current = true;
-    setVirtualIdx((v) => v + 1);
-    setTimeout(() => { isAnimating.current = false; }, 520);
+    setDirection(delta);
+    setPrevVirtual((v) => v ?? 0); // capture current before change
+    setVirtualIdx((v) => {
+      setPrevVirtual(v);
+      return v + delta;
+    });
+    setTimeout(() => {
+      isAnimating.current = false;
+      setPrevVirtual(null);
+    }, 600);
   }, []);
 
-  const goPrev = useCallback(() => {
-    if (isAnimating.current) return;
-    isAnimating.current = true;
-    setVirtualIdx((v) => v - 1);
-    setTimeout(() => { isAnimating.current = false; }, 520);
-  }, []);
+  const goNext = useCallback(() => go(1), [go]);
+  const goPrev = useCallback(() => go(-1), [go]);
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -43,15 +49,13 @@ export default function TestimonialsSlider() {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
-  // Build visible slots: center ± SIDE
   const slots = Array.from({ length: SIDE * 2 + 1 }, (_, k) => k - SIDE);
 
   return (
     <div>
-      {/* Coverflow stage */}
       <div
         className="relative flex items-center justify-center"
-        style={{ perspective: "1200px", height: 320 }}
+        style={{ perspective: "1200px", height: 340 }}
         onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           const delta = touchX.current - e.changedTouches[0].clientX;
@@ -66,14 +70,31 @@ export default function TestimonialsSlider() {
           const t = TESTIMONIALS[dataIdx];
           const abs = Math.abs(offset);
 
-          // Depth / transform values per position
-          const rotateY = offset * -18;          // degrees — side cards rotate inward
-          const translateX = offset * 300;        // px — horizontal spread
-          const translateZ = abs === 0 ? 80 : abs === 1 ? -40 : -120; // depth
+          const isCenter = offset === 0;
+          const wasCenter = dataIdx === prevReal && prevReal !== null;
+          const isEntering = isCenter && wasCenter === false && prevReal !== null;
+          const isExiting = wasCenter && !isCenter;
+
+          // Base 3D values
+          const rotateY = offset * -18;
+          const translateX = offset * 300;
+          const translateZ = abs === 0 ? 80 : abs === 1 ? -40 : -120;
           const scale = abs === 0 ? 1 : abs === 1 ? 0.82 : 0.68;
           const opacity = abs === 0 ? 1 : abs === 1 ? 0.7 : 0.35;
           const zIndex = SIDE - abs;
           const blur = abs === 0 ? 0 : abs === 1 ? 0 : 1.5;
+
+          // Motion: entering center card gets a spring overshoot bounce
+          // Exiting center card gets an accelerate-away curve
+          let easing = "cubic-bezier(0.4,0,0.2,1)";
+          let duration = "0.52s";
+          if (isEntering) {
+            easing = "cubic-bezier(0.34,1.56,0.64,1)"; // spring overshoot
+            duration = "0.60s";
+          } else if (isExiting) {
+            easing = "cubic-bezier(0.55,0,1,0.45)"; // accelerate away
+            duration = "0.45s";
+          }
 
           return (
             <div
@@ -92,16 +113,17 @@ export default function TestimonialsSlider() {
                 opacity,
                 zIndex,
                 filter: blur > 0 ? `blur(${blur}px)` : "none",
-                transition: "transform 0.52s cubic-bezier(0.4,0,0.2,1), opacity 0.52s ease, filter 0.52s ease",
+                transition: `transform ${duration} ${easing}, opacity ${duration} ease, filter ${duration} ease, box-shadow 0.3s ease`,
                 willChange: "transform, opacity",
               }}
             >
               <div
                 className="bg-white rounded-[20px] p-7 h-full"
                 style={{
-                  boxShadow: abs === 0
-                    ? "0 20px 60px rgba(13,30,44,0.14), 0 0 0 1.5px #1C9FD6"
+                  boxShadow: isCenter
+                    ? "0 24px 64px rgba(13,30,44,0.15), 0 0 0 1.5px #1C9FD6"
                     : "0 6px 24px rgba(13,30,44,0.08), 0 0 0 1px #EEF4F8",
+                  transition: "box-shadow 0.4s ease",
                 }}
               >
                 {/* Stars */}
@@ -139,7 +161,12 @@ export default function TestimonialsSlider() {
               key={i}
               onClick={() => {
                 const diff = i - realIdx;
-                setVirtualIdx((v) => v + diff);
+                if (diff === 0) return;
+                go(diff > 0 ? 1 : -1);
+                // Jump multiple steps without animation conflict
+                setTimeout(() => {
+                  setVirtualIdx((v) => v + (diff - (diff > 0 ? 1 : -1)));
+                }, 620);
                 resetTimer();
               }}
               aria-label={`Testemunho ${i + 1}`}
