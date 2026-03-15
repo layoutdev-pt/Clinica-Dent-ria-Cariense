@@ -199,8 +199,8 @@ export default function ServicosPage() {
             <ScrollReveal delay={0}><ServiceSquareCard svc={SECONDARY_SERVICES[0]} /></ScrollReveal>
             <ScrollReveal delay={60}><ServiceSquareCard svc={SECONDARY_SERVICES[1]} /></ScrollReveal>
             {/* Row 2–3: CTA spans 2 rows, col 1 */}
-            <div style={{ gridRow: "span 2", gridColumn: "1" }}>
-            <ScrollReveal delay={80}>
+            <div style={{ gridRow: "span 2", gridColumn: "1" }} className="h-full">
+            <ScrollReveal delay={80} className="h-full">
               <Link href="/contactos" className="block group h-full">
                 <div
                   className="relative rounded-[20px] overflow-hidden p-7 flex flex-col h-full"
