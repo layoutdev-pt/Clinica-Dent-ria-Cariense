@@ -273,8 +273,8 @@ export default function ServicosPage() {
                       </p>
                     </div>
 
-                    {/* Image */}
-                    <div className="relative z-0 h-52 mt-1">
+                    {/* Image — absolute bottom, behind button */}
+                    <div className="absolute bottom-[60px] left-0 right-0 z-0 h-72">
                       <Image
                         src="/img/asertyuior.png"
                         alt="Marque consulta"
@@ -284,8 +284,11 @@ export default function ServicosPage() {
                       />
                     </div>
 
+                    {/* Spacer to push button down */}
+                    <div className="h-64" />
+
                     {/* Button */}
-                    <div className="relative z-10 mt-2">
+                    <div className="relative z-10">
                       <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
                         Agendar Consulta <ArrowRight size={14} />
                       </span>
