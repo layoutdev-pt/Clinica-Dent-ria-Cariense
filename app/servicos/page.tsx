@@ -273,8 +273,8 @@ export default function ServicosPage() {
                       </p>
                     </div>
 
-                    {/* Image — absolute bottom, behind button */}
-                    <div className="absolute bottom-[60px] left-0 right-0 z-0 h-72">
+                    {/* Image — absolute, fills from below text to bottom of card */}
+                    <div className="absolute bottom-0 left-0 right-0 z-0 h-80">
                       <Image
                         src="/img/asertyuior.png"
                         alt="Marque consulta"
