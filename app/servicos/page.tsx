@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionTag from "@/components/SectionTag";
 import CtaBanner from "@/components/CtaBanner";
+import FeaturedServicesCarousel from "@/components/FeaturedServicesCarousel";
 
 /* ─── Dados ─────────────────────────── */
 
@@ -160,8 +161,8 @@ export default function ServicosPage() {
         </div>
       </section>
 
-      {/* ── SECÇÃO 1: TRATAMENTOS DE EXCELÊNCIA (layout horizontal com fotos) ── */}
-      <section className="py-24 bg-[#F0F6FA]">
+      {/* ── SECÇÃO 1: TRATAMENTOS DE EXCELÊNCIA — carousel 3D ── */}
+      <section className="py-24 bg-[#F0F6FA] overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
             <SectionTag>Os Nossos Tratamentos Principais</SectionTag>
@@ -173,54 +174,7 @@ export default function ServicosPage() {
             </p>
           </ScrollReveal>
 
-          <div className="flex flex-col gap-3">
-            {FEATURED_SERVICES.map((svc, i) => (
-              <ScrollReveal key={i} delay={i * 60}>
-                <div className="group bg-white rounded-[20px] overflow-hidden border border-[#E2ECF4] hover:border-[#1C9FD6]/30 hover:shadow-[0_8px_40px_rgba(28,159,214,0.1)] transition-all duration-300">
-                  <div className="grid md:grid-cols-[280px_1fr_auto] items-stretch">
-                    {/* Foto principal */}
-                    <div className="relative h-56 md:h-auto overflow-hidden">
-                      <Image
-                        src={svc.img}
-                        alt={svc.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="280px"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10" />
-                    </div>
-
-                    {/* Texto */}
-                    <div className="px-8 py-7 flex flex-col justify-center">
-                      <h3 className="font-['DM Serif Display',serif] text-2xl font-bold text-[#0D1E2C] mb-3">{svc.title}</h3>
-                      <p className="text-[#5E7387] text-sm leading-relaxed mb-5 max-w-md">{svc.desc}</p>
-                      <a
-                        href="#contacto"
-                        className="inline-flex items-center gap-2 text-[#1C9FD6] text-sm font-semibold hover:gap-3 transition-all duration-200"
-                      >
-                        Marcar consulta <ArrowRight size={14} />
-                      </a>
-                    </div>
-
-                    {/* Galeria de fotos lateral */}
-                    <div className="hidden md:flex flex-col gap-1 w-[180px] overflow-hidden">
-                      {svc.photos.map((photo, j) => (
-                        <div key={j} className="relative flex-1 overflow-hidden">
-                          <Image
-                            src={photo}
-                            alt=""
-                            fill
-                            className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                            sizes="180px"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <FeaturedServicesCarousel items={FEATURED_SERVICES} />
         </div>
       </section>
 
