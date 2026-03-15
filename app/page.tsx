@@ -9,6 +9,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import CtaBanner from "@/components/CtaBanner";
 import ContactForm from "@/components/ContactForm";
 import ClinicCards from "@/components/ClinicCards";
+import FeaturedServicesCarousel from "@/components/FeaturedServicesCarousel";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
 /* ─── Data ─────────────────────────────────────────────────── */
@@ -285,6 +286,59 @@ export default function Home() {
               </Link>
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          TRATAMENTOS PRINCIPAIS — carousel
+      ══════════════════════════════════════════ */}
+      <section className="py-24 bg-[#F0F6FA] overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <ScrollReveal className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <span className="w-8 h-px bg-[#1C9FD6]/40" />
+              <span className="text-[#1C9FD6] text-xs font-bold uppercase tracking-[0.2em]">Especialidades</span>
+              <span className="w-8 h-px bg-[#1C9FD6]/40" />
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] leading-[1.08] mb-4">
+              Especialidades de Saúde Oral
+            </h2>
+            <p className="text-[#5E7387] text-base max-w-xl mx-auto">
+              Desde os primeiros dentes até à reabilitação completa, cuidamos de cada detalhe do seu sorriso com rigor clínico e dedicação.
+            </p>
+          </ScrollReveal>
+          <FeaturedServicesCarousel items={[
+            {
+              title: "Implantologia",
+              desc: "Soluções fixas e definitivas para substituir dentes perdidos. Utilizamos implantes de titânio altamente biocompatíveis para recuperar a sua função mastigatória e devolver-lhe um sorriso 100% natural.",
+              img: "/img/service-implant.png",
+              photos: ["/img/service-surgery.png", "/img/service-ortho.png", "/img/service-endo.png"],
+            },
+            {
+              title: "Ortodontia",
+              desc: "Corrigimos o posicionamento dos dentes e maxilares para uma mordida perfeita. Dispomos de várias soluções, desde os aparelhos tradicionais aos sistemas estéticos e invisíveis.",
+              img: "/img/service-ortho.png",
+              photos: ["/img/service-implant.png", "/img/service-whitening.png", "/img/service-kids.png"],
+            },
+            {
+              title: "Prótese Fixa",
+              desc: "Reabilitação estética e funcional através de coroas e pontes dentárias altamente resistentes. Ideal para dentes muito danificados, devolvendo a força, a forma e a cor natural ao seu sorriso.",
+              img: "/img/service-endo.png",
+              photos: ["/img/service-ortho.png", "/img/service-surgery.png", "/img/service-implant.png"],
+            },
+            {
+              title: "Prótese Removível",
+              desc: "Soluções práticas, confortáveis e personalizadas para a substituição de dentes ausentes. Garantimos um planeamento rigoroso para uma adaptação fácil, melhorando a sua mastigação e estética.",
+              img: "/img/service-surgery.png",
+              photos: ["/img/service-whitening.png", "/img/service-endo.png", "/img/service-kids.png"],
+            },
+            {
+              title: "Branqueamento Dentário",
+              desc: "Tratamentos clínicos seguros e eficazes para eliminar manchas e pigmentações. Recupere a luminosidade e a brancura do seu sorriso com um procedimento controlado que protege o seu esmalte.",
+              img: "/img/service-whitening.png",
+              photos: ["/img/service-implant.png", "/img/service-ortho.png", "/img/service-surgery.png"],
+            },
+          ]} />
         </div>
       </section>
 
