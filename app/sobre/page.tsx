@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CheckCircle, Award, Heart, Users } from "lucide-react";
+import { Award, Heart, Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sobre Nós — História, Equipa e Valores",
@@ -18,6 +18,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SectionTag from "@/components/SectionTag";
 import Counter from "@/components/Counter";
 import CtaBanner from "@/components/CtaBanner";
+import HistoryTimeline from "@/components/HistoryTimeline";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
 const VALUES = [
@@ -38,13 +39,6 @@ const VALUES = [
   },
 ];
 
-const MILESTONES = [
-  { year: "2003", event: "Abertura da primeira clínica em Caria" },
-  { year: "2010", event: "Expansão para Unhais da Serra" },
-  { year: "2016", event: "Inauguração do Espaço Saúde do Peso" },
-  { year: "2020", event: "Renovação tecnológica completa das três clínicas" },
-  { year: "2024", event: "Mais de 2000 pacientes activos e reconhecimento regional" },
-];
 
 export default function SobrePage() {
   return (
@@ -96,50 +90,23 @@ export default function SobrePage() {
 
       {/* ── MISSION / STORY ── */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <ScrollReveal>
-            <SectionTag>A Nossa História</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4 mb-6">
-              Nascemos para servir o interior
+        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
+          <ScrollReveal className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="w-8 h-px bg-[#1C9FD6]/40" />
+              <span className="text-[#1C9FD6] text-xs font-bold uppercase tracking-[0.2em]">A Nossa História</span>
+              <span className="w-8 h-px bg-[#1C9FD6]/40" />
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] leading-[1.08] mb-4">
+              Nascemos para servir<br />
+              <span className="text-[#1C9FD6] italic">o interior</span>
             </h2>
-            <p className="text-[#5E7387] leading-relaxed mb-5">
-              A Clínica Dentária Cariense foi fundada em 2003 com uma visão clara: levar cuidados dentários de excelência às populações do interior de Portugal, que tantas vezes viam-se obrigadas a deslocar-se a grandes centros urbanos para aceder a tratamentos especializados.
+            <p className="text-[#5E7387] text-sm max-w-lg mx-auto leading-relaxed">
+              Fundada em 2003 com a missão de levar cuidados dentários de excelência às populações do interior de Portugal. Hoje, com três clínicas e mais de 12.000 pacientes, somos referência regional em saúde oral.
             </p>
-            <p className="text-[#5E7387] leading-relaxed mb-5">
-              Ao longo dos anos, crescemos, expandimos e investimos continuamente em equipamentos de última geração e na formação das nossas equipas. Mas o nosso compromisso fundamental manteve-se: estar perto de si.
-            </p>
-            <p className="text-[#5E7387] leading-relaxed mb-8">
-              Hoje, com três clínicas operacionais e uma equipa de especialistas dedicados, orgulhamo-nos de ser uma referência regional em saúde oral.
-            </p>
-            <ul className="space-y-3">
-              {["Fundada em 2003 em Caria", "Equipa de 6+ especialistas", "Certificações e formação contínua", "Tecnologia digital de última geração"].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm text-[#2A3A4A] font-medium">
-                  <CheckCircle size={18} className="text-[#1C9FD6] flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
           </ScrollReveal>
 
-          {/* Timeline */}
-          <ScrollReveal delay={150}>
-            <div className="space-y-0">
-              {MILESTONES.map((m, i) => (
-                <div key={i} className="flex gap-5">
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E8F6FC] border-2 border-[#1C9FD6] flex items-center justify-center flex-shrink-0">
-                      <div className="w-3 h-3 rounded-full bg-[#1C9FD6]" />
-                    </div>
-                    {i < MILESTONES.length - 1 && <div className="w-px flex-1 bg-[#D5E4EE] my-1" />}
-                  </div>
-                  <div className="pb-8">
-                    <div className="text-[#1C9FD6] text-sm font-bold mb-1">{m.year}</div>
-                    <div className="text-[#0D1E2C] font-medium text-sm leading-snug">{m.event}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+          <HistoryTimeline />
         </div>
       </section>
 
