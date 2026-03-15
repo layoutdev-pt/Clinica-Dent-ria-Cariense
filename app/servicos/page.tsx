@@ -218,7 +218,7 @@ export default function ServicosPage() {
                 </div>
 
                 {/* Imagem — absoluta, do meio ao fundo do card */}
-                <div className="absolute bottom-0 left-0 right-0 z-0" style={{ top: "160px" }}>
+                <div className="absolute bottom-0 z-0" style={{ top: "120px", left: "20%", right: "-10%" }}>
                   <Image src="/img/asertyuior.png" alt="Marque consulta" fill className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500" sizes="50vw" />
                 </div>
 
