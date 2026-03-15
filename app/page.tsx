@@ -80,7 +80,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           HERO — width-constrained card matching navbar
       ══════════════════════════════════════════ */}
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 pt-5 md:pt-8">
         <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", minHeight: "480px", maxHeight: "780px" }}>
           {/* Video */}
           <video
