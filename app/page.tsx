@@ -399,46 +399,39 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-3 flex-1">
                 {[
                   {
-                    title: "Implantologia",
-                    desc: "Substituição definitiva de dentes perdidos com implantes de titânio de aspeto natural.",
+                    title: "Cirurgia Oral",
+                    desc: "Extracções, sisos e biópsias com máximo conforto e sedação consciente disponível.",
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                        <circle cx="12" cy="6" r="3" stroke="currentColor" strokeWidth="1.8"/>
-                        <path d="M12 9v9M10 14h4M9 19h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 22l8-8-9-9-8 8 9 9z"/><path d="M2 22l4-4"/>
                       </svg>
                     ),
                   },
                   {
-                    title: "Ortodontia",
-                    desc: "Alinhamento dentário para todas as idades com aparelhos fixos ou alinhadores invisíveis.",
+                    title: "Dentisteria",
+                    desc: "Tratamento de cáries e restaurações estéticas focadas na preservação da estrutura original do dente.",
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                        <rect x="4" y="8" width="4" height="8" rx="2" stroke="currentColor" strokeWidth="1.8"/>
-                        <rect x="10" y="6" width="4" height="10" rx="2" stroke="currentColor" strokeWidth="1.8"/>
-                        <rect x="16" y="8" width="4" height="8" rx="2" stroke="currentColor" strokeWidth="1.8"/>
-                        <path d="M8 12h2M16 12h-2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 2C9.2 2 7 4.2 7 7c0 1.5.6 2.8 1.5 3.8L10 21h4l1.5-10.2C16.4 9.8 17 8.5 17 7c0-2.8-2.2-5-5-5z"/>
                       </svg>
                     ),
                   },
                   {
-                    title: "Estética Dentária",
-                    desc: "Facetas, branqueamento e design do sorriso para uma transformação natural e duradoura.",
+                    title: "Periodontologia",
+                    desc: "Diagnóstico e tratamento de doenças das gengivas, fundamentais para a estabilidade da sua saúde oral.",
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                        <path d="M12 3l1.5 4h4l-3.3 2.4 1.3 4L12 11l-3.5 2.4 1.3-4L6.5 7h4L12 3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
-                        <path d="M12 14v5M9.5 16.5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                        <path d="M5 17c3-6 11-6 14 0"/><path d="M7 13c2-4 8-4 10 0"/><circle cx="12" cy="7" r="3"/>
                       </svg>
                     ),
                   },
                   {
-                    title: "Odontopediatria",
-                    desc: "Cuidados especializados para os mais pequenos num ambiente acolhedor e sem ansiedade.",
+                    title: "Endodontia",
+                    desc: "Tratamento de canais moderno e indolor. Salva o dente natural com instrumentação rotatória.",
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                        <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8"/>
-                        <path d="M6 21c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                        <circle cx="10.5" cy="9" r="0.8" fill="currentColor"/>
-                        <circle cx="13.5" cy="9" r="0.8" fill="currentColor"/>
+                      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                        <path d="M12 2C9.2 2 7 4.2 7 7c0 1.5.6 2.8 1.5 3.8L10 21h4l1.5-10.2C16.4 9.8 17 8.5 17 7c0-2.8-2.2-5-5-5z"/>
+                        <path d="M10 12l2 2 2-2" strokeOpacity="0.5"/>
                       </svg>
                     ),
                   },
