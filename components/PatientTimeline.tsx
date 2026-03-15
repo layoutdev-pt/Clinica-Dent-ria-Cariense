@@ -76,7 +76,7 @@ const STEPS = [
 
 const NODE_SIZE = 60;
 
-function ConnectorLine({ isVisible, delay }: { isVisible: boolean; delay: number }) {
+function GlowLine({ isVisible, delay, height }: { isVisible: boolean; delay: number; height: number }) {
   const [glowing, setGlowing] = useState(false);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ function ConnectorLine({ isVisible, delay }: { isVisible: boolean; delay: number
   }, [isVisible, delay]);
 
   return (
-    <div style={{ width: 2, flex: 1, background: "#EEF4F8", overflow: "hidden", position: "relative", minHeight: 40 }}>
+    <div style={{ width: 2, height, background: "#EEF4F8", overflow: "hidden", position: "relative" }}>
       <div
         style={{
           position: "absolute",
@@ -138,14 +138,32 @@ function TimelineStep({
   onClick: () => void;
 }) {
   const delay = index * 0.1;
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [lineHeight, setLineHeight] = useState(80);
+
+  // Measure row height and set line = rowHeight - nodeSize
+  useEffect(() => {
+    if (isLast || !rowRef.current) return;
+    const measure = () => {
+      if (rowRef.current) {
+        setLineHeight(rowRef.current.offsetHeight - NODE_SIZE);
+      }
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(rowRef.current);
+    return () => ro.disconnect();
+  }, [isLast, isActive]);
 
   return (
     <div
-      className={`relative flex items-stretch md:gap-0 gap-5 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
+      ref={rowRef}
+      className={`relative flex items-start md:gap-0 gap-5 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
+      style={{ minHeight: 140 }}
     >
-      {/* Content card */}
+      {/* Content */}
       <div
-        className={`flex-1 py-6 ${isEven ? "md:pr-20 md:text-right" : "md:pl-20"} ${isLast ? "" : "pb-10"}`}
+        className={`flex-1 pb-12 ${isEven ? "md:pr-20 md:text-right" : "md:pl-20"}`}
         style={{
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "none" : `translateX(${isEven ? "32px" : "-32px"})`,
@@ -195,9 +213,8 @@ function TimelineStep({
         </button>
       </div>
 
-      {/* Center column — node + connector line, stretches full row height */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-0 bottom-0 flex-col items-center z-10">
-        {/* Node */}
+      {/* Center node — desktop only */}
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 flex-col items-center z-10">
         <button
           onClick={onClick}
           className="focus:outline-none flex-shrink-0"
@@ -213,9 +230,7 @@ function TimelineStep({
             color: isActive ? "white" : step.color,
             boxShadow: isActive
               ? `0 0 0 8px ${step.color}18, 0 4px 20px ${step.color}40`
-              : isVisible
-              ? `0 0 0 4px ${step.color}12`
-              : "none",
+              : isVisible ? `0 0 0 4px ${step.color}12` : "none",
             transform: isVisible ? "scale(1)" : "scale(0.7)",
             transition: `all 0.55s cubic-bezier(0.34,1.56,0.64,1) ${delay}s`,
             cursor: "pointer",
@@ -226,14 +241,13 @@ function TimelineStep({
           {step.icon}
         </button>
 
-        {/* Connector line — flex-1 fills remaining height of the row */}
-        {!isLast && <ConnectorLine isVisible={isVisible} delay={delay} />}
+        {!isLast && <GlowLine isVisible={isVisible} delay={delay} height={lineHeight} />}
       </div>
 
       {/* Mobile node */}
       <button
         onClick={onClick}
-        className="md:hidden flex-shrink-0 mt-1 focus:outline-none self-start"
+        className="md:hidden flex-shrink-0 mt-1 focus:outline-none"
         style={{
           width: 48,
           height: 48,
@@ -293,7 +307,6 @@ export default function PatientTimeline() {
     <section className="py-24 bg-[#F7FAFC] overflow-hidden">
       <div className="max-w-[1100px] mx-auto px-8 md:px-16">
 
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-5">
             <span className="w-8 h-px bg-[#1C9FD6]/40" />
@@ -308,7 +321,6 @@ export default function PatientTimeline() {
             Clique em cada passo para saber mais sobre o seu percurso connosco.
           </p>
 
-          {/* Progress bar */}
           <div className="mt-8 max-w-xs mx-auto">
             <div className="flex justify-between text-[10px] text-[#5E7387] font-medium mb-1.5">
               <span>Início</span>
@@ -327,24 +339,27 @@ export default function PatientTimeline() {
           </div>
         </div>
 
-        {/* Timeline — NO background line, connectors are inline */}
-        <div className="flex flex-col">
-          {STEPS.map((step, i) => (
-            <div key={i} ref={(el) => { refs.current[i] = el; }}>
-              <TimelineStep
-                step={step}
-                index={i}
-                isEven={i % 2 === 0}
-                isActive={activeStep === i}
-                isVisible={visibleSteps[i]}
-                isLast={i === STEPS.length - 1}
-                onClick={() => setActiveStep(activeStep === i ? null : i)}
-              />
-            </div>
-          ))}
+        <div className="relative">
+          {/* Static grey background line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#E2ECF4] -translate-x-1/2 hidden md:block" />
+
+          <div className="flex flex-col gap-0">
+            {STEPS.map((step, i) => (
+              <div key={i} ref={(el) => { refs.current[i] = el; }}>
+                <TimelineStep
+                  step={step}
+                  index={i}
+                  isEven={i % 2 === 0}
+                  isActive={activeStep === i}
+                  isVisible={visibleSteps[i]}
+                  isLast={i === STEPS.length - 1}
+                  onClick={() => setActiveStep(activeStep === i ? null : i)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom CTA */}
         <div
           className="text-center mt-4"
           style={{
