@@ -189,83 +189,78 @@ export default function ServicosPage() {
             </h2>
           </ScrollReveal>
 
-          {/* Grid: col-esquerda [card + card + CTA grande] / col-direita [3 cards em coluna] */}
-          <div className="grid md:grid-cols-2 gap-4 items-start">
+          {/* Grid: CTA (1 col) + cards (2 cols) */}
+          <div className="grid md:grid-cols-[320px_1fr_1fr] gap-4 items-start">
 
-            {/* Coluna esquerda */}
-            <div className="flex flex-col gap-4">
-              <ScrollReveal>
-                <ServiceSquareCard svc={SECONDARY_SERVICES[0]} />
-              </ScrollReveal>
-              <ScrollReveal delay={60}>
-                <ServiceSquareCard svc={SECONDARY_SERVICES[1]} />
-              </ScrollReveal>
+            {/* Coluna A — CTA card 2×1 */}
+            <ScrollReveal delay={60}>
+              <Link href="/contactos" className="block group">
+                <div
+                  className="relative rounded-[20px] overflow-hidden p-7 flex flex-col"
+                  style={{
+                    background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)",
+                    minHeight: 520,
+                  }}
+                >
+                  <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                  <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
 
-              {/* CTA card grande */}
-              <ScrollReveal delay={100}>
-                <Link href="/contactos" className="block group">
-                  <div
-                    className="relative rounded-[20px] overflow-hidden p-7 flex flex-col"
-                    style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
-                  >
-                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                    <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
-
-                    {/* Arrow icon */}
-                    <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-5">
-                      <ArrowRight size={18} className="text-white" />
-                    </div>
-
-                    {/* Text */}
-                    <div className="relative z-10 mb-3">
-                      <h3 className="font-['DM Serif Display',serif] text-[1.55rem] font-bold text-white leading-[1.2] mb-2">
-                        Pronto para cuidar<br />
-                        <span className="text-white/80 font-normal italic">do seu sorriso?</span>
-                      </h3>
-                      <p className="text-white/70 text-sm leading-relaxed">
-                        A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
-                      </p>
-                    </div>
-
-                    {/* Image — absolute, fills from below text to bottom of card */}
-                    <div className="absolute bottom-0 left-0 right-0 z-0 h-[420px]">
-                      <Image
-                        src="/img/asertyuior.png"
-                        alt="Marque consulta"
-                        fill
-                        className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500"
-                        sizes="500px"
-                      />
-                    </div>
-
-                    {/* Spacer to push button down */}
-                    <div className="h-80" />
-
-                    {/* Button */}
-                    <div className="relative z-10">
-                      <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
-                        Agendar Consulta <ArrowRight size={14} />
-                      </span>
-                    </div>
+                  {/* Arrow icon */}
+                  <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-5">
+                    <ArrowRight size={18} className="text-white" />
                   </div>
-                </Link>
-              </ScrollReveal>
 
-              <ScrollReveal delay={140}>
-                <ServiceSquareCard svc={SECONDARY_SERVICES[6]} />
-              </ScrollReveal>
-            </div>
+                  {/* Text */}
+                  <div className="relative z-10 mb-3">
+                    <h3 className="font-['DM Serif Display',serif] text-[1.45rem] font-bold text-white leading-[1.2] mb-2">
+                      Pronto para cuidar<br />
+                      <span className="text-white/80 font-normal italic">do seu sorriso?</span>
+                    </h3>
+                    <p className="text-white/70 text-sm leading-relaxed">
+                      A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
+                    </p>
+                  </div>
 
-            {/* Coluna direita — 3 cards em coluna */}
+                  {/* Image */}
+                  <div className="absolute bottom-0 left-0 right-0 z-0 h-[320px]">
+                    <Image
+                      src="/img/asertyuior.png"
+                      alt="Marque consulta"
+                      fill
+                      className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500"
+                      sizes="320px"
+                    />
+                  </div>
+
+                  {/* Spacer */}
+                  <div className="h-56" />
+
+                  {/* Button */}
+                  <div className="relative z-10">
+                    <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
+                      Agendar Consulta <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </ScrollReveal>
+
+            {/* Coluna B */}
             <div className="flex flex-col gap-4">
-              {SECONDARY_SERVICES.slice(2, 6).map((svc, i) => (
+              {[SECONDARY_SERVICES[0], SECONDARY_SERVICES[1], SECONDARY_SERVICES[2], SECONDARY_SERVICES[3]].map((svc, i) => (
                 <ScrollReveal key={i} delay={i * 60}>
                   <ServiceSquareCard svc={svc} />
                 </ScrollReveal>
               ))}
-              <ScrollReveal delay={200}>
-                <ServiceSquareCard svc={SECONDARY_SERVICES[7]} />
-              </ScrollReveal>
+            </div>
+
+            {/* Coluna C */}
+            <div className="flex flex-col gap-4">
+              {[SECONDARY_SERVICES[4], SECONDARY_SERVICES[5], SECONDARY_SERVICES[6], SECONDARY_SERVICES[7]].map((svc, i) => (
+                <ScrollReveal key={i} delay={i * 60}>
+                  <ServiceSquareCard svc={svc} />
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </div>
