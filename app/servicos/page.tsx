@@ -189,30 +189,30 @@ export default function ServicosPage() {
             </h2>
           </ScrollReveal>
 
-          {/* Grid: CTA (1 col) + cards (2 cols) */}
-          <div className="grid md:grid-cols-[320px_1fr_1fr] gap-4 items-start">
-
-            {/* Coluna A — CTA card 2×1 */}
-            <ScrollReveal delay={60}>
-              <Link href="/contactos" className="block group">
+          {/*
+            Grid 2×5:
+            col1: svc0 | svc1 | CTA(span2) | svc6 | svc7
+            col2: svc2 | svc3 | svc4       | svc5 | (already filled)
+          */}
+          <div className="hidden md:grid gap-4" style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(5, auto)" }}>
+            {/* Row 1 */}
+            <ScrollReveal delay={0}><ServiceSquareCard svc={SECONDARY_SERVICES[0]} /></ScrollReveal>
+            <ScrollReveal delay={60}><ServiceSquareCard svc={SECONDARY_SERVICES[1]} /></ScrollReveal>
+            {/* Row 2–3: CTA spans 2 rows, col 1 */}
+            <div style={{ gridRow: "span 2", gridColumn: "1" }}>
+            <ScrollReveal delay={80}>
+              <Link href="/contactos" className="block group h-full">
                 <div
-                  className="relative rounded-[20px] overflow-hidden p-7 flex flex-col"
-                  style={{
-                    background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)",
-                    minHeight: 520,
-                  }}
+                  className="relative rounded-[20px] overflow-hidden p-7 flex flex-col h-full"
+                  style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
                 >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
                   <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
-
-                  {/* Arrow icon */}
                   <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-5">
                     <ArrowRight size={18} className="text-white" />
                   </div>
-
-                  {/* Text */}
                   <div className="relative z-10 mb-3">
-                    <h3 className="font-['DM Serif Display',serif] text-[1.45rem] font-bold text-white leading-[1.2] mb-2">
+                    <h3 className="font-display text-[1.45rem] font-bold text-white leading-[1.2] mb-2">
                       Pronto para cuidar<br />
                       <span className="text-white/80 font-normal italic">do seu sorriso?</span>
                     </h3>
@@ -220,22 +220,10 @@ export default function ServicosPage() {
                       A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
                     </p>
                   </div>
-
-                  {/* Image */}
-                  <div className="absolute bottom-0 left-0 right-0 z-0 h-[320px]">
-                    <Image
-                      src="/img/asertyuior.png"
-                      alt="Marque consulta"
-                      fill
-                      className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500"
-                      sizes="320px"
-                    />
+                  <div className="absolute bottom-14 left-0 right-0 z-0 h-[280px]">
+                    <Image src="/img/asertyuior.png" alt="Marque consulta" fill className="object-contain object-bottom group-hover:scale-110 transition-transform duration-500" sizes="50vw" />
                   </div>
-
-                  {/* Spacer */}
-                  <div className="h-56" />
-
-                  {/* Button */}
+                  <div className="flex-1" />
                   <div className="relative z-10">
                     <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
                       Agendar Consulta <ArrowRight size={14} />
@@ -244,24 +232,32 @@ export default function ServicosPage() {
                 </div>
               </Link>
             </ScrollReveal>
-
-            {/* Coluna B */}
-            <div className="flex flex-col gap-4">
-              {[SECONDARY_SERVICES[0], SECONDARY_SERVICES[1], SECONDARY_SERVICES[2], SECONDARY_SERVICES[3]].map((svc, i) => (
-                <ScrollReveal key={i} delay={i * 60}>
-                  <ServiceSquareCard svc={svc} />
-                </ScrollReveal>
-              ))}
             </div>
+            {/* Row 2, col 2 */}
+            <ScrollReveal delay={100}><ServiceSquareCard svc={SECONDARY_SERVICES[2]} /></ScrollReveal>
+            {/* Row 3, col 2 */}
+            <ScrollReveal delay={120}><ServiceSquareCard svc={SECONDARY_SERVICES[3]} /></ScrollReveal>
+            {/* Row 4 */}
+            <ScrollReveal delay={140}><ServiceSquareCard svc={SECONDARY_SERVICES[4]} /></ScrollReveal>
+            <ScrollReveal delay={160}><ServiceSquareCard svc={SECONDARY_SERVICES[5]} /></ScrollReveal>
+            {/* Row 5 */}
+            <ScrollReveal delay={180}><ServiceSquareCard svc={SECONDARY_SERVICES[6]} /></ScrollReveal>
+            <ScrollReveal delay={200}><ServiceSquareCard svc={SECONDARY_SERVICES[7]} /></ScrollReveal>
+          </div>
 
-            {/* Coluna C */}
-            <div className="flex flex-col gap-4">
-              {[SECONDARY_SERVICES[4], SECONDARY_SERVICES[5], SECONDARY_SERVICES[6], SECONDARY_SERVICES[7]].map((svc, i) => (
-                <ScrollReveal key={i} delay={i * 60}>
-                  <ServiceSquareCard svc={svc} />
-                </ScrollReveal>
-              ))}
-            </div>
+          {/* Mobile: stack */}
+          <div className="flex flex-col gap-4 md:hidden">
+            <Link href="/contactos" className="block group">
+              <div className="relative rounded-[20px] overflow-hidden p-7 flex flex-col" style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)", minHeight: 300 }}>
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                <h3 className="font-display text-xl font-bold text-white mb-2">Pronto para cuidar<br /><span className="font-normal italic text-white/80">do seu sorriso?</span></h3>
+                <p className="text-white/70 text-sm mb-5">A nossa equipa está disponível para avaliar a sua saúde oral.</p>
+                <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full">Agendar Consulta <ArrowRight size={14} /></span>
+              </div>
+            </Link>
+            {SECONDARY_SERVICES.map((svc, i) => (
+              <ServiceSquareCard key={i} svc={svc} />
+            ))}
           </div>
         </div>
       </section>
