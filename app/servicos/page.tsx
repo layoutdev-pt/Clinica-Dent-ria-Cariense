@@ -235,17 +235,20 @@ export default function ServicosPage() {
             </h2>
           </ScrollReveal>
 
-          {/* Grid: col-esquerda [card + CTA + card] / col-direita [4 cards] */}
-          <div className="grid md:grid-cols-2 gap-4">
+          {/* Grid: col-esquerda [card + card + CTA grande] / col-direita [3 cards em coluna] */}
+          <div className="grid md:grid-cols-2 gap-4 items-start">
 
             {/* Coluna esquerda */}
             <div className="flex flex-col gap-4">
               <ScrollReveal>
                 <ServiceSquareCard svc={SECONDARY_SERVICES[0]} />
               </ScrollReveal>
+              <ScrollReveal delay={60}>
+                <ServiceSquareCard svc={SECONDARY_SERVICES[1]} />
+              </ScrollReveal>
 
-              {/* CTA card — mesma proporção do da homepage */}
-              <ScrollReveal delay={80}>
+              {/* CTA card grande */}
+              <ScrollReveal delay={100}>
                 <Link href="/contactos" className="block group">
                   <div
                     className="relative rounded-[20px] overflow-hidden p-7 flex flex-col"
@@ -254,8 +257,13 @@ export default function ServicosPage() {
                     <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
                     <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
 
+                    {/* Arrow icon */}
+                    <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-5">
+                      <ArrowRight size={18} className="text-white" />
+                    </div>
+
                     {/* Text */}
-                    <div className="relative z-10">
+                    <div className="relative z-10 mb-3">
                       <h3 className="font-['DM Serif Display',serif] text-[1.55rem] font-bold text-white leading-[1.2] mb-2">
                         Pronto para cuidar<br />
                         <span className="text-white/80 font-normal italic">do seu sorriso?</span>
@@ -266,7 +274,7 @@ export default function ServicosPage() {
                     </div>
 
                     {/* Image */}
-                    <div className="relative z-0 h-44 mt-2">
+                    <div className="relative z-0 h-52 mt-1">
                       <Image
                         src="/img/asertyuior.png"
                         alt="Marque consulta"
@@ -277,7 +285,7 @@ export default function ServicosPage() {
                     </div>
 
                     {/* Button */}
-                    <div className="relative z-10">
+                    <div className="relative z-10 mt-2">
                       <span className="flex items-center justify-center gap-2 w-full bg-white text-[#1C9FD6] font-bold text-sm px-6 py-3 rounded-full group-hover:bg-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-200">
                         Agendar Consulta <ArrowRight size={14} />
                       </span>
@@ -286,28 +294,22 @@ export default function ServicosPage() {
                 </Link>
               </ScrollReveal>
 
-              <ScrollReveal delay={120}>
-                <ServiceSquareCard svc={SECONDARY_SERVICES[1]} />
+              <ScrollReveal delay={140}>
+                <ServiceSquareCard svc={SECONDARY_SERVICES[6]} />
               </ScrollReveal>
             </div>
 
-            {/* Coluna direita — 4 cards */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Coluna direita — 3 cards em coluna */}
+            <div className="flex flex-col gap-4">
               {SECONDARY_SERVICES.slice(2, 6).map((svc, i) => (
                 <ScrollReveal key={i} delay={i * 60}>
                   <ServiceSquareCard svc={svc} />
                 </ScrollReveal>
               ))}
-            </div>
-          </div>
-
-          {/* Linha extra — 2 especialidades adicionais */}
-          <div className="grid md:grid-cols-2 gap-4 mt-4">
-            {SECONDARY_SERVICES.slice(6).map((svc, i) => (
-              <ScrollReveal key={i} delay={i * 60}>
-                <ServiceSquareCard svc={svc} />
+              <ScrollReveal delay={200}>
+                <ServiceSquareCard svc={SECONDARY_SERVICES[7]} />
               </ScrollReveal>
-            ))}
+            </div>
           </div>
         </div>
       </section>
