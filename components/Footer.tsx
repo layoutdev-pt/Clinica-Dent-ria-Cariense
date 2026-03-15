@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <Image src="/img/logo.png" alt="Clínica Dentária Cariense" width={160} height={40} className="h-9 w-auto object-contain brightness-0 invert" />
+              <Image src="/img/logo-white.png" alt="Clínica Dentária Cariense" width={160} height={40} className="h-9 w-auto object-contain" />
             </div>
             <p className="text-sm leading-7 text-white/60 mb-5">
               Cuidamos do seu sorriso com rigor clínico, tecnologia de ponta e um atendimento verdadeiramente humano.
