@@ -274,7 +274,7 @@ export default function ServicosPage() {
                     </div>
 
                     {/* Image — absolute, fills from below text to bottom of card */}
-                    <div className="absolute bottom-0 left-0 right-0 z-0 h-80">
+                    <div className="absolute bottom-0 left-0 right-0 z-0 h-[420px]">
                       <Image
                         src="/img/asertyuior.png"
                         alt="Marque consulta"
@@ -285,7 +285,7 @@ export default function ServicosPage() {
                     </div>
 
                     {/* Spacer to push button down */}
-                    <div className="h-64" />
+                    <div className="h-80" />
 
                     {/* Button */}
                     <div className="relative z-10">
