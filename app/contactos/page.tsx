@@ -1,4 +1,18 @@
+import type { Metadata } from "next";
 import { Mail, Phone, MessageCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contactos — Marque a sua Consulta",
+  description:
+    "Contacte a Clínica Dentária Cariense. Ligue 275 471 751 ou preencha o formulário. Clínicas em Caria, Unhais da Serra e Peso. Respondemos em 24 horas.",
+  openGraph: {
+    title: "Contactos | Clínica Dentária Cariense — Marque Consulta",
+    description:
+      "Três clínicas ao seu serviço em Caria, Unhais da Serra e Peso. Ligue, escreva ou agende online. Respondemos em 24 horas.",
+    images: [{ url: "/img/clinic-caria.jpg", width: 1200, height: 630, alt: "Contactos — Clínica Dentária Cariense" }],
+  },
+  alternates: { canonical: "https://www.clinicacariense.pt/contactos" },
+};
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionTag from "@/components/SectionTag";
 import ContactForm from "@/components/ContactForm";
@@ -41,12 +55,12 @@ export default function ContactosPage() {
         />
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <SectionTag light centered>Contactos</SectionTag>
-          <h1 className="font-['Fraunces',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
-            Fale connosco,<br />
-            <span className="text-[#1C9FD6]">estamos aqui para si</span>
+          <h1 className="font-['DM Serif Display',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
+            Estamos prontos<br />
+            <span className="text-[#1C9FD6] italic">para o receber</span>
           </h1>
           <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed">
-            Marque a sua consulta, tire as suas dúvidas ou simplesmente venha conhecer-nos. Temos três clínicas ao seu serviço.
+            Marque a sua consulta em menos de 2 minutos. Três clínicas, uma equipa disponível — respondemos sempre em menos de 24 horas.
           </p>
         </div>
       </section>
@@ -81,11 +95,11 @@ export default function ContactosPage() {
         <div className="max-w-5xl mx-auto px-6">
           <ScrollReveal className="text-center mb-12">
             <SectionTag>Marcar Consulta</SectionTag>
-            <h2 className="font-['Fraunces',serif] text-4xl font-bold text-[#0D1E2C] mt-4 mb-4">
-              Envie-nos uma mensagem
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4 mb-4">
+              Marque a sua consulta
             </h2>
             <p className="text-[#5E7387] max-w-lg mx-auto">
-              Preencha o formulário e a nossa equipa entrará em contacto consigo no prazo de 24 horas úteis para confirmar a sua consulta.
+              Preencha o formulário em menos de 2 minutos. A nossa equipa confirma a sua marcação em 24 horas úteis.
             </p>
           </ScrollReveal>
           <div className="max-w-2xl mx-auto">
@@ -99,7 +113,7 @@ export default function ContactosPage() {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="mb-12">
             <SectionTag>As Nossas Clínicas</SectionTag>
-            <h2 className="font-['Fraunces',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
               Onde nos encontrar
             </h2>
           </ScrollReveal>
@@ -112,7 +126,7 @@ export default function ContactosPage() {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-14">
             <SectionTag>FAQ</SectionTag>
-            <h2 className="font-['Fraunces',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
               Perguntas frequentes
             </h2>
           </ScrollReveal>

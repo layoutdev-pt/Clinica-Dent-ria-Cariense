@@ -2,13 +2,31 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
+type Variant = "fade-up" | "slide-left" | "slide-right" | "scale" | "stagger";
+
 interface Props {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: Variant;
+  threshold?: number;
 }
 
-export default function ScrollReveal({ children, className = "", delay = 0 }: Props) {
+const variantClass: Record<Variant, string> = {
+  "fade-up":    "anim-fade-up",
+  "slide-left": "anim-slide-left",
+  "slide-right":"anim-slide-right",
+  "scale":      "anim-scale",
+  "stagger":    "anim-stagger",
+};
+
+export default function ScrollReveal({
+  children,
+  className = "",
+  delay = 0,
+  variant = "fade-up",
+  threshold = 0.1,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,7 +35,8 @@ export default function ScrollReveal({ children, className = "", delay = 0 }: Pr
       if (el) el.style.opacity = "1";
       return;
     }
-    el.style.transitionDelay = `${delay}ms`;
+    if (delay) el.style.transitionDelay = `${delay}ms`;
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -25,14 +44,14 @@ export default function ScrollReveal({ children, className = "", delay = 0 }: Pr
           obs.unobserve(el);
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold, rootMargin: "0px 0px -50px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [delay]);
+  }, [delay, threshold]);
 
   return (
-    <div ref={ref} className={`anim-fade-up ${className}`}>
+    <div ref={ref} className={`${variantClass[variant]} ${className}`}>
       {children}
     </div>
   );

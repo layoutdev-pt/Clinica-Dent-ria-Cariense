@@ -50,7 +50,7 @@ export default function LocationSwitcher() {
 
         {/* Info */}
         <div className="space-y-5">
-          <h3 className="font-['Fraunces',serif] text-2xl font-bold text-[#0D1E2C]">{clinic.name}</h3>
+          <h3 className="font-['DM Serif Display',serif] text-2xl font-bold text-[#0D1E2C]">{clinic.name}</h3>
 
           <div className="flex items-start gap-3">
             <div className="w-9 h-9 bg-[#E8F6FC] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">

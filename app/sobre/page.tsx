@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { CheckCircle, Award, Heart, Users } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Sobre Nós — História, Equipa e Valores",
+  description:
+    "Conheça a Clínica Dentária Cariense: fundada em 2003, com 20+ anos de excelência em saúde oral no interior de Portugal. Equipa multidisciplinar em 3 clínicas — Caria, Unhais da Serra e Peso.",
+  openGraph: {
+    title: "Sobre a Clínica Dentária Cariense | História e Equipa",
+    description:
+      "20+ anos a transformar sorrisos no interior de Portugal. Conheça a nossa história, valores e equipa de especialistas.",
+    images: [{ url: "/img/clinic-caria.jpg", width: 1200, height: 630, alt: "Clínica Dentária Cariense" }],
+  },
+  alternates: { canonical: "https://www.clinicacariense.pt/sobre" },
+};
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionTag from "@/components/SectionTag";
 import Counter from "@/components/Counter";
@@ -47,12 +61,12 @@ export default function SobrePage() {
         <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <SectionTag light>Sobre Nós</SectionTag>
-            <h1 className="font-['Fraunces',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6 leading-tight">
-              Uma clínica,<br />
-              <span className="text-[#1C9FD6]">um compromisso</span>
+            <h1 className="font-['DM Serif Display',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6 leading-tight">
+              Vinte anos<br />
+              <span className="text-[#1C9FD6] italic">a cuidar de si</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed max-w-md">
-              Há mais de 20 anos a promover saúde oral com excelência, proximidade e humanismo nas comunidades do interior de Portugal.
+              Fundada em 2003, a Clínica Dentária Cariense é hoje uma referência regional em saúde oral — com três unidades, uma equipa de especialistas e milhares de pacientes satisfeitos.
             </p>
           </div>
           <div className="relative h-72 lg:h-96 rounded-[24px] overflow-hidden shadow-2xl">
@@ -71,7 +85,7 @@ export default function SobrePage() {
             { target: 3, suffix: "", label: "Clínicas" },
           ].map(({ target, suffix, label }, i) => (
             <div key={i}>
-              <div className="font-['Fraunces',serif] text-4xl font-bold text-white mb-1">
+              <div className="font-['DM Serif Display',serif] text-4xl font-bold text-white mb-1">
                 <Counter target={target} suffix={suffix} />
               </div>
               <div className="text-white/80 text-sm">{label}</div>
@@ -85,7 +99,7 @@ export default function SobrePage() {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
             <SectionTag>A Nossa História</SectionTag>
-            <h2 className="font-['Fraunces',serif] text-4xl font-bold text-[#0D1E2C] mt-4 mb-6">
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4 mb-6">
               Nascemos para servir o interior
             </h2>
             <p className="text-[#5E7387] leading-relaxed mb-5">
@@ -134,14 +148,14 @@ export default function SobrePage() {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-14">
             <SectionTag>Os Nossos Valores</SectionTag>
-            <h2 className="font-['Fraunces',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
               O que nos guia todos os dias
             </h2>
           </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
             {VALUES.map((v, i) => (
               <ScrollReveal key={i} delay={i * 100}>
-                <div className="bg-white border border-[#D5E4EE] rounded-[20px] p-8">
+                <div className="value-card bg-white border border-[#D5E4EE] rounded-[20px] p-8">
                   <div className="w-12 h-12 bg-[#E8F6FC] rounded-xl flex items-center justify-center mb-5">
                     {v.icon}
                   </div>
@@ -159,7 +173,7 @@ export default function SobrePage() {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-14">
             <SectionTag>A Nossa Equipa</SectionTag>
-            <h2 className="font-['Fraunces',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
               Os especialistas que cuidam de si
             </h2>
           </ScrollReveal>

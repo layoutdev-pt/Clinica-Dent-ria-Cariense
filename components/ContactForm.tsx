@@ -55,7 +55,7 @@ export default function ContactForm() {
             type="submit"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full transition-all duration-200 ${
               submitted
-                ? "bg-green-500 text-white"
+                ? "bg-[#0D7DB5] text-white"
                 : "bg-[#1C9FD6] text-white hover:bg-[#0D7DB5] hover:-translate-y-px shadow-[0_2px_12px_rgba(28,159,214,0.35)]"
             }`}
           >
