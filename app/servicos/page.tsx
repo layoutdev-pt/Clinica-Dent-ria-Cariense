@@ -101,6 +101,12 @@ const IcoShield = () => (
     <path d="M9 12l2 2 4-4"/>
   </svg>
 );
+const IcoScan = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
+    <rect x="7" y="7" width="10" height="10" rx="1"/>
+  </svg>
+);
 const IcoCog = () => (
   <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
     <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
@@ -116,6 +122,7 @@ const SECONDARY_SERVICES = [
   { title: "Estética Dentária", desc: "Tratamentos personalizados focados em melhorar a harmonia e a cor do seu sorriso de forma natural.", icon: <IcoStar /> },
   { title: "Reabilitação Oral", desc: "A abordagem completa e integrada para restaurar a função mastigatória, a fonética e a estética de sorrisos com grandes desgastes.", icon: <IcoCog /> },
   { title: "Medicina Oral", desc: "A área focada na prevenção, diagnóstico e tratamento de lesões nos tecidos moles da cavidade oral.", icon: <IcoShield /> },
+  { title: "Imagiologia", desc: "Radiografias digitais e CBCT para um diagnóstico preciso e seguro, com a mínima exposição a radiação.", icon: <IcoScan /> },
 ];
 
 const WHY_US = [
@@ -240,6 +247,8 @@ export default function ServicosPage() {
             {/* Row 5 */}
             <ScrollReveal delay={180}><ServiceSquareCard svc={SECONDARY_SERVICES[6]} /></ScrollReveal>
             <ScrollReveal delay={200}><ServiceSquareCard svc={SECONDARY_SERVICES[7]} /></ScrollReveal>
+            {/* Row 6 — Imagiologia ocupa col 1, col 2 vazia */}
+            <ScrollReveal delay={220}><ServiceSquareCard svc={SECONDARY_SERVICES[8]} /></ScrollReveal>
           </div>
 
           {/* Mobile: stack */}
