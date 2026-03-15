@@ -21,7 +21,7 @@ const CLINICS = [
     phone: "275 971 342",
     mobile: "927 402 728",
     img: "/img/clinic-unhais.jpg",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d-7.62233!3d40.25881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sUnhais+da+Serra!5e0!3m2!1spt!2spt!4v2",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d300!2d-7.6221671!3d40.258805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d2f832cebbe77%3A0x5297bfe230127d92!2sAv.+Primeiro+de+Maio+80%2C+6215-681+Unhais+da+Serra!5e0!3m2!1spt!2spt!4v2",
   },
   {
     name: "Espaço Saúde do Peso",
