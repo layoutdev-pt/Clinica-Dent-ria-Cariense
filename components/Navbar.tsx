@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
@@ -54,20 +55,10 @@ export default function Navbar() {
           {/* Logo — center on desktop */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 flex-shrink-0 absolute left-1/2 -translate-x-1/2"
+            className="flex-shrink-0 absolute left-1/2 -translate-x-1/2"
             aria-label="Clínica Dentária Cariense — Início"
           >
-            <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <circle cx="18" cy="18" r="18" fill="#E8F6FC" />
-              <path
-                d="M18 8C14 8 11 11 11 14c0 2.5 1 4.5 2.5 6L18 28l4.5-8C24 18.5 25 16.5 25 14c0-3-3-6-7-6z"
-                fill="#1C9FD6"
-              />
-              <circle cx="18" cy="14" r="2.5" fill="white" />
-            </svg>
-            <span className="text-[1rem] font-bold text-[#0D1E2C] leading-tight">
-              Clínica Dentária <span className="text-[#1C9FD6]">Cariense</span>
-            </span>
+            <Image src="/img/logo.png" alt="Clínica Dentária Cariense" width={180} height={44} className="h-10 w-auto object-contain" priority />
           </Link>
 
           {/* Right actions */}

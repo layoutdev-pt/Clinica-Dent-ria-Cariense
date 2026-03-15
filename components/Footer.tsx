@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
@@ -8,16 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                <circle cx="18" cy="18" r="18" fill="#1C9FD6" fillOpacity="0.2" />
-                <path d="M18 8C14 8 11 11 11 14c0 2.5 1 4.5 2.5 6L18 28l4.5-8C24 18.5 25 16.5 25 14c0-3-3-6-7-6z" fill="#1C9FD6" />
-                <circle cx="18" cy="14" r="2.5" fill="white" />
-              </svg>
-              <div className="leading-tight">
-                <div className="text-sm font-bold text-white">Clínica Dentária</div>
-                <div className="text-sm font-bold text-[#1C9FD6]">Cariense</div>
-              </div>
+            <div className="mb-4">
+              <Image src="/img/logo.png" alt="Clínica Dentária Cariense" width={160} height={40} className="h-9 w-auto object-contain brightness-0 invert" />
             </div>
             <p className="text-sm leading-7 text-white/60 mb-5">
               Cuidamos do seu sorriso com rigor clínico, tecnologia de ponta e um atendimento verdadeiramente humano.
