@@ -417,7 +417,7 @@ export default function Home() {
       <PatientTimeline />
 
       {/* ══════════════════════════════════════════
-          TEAM — "Meet our dedicated team"
+          TEAM — mosaic layout
       ══════════════════════════════════════════ */}
       <section className="py-24 bg-[#F7FAFC]">
         <div className="max-w-[1100px] mx-auto px-8 md:px-16">
@@ -431,29 +431,70 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            {TEAM_MEMBERS.map((member, i) => (
-              <ScrollReveal key={i} delay={i * 60}>
-                <div className="group text-center">
-                  <div className="relative aspect-[3/4] rounded-[18px] overflow-hidden mb-3 bg-[#E8F6FC] shadow-sm group-hover:shadow-md transition-shadow duration-300">
-                    <Image
-                      src={member.img}
-                      alt={member.name}
-                      fill
-                      sizes="(max-width:640px) 45vw, 16vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* Mosaic grid — large featured left + 2×2 right */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3 md:grid-rows-2" style={{ gridTemplateRows: "repeat(2, 280px)" }}>
+
+            {/* Featured — spans 2 rows */}
+            <ScrollReveal variant="slide-left" className="md:row-span-2">
+              <div className="group relative w-full h-full min-h-[380px] md:min-h-0 rounded-[24px] overflow-hidden bg-[#0D1E2C]">
+                <Image
+                  src={TEAM_MEMBERS[0].img}
+                  alt={TEAM_MEMBERS[0].name}
+                  fill
+                  sizes="(max-width:768px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-[#0D1E2C]/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="text-white font-bold text-lg leading-snug">{TEAM_MEMBERS[0].name}</div>
+                  <div className="text-[#1C9FD6] text-sm font-medium mt-0.5">{TEAM_MEMBERS[0].role}</div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Top-right row — 2 cells */}
+            {[TEAM_MEMBERS[1], TEAM_MEMBERS[2]].map((member, i) => (
+              <ScrollReveal key={i} delay={i * 80}>
+                <div className="group relative w-full h-full min-h-[180px] rounded-[20px] overflow-hidden bg-[#0D1E2C]">
+                  <Image
+                    src={member.img}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width:768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="text-white font-bold text-sm leading-snug">{member.name}</div>
+                    <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{member.role}</div>
                   </div>
-                  <div className="text-[13px] font-bold text-[#0D1E2C] leading-snug">{member.name}</div>
-                  <div className="text-[11px] text-[#1C9FD6] font-medium mt-0.5">{member.role}</div>
+                </div>
+              </ScrollReveal>
+            ))}
+
+            {/* Bottom-right row — 2 cells */}
+            {[TEAM_MEMBERS[3], TEAM_MEMBERS[4]].map((member, i) => (
+              <ScrollReveal key={i} delay={(i + 2) * 80}>
+                <div className="group relative w-full h-full min-h-[180px] rounded-[20px] overflow-hidden bg-[#0D1E2C]">
+                  <Image
+                    src={member.img}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width:768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="text-white font-bold text-sm leading-snug">{member.name}</div>
+                    <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{member.role}</div>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <Link href="/sobre" className="inline-flex items-center gap-2 text-[#1C9FD6] font-semibold text-sm underline-reveal hover:gap-3 transition-all duration-200">
+          <div className="text-center mt-8">
+            <Link href="/sobre" className="inline-flex items-center gap-2 text-[#1C9FD6] font-semibold text-sm hover:gap-3 transition-all duration-200">
               Conhecer toda a equipa <ArrowRight size={14} />
             </Link>
           </div>
