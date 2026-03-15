@@ -431,72 +431,79 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          {/* Mosaic grid — large featured left + 2×2 right */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3 md:grid-rows-2" style={{ gridTemplateRows: "repeat(2, 280px)" }}>
-
-            {/* Featured — spans 2 rows */}
-            <ScrollReveal variant="slide-left" className="md:row-span-2">
-              <div className="group relative w-full h-full min-h-[380px] md:min-h-0 rounded-[24px] overflow-hidden bg-[#0D1E2C]">
+          {/* Mosaic grid — large left + right column with photo + CTA */}
+          <div
+            className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-3"
+            style={{ height: "560px" }}
+          >
+            {/* LEFT — featured photo, full height */}
+            <ScrollReveal variant="slide-left" className="h-full">
+              <div className="group relative w-full h-full rounded-[24px] overflow-hidden bg-[#0D1E2C]">
                 <Image
                   src={TEAM_MEMBERS[0].img}
                   alt={TEAM_MEMBERS[0].name}
                   fill
-                  sizes="(max-width:768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width:768px) 100vw, 55vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-[#0D1E2C]/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="text-white font-bold text-lg leading-snug">{TEAM_MEMBERS[0].name}</div>
-                  <div className="text-[#1C9FD6] text-sm font-medium mt-0.5">{TEAM_MEMBERS[0].role}</div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <div className="text-white font-bold text-xl leading-snug">{TEAM_MEMBERS[0].name}</div>
+                  <div className="text-[#1C9FD6] text-sm font-medium mt-1">{TEAM_MEMBERS[0].role}</div>
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Top-right row — 2 cells */}
-            {[TEAM_MEMBERS[1], TEAM_MEMBERS[2]].map((member, i) => (
-              <ScrollReveal key={i} delay={i * 80}>
-                <div className="group relative w-full h-full min-h-[180px] rounded-[20px] overflow-hidden bg-[#0D1E2C]">
+            {/* RIGHT column — top photo + bottom CTA */}
+            <div className="flex flex-col gap-3 h-full">
+
+              {/* Top — second team member photo */}
+              <ScrollReveal delay={80} className="flex-1">
+                <div className="group relative w-full h-full rounded-[20px] overflow-hidden bg-[#0D1E2C]">
                   <Image
-                    src={member.img}
-                    alt={member.name}
+                    src={TEAM_MEMBERS[1].img}
+                    alt={TEAM_MEMBERS[1].name}
                     fill
-                    sizes="(max-width:768px) 100vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width:768px) 100vw, 30vw"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <div className="text-white font-bold text-sm leading-snug">{member.name}</div>
-                    <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{member.role}</div>
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <div className="text-white font-bold text-sm leading-snug">{TEAM_MEMBERS[1].name}</div>
+                    <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{TEAM_MEMBERS[1].role}</div>
                   </div>
                 </div>
               </ScrollReveal>
-            ))}
 
-            {/* Bottom-right row — 2 cells */}
-            {[TEAM_MEMBERS[3], TEAM_MEMBERS[4]].map((member, i) => (
-              <ScrollReveal key={i} delay={(i + 2) * 80}>
-                <div className="group relative w-full h-full min-h-[180px] rounded-[20px] overflow-hidden bg-[#0D1E2C]">
-                  <Image
-                    src={member.img}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width:768px) 100vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <div className="text-white font-bold text-sm leading-snug">{member.name}</div>
-                    <div className="text-[#1C9FD6] text-xs font-medium mt-0.5">{member.role}</div>
+              {/* Bottom — CTA card (mirror of services CTA) */}
+              <ScrollReveal delay={160}>
+                <Link
+                  href="/sobre"
+                  className="group relative flex flex-col justify-between rounded-[20px] overflow-hidden p-7 h-[200px]"
+                  style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
+                >
+                  {/* Dot pattern */}
+                  <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                  {/* Glow */}
+                  <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
+
+                  <div className="relative z-10">
+                    <div className="text-white/70 text-xs font-bold uppercase tracking-[0.18em] mb-2">A nossa equipa</div>
+                    <div className="font-display text-white text-[1.3rem] font-bold leading-[1.2]">
+                      Conheça todos os<br />
+                      <span className="text-white/80 font-normal italic">nossos especialistas</span>
+                    </div>
                   </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
 
-          <div className="text-center mt-8">
-            <Link href="/sobre" className="inline-flex items-center gap-2 text-[#1C9FD6] font-semibold text-sm hover:gap-3 transition-all duration-200">
-              Conhecer toda a equipa <ArrowRight size={14} />
-            </Link>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-white/70 text-xs">6 profissionais dedicados</span>
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                      <ArrowRight size={16} className="text-[#1C9FD6]" />
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
