@@ -207,15 +207,12 @@ export default function ServicosPage() {
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
                 <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/15 blur-[50px] pointer-events-none" />
                 {/* Texto — topo, z acima da imagem */}
-                <div className="relative z-10 w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-5">
-                  <ArrowRight size={18} className="text-white" />
-                </div>
-                <div className="relative z-10 mb-3">
+                <div className="relative z-10">
                   <h3 className="font-display text-[1.45rem] font-bold text-white leading-[1.2] mb-2">
                     Pronto para cuidar<br />
                     <span className="text-white/80 font-normal italic">do seu sorriso?</span>
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed">
+                  <p className="text-white/70 text-sm leading-relaxed max-w-[220px]">
                     A nossa equipa está disponível para avaliar a sua saúde oral e apresentar a melhor solução.
                   </p>
                 </div>
