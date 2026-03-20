@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HeroVideo from "@/components/HeroVideo";
 import { ArrowRight, Phone, Star, MapPin, CheckCircle, ChevronDown, Award, Shield, Search, Users, ThumbsUp, Stethoscope } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import Counter from "@/components/Counter";
@@ -84,12 +85,7 @@ export default function Home() {
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 pt-5 md:pt-8">
         <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", minHeight: "480px", maxHeight: "780px" }}>
           {/* Video */}
-          <video
-            className="absolute inset-0 w-full h-full object-cover"
-            src="/hero.mp4"
-            autoPlay muted loop playsInline preload="auto"
-            poster="/img/hero-still.png"
-          />
+          <HeroVideo />
 
           {/* Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0D1E2C]/80 via-[#0D1E2C]/40 to-transparent" />
