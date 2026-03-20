@@ -489,7 +489,7 @@ export default function Home() {
                 alt={TEAM_MEMBERS[0].name}
                 fill
                 sizes="(max-width:768px) 100vw, 55vw"
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                className="object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7">
@@ -508,7 +508,7 @@ export default function Home() {
                   alt={TEAM_MEMBERS[1].name}
                   fill
                   sizes="(max-width:768px) 100vw, 30vw"
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
