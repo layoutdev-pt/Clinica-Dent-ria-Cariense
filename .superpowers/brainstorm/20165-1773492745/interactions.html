@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interações & Animações</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; padding: 28px 24px 48px; }
+  h1 { text-align: center; font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .subtitle { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 36px; }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #475569; margin-bottom: 14px; margin-top: 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .demo-card { background: #1a1f2e; border-radius: 14px; padding: 20px; border: 1px solid #1e2a3a; position: relative; overflow: hidden; }
+  .demo-card h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .demo-card p { font-size: 12px; color: #64748b; margin-bottom: 16px; line-height: 1.5; }
+  .demo-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #1C9FD6; margin-bottom: 12px; display: block; }
+
+  /* ── DEMO: Navbar glassmorphism ── */
+  .demo-nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-radius: 12px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .demo-nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px; color: #0D1E2C; }
+  .demo-nav-logo span { color: #1C9FD6; }
+  .demo-nav-links { display: flex; gap: 12px; }
+  .demo-nav-link { font-size: 10px; color: #5E7387; font-weight: 500; cursor: pointer; transition: color 0.2s; }
+  .demo-nav-link:hover, .demo-nav-link.active { color: #1C9FD6; }
+  .demo-nav-btn { background: #1C9FD6; color: #fff; font-size: 10px; font-weight: 700; padding: 5px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 10px rgba(28,159,214,0.4); }
+  .demo-nav-btn:hover { background: #0e87bc; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(28,159,214,0.5); }
+  .demo-nav-scroll { font-size: 10px; color: #94a3b8; margin-top: 6px; text-align: center; }
+
+  /* ── DEMO: Hero heading animate ── */
+  .demo-heading-wrap { padding: 8px 0; }
+  .demo-heading { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: #0D1E2C; line-height: 1.1; }
+  .demo-heading .word { display: inline-block; overflow: hidden; }
+  .demo-heading .word span { display: inline-block; transform: translateY(100%); animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .demo-heading .word:nth-child(1) span { animation-delay: 0.1s; }
+  .demo-heading .word:nth-child(2) span { animation-delay: 0.22s; }
+  .demo-heading .word:nth-child(3) span { animation-delay: 0.34s; }
+  .demo-heading .word:nth-child(4) span { animation-delay: 0.46s; color: #1C9FD6; font-style: italic; }
+  .demo-heading .word:nth-child(5) span { animation-delay: 0.58s; }
+  .demo-heading .word:nth-child(6) span { animation-delay: 0.70s; color: #1C9FD6; font-style: italic; }
+  @keyframes slideUp { to { transform: translateY(0); } }
+  .demo-sub-fade { font-size: 12px; color: #5E7387; margin-top: 6px; animation: fadeIn 0.8s 0.9s both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .replay-btn { font-size: 10px; color: #1C9FD6; cursor: pointer; text-decoration: underline; margin-top: 8px; display: inline-block; }
+
+  /* ── DEMO: Service card hover ── */
+  .demo-service-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .demo-svc { background: #fff; border: 1.5px solid #D5E4EE; border-radius: 14px; padding: 12px; cursor: pointer; transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1); position: relative; overflow: hidden; }
+  .demo-svc::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; opacity: 0; transition: opacity 0.3s; }
+  .demo-svc.blue::before { background: #1C9FD6; }
+  .demo-svc.green::before { background: #0FA876; }
+  .demo-svc.amber::before { background: #F59E0B; }
+  .demo-svc:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(13,30,44,0.15); border-color: transparent; }
+  .demo-svc:hover::before { opacity: 1; }
+  .demo-svc-icon { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+  .demo-svc:hover .demo-svc-icon { transform: scale(1.2) rotate(-5deg); }
+  .demo-svc.blue .demo-svc-icon { background: #E8F6FC; }
+  .demo-svc.green .demo-svc-icon { background: #e6faf3; }
+  .demo-svc.amber .demo-svc-icon { background: #fef9ec; }
+  .demo-svc h4 { font-size: 10px; font-weight: 700; color: #0D1E2C; }
+  .demo-svc p { font-size: 9px; color: #5E7387; margin-top: 2px; }
+
+  /* ── DEMO: Floating appointment card ── */
+  .demo-fab-wrap { position: relative; height: 140px; background: linear-gradient(135deg, #f8faff, #e8f4fc); border-radius: 12px; overflow: hidden; }
+  .demo-fab-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .demo-fab-bg-text { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #0D1E2C; opacity: 0.08; }
+  .demo-fab { position: absolute; bottom: 12px; right: 12px; background: #fff; border-radius: 16px; padding: 10px 14px; box-shadow: 0 8px 32px rgba(13,30,44,0.15); border: 1px solid #D5E4EE; animation: fabFloat 3s ease-in-out infinite; display: flex; align-items: center; gap: 10px; }
+  @keyframes fabFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+  .demo-fab-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.2); animation: pulse 2s infinite; }
+  .demo-fab-text { font-size: 10px; }
+  .demo-fab-title { font-weight: 700; color: #0D1E2C; }
+  .demo-fab-sub { color: #5E7387; font-size: 9px; }
+  .demo-fab-btn { background: #1C9FD6; color: #fff; font-size: 9px; font-weight: 700; padding: 5px 10px; border-radius: 10px; white-space: nowrap; }
+
+  /* ── DEMO: Counter ── */
+  .demo-stats { background: #0D1E2C; border-radius: 12px; padding: 16px; display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+  .demo-stat { text-align: center; }
+  .demo-stat-n { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; color: #fff; }
+  .demo-stat-n .counting { animation: countUp 2s ease-out forwards; }
+  .demo-stat-l { font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; color: #5E7387; margin-top: 2px; }
+  .demo-stat-sep { width: 1px; background: rgba(255,255,255,0.06); }
+
+  /* ── DEMO: Team card hover ── */
+  .demo-team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .demo-team-card { position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; aspect-ratio: 3/4; }
+  .demo-team-img { width: 100%; height: 100%; background: linear-gradient(135deg, #c7e8f5, #1C9FD6 60%, #0D1E2C); transition: transform 0.5s ease; }
+  .demo-team-card:hover .demo-team-img { transform: scale(1.08); }
+  .demo-team-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,30,44,0.9) 0%, rgba(13,30,44,0.3) 40%, transparent 70%); opacity: 0; transition: opacity 0.35s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; }
+  .demo-team-card:hover .demo-team-overlay { opacity: 1; }
+  .demo-team-name { font-size: 10px; font-weight: 700; color: #fff; transform: translateY(8px); transition: transform 0.35s ease; }
+  .demo-team-card:hover .demo-team-name { transform: translateY(0); }
+  .demo-team-role { font-size: 8px; color: #1C9FD6; transform: translateY(8px); transition: transform 0.4s ease 0.05s; }
+  .demo-team-card:hover .demo-team-role { transform: translateY(0); }
+  .demo-team-info-bar { display: flex; align-items: center; gap: 4px; margin-top: 4px; transform: translateY(8px); transition: transform 0.45s ease 0.1s; opacity: 0; }
+  .demo-team-card:hover .demo-team-info-bar { opacity: 1; transform: translateY(0); }
+
+  /* ── DEMO: Magnetic button ── */
+  .demo-btn-showcase { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .demo-btn { position: relative; cursor: pointer; overflow: hidden; border-radius: 99px; }
+  .demo-btn-primary { background: #1C9FD6; color: #fff; font-size: 12px; font-weight: 700; padding: 10px 24px; border-radius: 99px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 16px rgba(28,159,214,0.4); transition: all 0.25s; border: none; }
+  .demo-btn-primary:hover { background: #0e87bc; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,159,214,0.55); }
+  .demo-btn-primary::after { content:''; position:absolute; width:100px; height:100px; background:rgba(255,255,255,0.25); border-radius:50%; transform:scale(0); transition:transform 0.4s ease, opacity 0.4s; opacity:0; top:50%; left:50%; margin:-50px; }
+  .demo-btn-primary:hover::after { transform:scale(2.5); opacity:0; }
+  .demo-btn-outline { background: transparent; color: #0D1E2C; font-size: 12px; font-weight: 600; padding: 10px 24px; border-radius: 99px; border: 1.5px solid #D5E4EE; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s; }
+  .demo-btn-outline:hover { border-color: #1C9FD6; color: #1C9FD6; background: #E8F6FC; transform: translateY(-2px); }
+  .demo-btn-ghost { background: transparent; color: #1C9FD6; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; transition: gap 0.2s; }
+  .demo-btn-ghost:hover { gap: 8px; }
+  .demo-btn-ghost span { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ── DEMO: FAQ ── */
+  .demo-faq-item { background: #fff; border: 1px solid #D5E4EE; border-radius: 14px; overflow: hidden; margin-bottom: 6px; transition: box-shadow 0.2s; }
+  .demo-faq-item.open { box-shadow: 0 4px 20px rgba(13,30,44,0.08); }
+  .demo-faq-q { padding: 12px 16px; font-size: 11px; font-weight: 600; color: #0D1E2C; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .demo-faq-icon { width: 20px; height: 20px; border-radius: 50%; background: #E8F6FC; color: #1C9FD6; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: transform 0.3s ease, background 0.3s; flex-shrink: 0; }
+  .demo-faq-item.open .demo-faq-icon { transform: rotate(45deg); background: #1C9FD6; color: #fff; }
+  .demo-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.35s; font-size: 10px; color: #5E7387; line-height: 1.6; padding: 0 16px; }
+  .demo-faq-item.open .demo-faq-a { max-height: 100px; padding: 0 16px 12px; }
+
+  /* ── DEMO: Scroll reveal stagger ── */
+  .demo-reveal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .demo-reveal-card { background: #fff; border: 1px solid #D5E4EE; border-radius: 14px; padding: 12px; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .demo-reveal-card.visible { opacity: 1; transform: translateY(0); }
+  .demo-reveal-card:nth-child(1) { transition-delay: 0s; }
+  .demo-reveal-card:nth-child(2) { transition-delay: 0.1s; }
+  .demo-reveal-card:nth-child(3) { transition-delay: 0.2s; }
+  .demo-reveal-icon { width: 28px; height: 28px; border-radius: 8px; background: #E8F6FC; margin-bottom: 6px; }
+  .demo-reveal-title { font-size: 10px; font-weight: 700; color: #0D1E2C; margin-bottom: 4px; }
+  .demo-reveal-text { font-size: 9px; color: #5E7387; }
+  .trigger-btn { background: #1C9FD6; color: #fff; font-size: 10px; font-weight: 700; padding: 6px 14px; border-radius: 99px; border: none; cursor: pointer; margin-top: 10px; }
+
+  /* cursor glow */
+  .cursor-glow { position: fixed; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(28,159,214,0.06) 0%, transparent 70%); pointer-events: none; transform: translate(-50%,-50%); transition: left 0.1s, top 0.1s; z-index: 9999; }
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="glow"></div>
+
+<h1>Interações & Animações — Direção B</h1>
+<p class="subtitle">Hover nos elementos abaixo para ver cada animação em ação. Diz-nos quais queres no site.</p>
+
+<div class="section-title">1 — Navbar com Glassmorphism</div>
+<div class="demo-card">
+  <span class="demo-label">Scroll → navbar ganha blur + sombra</span>
+  <div class="demo-nav">
+    <div class="demo-nav-logo">Clínica <span>Cariense</span></div>
+    <div class="demo-nav-links">
+      <span class="demo-nav-link active">Início</span>
+      <span class="demo-nav-link">Serviços</span>
+      <span class="demo-nav-link">Equipa</span>
+    </div>
+    <div class="demo-nav-btn">Agendar Consulta</div>
+  </div>
+  <div class="demo-nav-scroll">↑ Hover no botão para ver efeito</div>
+</div>
+
+<div class="section-title">2 — Animação de Heading no Hero</div>
+<div class="demo-card">
+  <span class="demo-label">Palavras entram de baixo com easing elástico</span>
+  <div class="demo-heading-wrap" id="heading-wrap">
+    <div class="demo-heading" id="demo-heading">
+      <span class="word"><span>O</span></span>&nbsp;
+      <span class="word"><span>seu</span></span>&nbsp;
+      <span class="word"><span>sorriso,</span></span>&nbsp;
+      <span class="word"><span>a</span></span>&nbsp;
+      <span class="word"><span>nossa</span></span>&nbsp;
+      <span class="word"><span>missão</span></span>
+    </div>
+    <div class="demo-sub-fade">Mais de 20 anos de excelência em saúde oral.</div>
+  </div>
+  <span class="replay-btn" onclick="replayHeading()">↺ Repetir animação</span>
+</div>
+
+<div class="grid">
+  <div>
+    <div class="section-title">3 — Service Cards Hover</div>
+    <div class="demo-card">
+      <span class="demo-label">Hover: eleva, accent line aparece, icon roda</span>
+      <div class="demo-service-grid">
+        <div class="demo-svc blue">
+          <div class="demo-svc-icon">🦷</div>
+          <h4>Implantologia</h4>
+          <p>Dentes permanentes</p>
+        </div>
+        <div class="demo-svc green">
+          <div class="demo-svc-icon">😁</div>
+          <h4>Ortodontia</h4>
+          <p>Alinhamento</p>
+        </div>
+        <div class="demo-svc amber">
+          <div class="demo-svc-icon">✨</div>
+          <h4>Branqueamento</h4>
+          <p>Sorriso luminoso</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-title">4 — Team Card Hover Overlay</div>
+    <div class="demo-card">
+      <span class="demo-label">Hover: zoom na foto + overlay com nome</span>
+      <div class="demo-team-grid">
+        <div class="demo-team-card">
+          <div class="demo-team-img" style="background:linear-gradient(135deg,#c7e8f5,#1C9FD6)"></div>
+          <div class="demo-team-overlay">
+            <div class="demo-team-name">Dra. Ana Augusta</div>
+            <div class="demo-team-role">Diretora Clínica</div>
+          </div>
+        </div>
+        <div class="demo-team-card">
+          <div class="demo-team-img" style="background:linear-gradient(135deg,#d4edda,#0FA876)"></div>
+          <div class="demo-team-overlay">
+            <div class="demo-team-name">Dr. Miguel Alves</div>
+            <div class="demo-team-role">Implantologia</div>
+          </div>
+        </div>
+        <div class="demo-team-card">
+          <div class="demo-team-img" style="background:linear-gradient(135deg,#fde8d8,#F59E0B)"></div>
+          <div class="demo-team-overlay">
+            <div class="demo-team-name">Dra. Sofia Nunes</div>
+            <div class="demo-team-role">Ortodontia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div>
+    <div class="section-title">5 — Floating Appointment Card</div>
+    <div class="demo-card">
+      <span class="demo-label">Card fixo a flutuar — aparece após 2s de scroll</span>
+      <div class="demo-fab-wrap">
+        <div class="demo-fab-bg"><div class="demo-fab-bg-text">Marcar</div></div>
+        <div class="demo-fab">
+          <div class="demo-fab-dot"></div>
+          <div class="demo-fab-text">
+            <div class="demo-fab-title">Disponível hoje</div>
+            <div class="demo-fab-sub">Marcar consulta agora</div>
+          </div>
+          <div class="demo-fab-btn">→ Marcar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-title">6 — FAQ Accordion</div>
+    <div class="demo-card">
+      <span class="demo-label">Clica para abrir/fechar com suavidade</span>
+      <div class="demo-faq-item open" onclick="toggleFaq(this)">
+        <div class="demo-faq-q">Como marcar uma consulta? <div class="demo-faq-icon">+</div></div>
+        <div class="demo-faq-a">Pode marcar através do formulário, por telefone (275 471 751) ou diretamente nas nossas clínicas.</div>
+      </div>
+      <div class="demo-faq-item" onclick="toggleFaq(this)">
+        <div class="demo-faq-q">Que especialidades têm? <div class="demo-faq-icon">+</div></div>
+        <div class="demo-faq-a">Mais de 10 especialidades: Implantologia, Ortodontia, Branqueamento, Cirurgia Oral, Endodontia e muito mais.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">7 — Botões com Micro-Interações</div>
+<div class="demo-card">
+  <span class="demo-label">Hover em cada botão</span>
+  <div class="demo-btn-showcase">
+    <button class="demo-btn-primary">Agendar Consulta →</button>
+    <button class="demo-btn-outline">Ver Serviços</button>
+    <div class="demo-btn-ghost"><span>Conhecer a equipa</span> →</div>
+  </div>
+</div>
+
+<div class="section-title">8 — Stagger Reveal ao Scroll</div>
+<div class="demo-card">
+  <span class="demo-label">Cards entram em cascata com delay progressivo</span>
+  <div class="demo-reveal-grid" id="reveal-grid">
+    <div class="demo-reveal-card">
+      <div class="demo-reveal-icon"></div>
+      <div class="demo-reveal-title">Equipa Certificada</div>
+      <div class="demo-reveal-text">Especialistas com experiência comprovada</div>
+    </div>
+    <div class="demo-reveal-card">
+      <div class="demo-reveal-icon"></div>
+      <div class="demo-reveal-title">Tecnologia Avançada</div>
+      <div class="demo-reveal-text">Equipamentos de última geração</div>
+    </div>
+    <div class="demo-reveal-card">
+      <div class="demo-reveal-icon"></div>
+      <div class="demo-reveal-title">3 Localizações</div>
+      <div class="demo-reveal-text">Sempre perto de si</div>
+    </div>
+  </div>
+  <button class="trigger-btn" onclick="triggerReveal()">▶ Ver animação</button>
+</div>
+
+<script>
+// Cursor glow
+document.addEventListener('mousemove', e => {
+  const g = document.getElementById('glow');
+  g.style.left = e.clientX + 'px';
+  g.style.top = e.clientY + 'px';
+});
+
+// Replay heading
+function replayHeading() {
+  const words = document.querySelectorAll('#demo-heading .word span');
+  words.forEach(w => { w.style.animation = 'none'; w.offsetHeight; w.style.animation = ''; });
+  const sub = document.querySelector('.demo-sub-fade');
+  sub.style.animation = 'none'; sub.offsetHeight; sub.style.animation = '';
+}
+
+// FAQ toggle
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+// Stagger reveal
+function triggerReveal() {
+  const cards = document.querySelectorAll('.demo-reveal-card');
+  cards.forEach(c => c.classList.remove('visible'));
+  setTimeout(() => cards.forEach(c => c.classList.add('visible')), 50);
+}
+setTimeout(() => triggerReveal(), 400);
+</script>
+
+</body>
+</html>

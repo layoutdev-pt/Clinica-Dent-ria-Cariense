@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Contactos | Clínica Dentária Cariense — Marque Consulta",
     description:
       "Três clínicas ao seu serviço em Caria, Unhais da Serra e Peso. Ligue, escreva ou agende online. Respondemos em 24 horas.",
-    images: [{ url: "/img/clinic-caria.jpg", width: 1200, height: 630, alt: "Contactos — Clínica Dentária Cariense" }],
+    images: [{ url: "/img/clinic-caria-ext.png", width: 1200, height: 630, alt: "Contactos — Clínica Dentária Cariense" }],
   },
   alternates: { canonical: "https://www.clinicacariense.pt/contactos" },
 };

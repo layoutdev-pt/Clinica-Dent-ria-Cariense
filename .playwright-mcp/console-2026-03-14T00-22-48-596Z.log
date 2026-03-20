@@ -1,0 +1,20 @@
+[   22752ms] [ERROR] Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH @ http://localhost:3000/hero.mp4:0
+[   23075ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   23323ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=FnZQgolom2N7wbT9yCRrL' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[   23427ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   23830ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   24282ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   24325ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=FnZQgolom2N7wbT9yCRrL' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[   24816ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   25328ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=FnZQgolom2N7wbT9yCRrL' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[   25374ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   25981ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   26331ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=FnZQgolom2N7wbT9yCRrL' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[   26637ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   27332ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=FnZQgolom2N7wbT9yCRrL' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[   27345ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   28101ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   28905ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   29759ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   30666ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0
+[   31620ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/hero.mp4:0

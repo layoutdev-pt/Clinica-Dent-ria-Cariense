@@ -17,7 +17,7 @@ export const CLINICS = [
     mobile: "927 402 729",
     address: "Cerca do Conde, Lote 41, Loja B/D",
     postal: "6250-111 Caria",
-    img: "/img/clinic-caria.jpg",
+    img: "/img/clinic-caria-ext.png",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d268.5!2d-7.3679504!3d40.2958249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d196bd57c11a5%3A0x322f263faff1fe34!2sCl%C3%ADnica+Dent%C3%A1ria+Cariense!5e0!3m2!1spt!2spt!4v1",
   },
@@ -29,7 +29,7 @@ export const CLINICS = [
     mobile: "927 402 728",
     address: "Avenida 1º de Maio, 43-A",
     postal: "6215-517 Unhais da Serra",
-    img: "/img/clinic-unhais.jpg",
+    img: "/img/clinic-unhais-ext.png",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d300!2d-7.6221671!3d40.258805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d2f832cebbe77%3A0x5297bfe230127d92!2sAv.+Primeiro+de+Maio+80%2C+6215-681+Unhais+da+Serra!5e0!3m2!1spt!2spt!4v2",
   },
@@ -40,8 +40,8 @@ export const CLINICS = [
     phone: "275 954 182",
     mobile: "927 402 728",
     address: "Rua Santa Maria Madalena, nº10",
-    postal: "6200-622 Peso da Régua",
-    img: "/img/clinic-peso.jpg",
+    postal: "6200-622 Peso",
+    img: "/img/clinic-peso-interior.png",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d400!2d-7.5624421!3d40.1951342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d3b1b382981c3%3A0xe33c98de915576fd!2sCentro+Social+Comunit%C3%A1rio+do+Peso!5e0!3m2!1spt!2spt!4v3",
   },
@@ -49,11 +49,10 @@ export const CLINICS = [
 
 export const TEAM_MEMBERS = [
   { name: "Dra. Ana Augusta", role: "Médica Dentista / Diretora Clínica", img: "/img/team-ana.jpg" },
-  { name: "Dr. Miguel Alves", role: "Médico Dentista – Implantologia", img: "/img/team-miguel.jpg" },
-  { name: "Dra. Sofia Nunes", role: "Médica Dentista – Ortodontia", img: "/img/team-sofia.jpg" },
-  { name: "Dr. Pedro Lopes", role: "Médico Dentista – Endodontia", img: "/img/team-pedro.jpg" },
-  { name: "Dra. Margarida Sousa", role: "Assistente Dentária", img: "/img/team-margarida.jpg" },
-  { name: "Dra. Inês Martins", role: "Higienista Oral", img: "/img/team-ines.png" },
+  { name: "Dr. Alexandre Maia", role: "Médico Dentista", img: "/img/team-alexandre.jpg" },
+  { name: "Maria Eduarda", role: "Assistente Dentária", img: "/img/team-maria-eduarda.jpg" },
+  { name: "São", role: "Assistente Dentária", img: "/img/team-sao.jpg" },
+  { name: "Tatiana", role: "Secretária", img: "/img/team-tatiana.jpg" },
 ] as const;
 
 export const TESTIMONIALS = [
@@ -91,10 +90,6 @@ export const FAQS = [
   {
     q: "Como posso marcar uma consulta?",
     a: "Pode marcar a sua consulta através do formulário nesta página, por telefone (275 471 751) ou diretamente nas nossas clínicas. Respondemos a todas as marcações com a máxima rapidez.",
-  },
-  {
-    q: "A clínica aceita todos os tipos de seguros de saúde?",
-    a: "Trabalhamos com os principais seguros e subsistemas de saúde. Contacte-nos para confirmar a cobertura do seu seguro específico. A nossa equipa de recepção terá todo o prazer em esclarecer.",
   },
   {
     q: "Que especialidades dentárias estão disponíveis?",

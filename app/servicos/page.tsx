@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Serviços Dentários | Clínica Dentária Cariense",
     description:
       "12 especialidades dentárias em Caria, Unhais da Serra e Peso. Implantologia, Ortodontia, Branqueamento e muito mais.",
-    images: [{ url: "/img/clinic-caria.jpg", width: 1200, height: 630, alt: "Serviços Dentários — Clínica Cariense" }],
+    images: [{ url: "/img/clinic-caria-ext.png", width: 1200, height: 630, alt: "Serviços Dentários — Clínica Cariense" }],
   },
   alternates: { canonical: "https://www.clinicacariense.pt/servicos" },
 };
@@ -289,17 +289,6 @@ export default function ServicosPage() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── SEGUROS ── */}
-      <section className="py-14 bg-white border-t border-[#D5E4EE]" id="contacto">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <ScrollReveal>
-            <p className="text-sm font-semibold text-[#5E7387] uppercase tracking-widest mb-4">Trabalhamos com os principais seguros e subsistemas</p>
-            <p className="text-[#0D1E2C] font-medium">ADSE · PT ACS · Multicare · Fidelidade · Médis · AdvanceCare · Lusíadas · e outros</p>
-            <p className="text-[#5E7387] text-sm mt-3">Contacte-nos para confirmar a cobertura do seu seguro específico.</p>
-          </ScrollReveal>
         </div>
       </section>
 

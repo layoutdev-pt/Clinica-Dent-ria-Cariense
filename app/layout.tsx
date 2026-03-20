@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "20+ anos de excelência em saúde oral. 3 clínicas em Caria, Unhais da Serra e Peso. Implantologia, Ortodontia, Branqueamento e 10+ especialidades. Marque consulta.",
     images: [
       {
-        url: "/img/clinic-caria.jpg",
+        url: "/img/clinic-caria-ext.png",
         width: 1200,
         height: 630,
         alt: "Clínica Dentária Cariense — Consultório em Caria",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title: "Clínica Dentária Cariense | Saúde Oral de Excelência",
     description:
       "20+ anos ao serviço da sua saúde oral. 3 clínicas em Caria, Unhais da Serra e Peso. Marque consulta hoje.",
-    images: ["/img/clinic-caria.jpg"],
+    images: ["/img/clinic-caria-ext.png"],
   },
   robots: {
     index: true,
