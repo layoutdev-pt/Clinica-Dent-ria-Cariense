@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Award, Heart, Users, Star, CheckCircle, ArrowRight } from "lucide-react";
+import { Award, Heart, Users, Star, CheckCircle, ArrowRight, Download } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sobre Nós — História, Equipa e Valores",
@@ -214,7 +214,16 @@ export default function SobrePage() {
                   </div>
                   <div className="mt-5 pt-5 border-t border-[#EEF4F8] flex items-center justify-between">
                     <span className="text-xs text-[#5E7387] font-medium">6º Ano Consecutivo</span>
-                    <span className="text-xs text-[#1C9FD6] font-bold uppercase tracking-wide">scoring.pt</span>
+                    <a
+                      href="/docs/certificado-scoring-top5-2025.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
+                      className="inline-flex items-center gap-1.5 text-xs text-[#1C9FD6] font-bold hover:underline"
+                    >
+                      <Download size={12} />
+                      Ver certificado
+                    </a>
                   </div>
                 </div>
               </div>
