@@ -115,7 +115,7 @@ export default function Home() {
           HERO — width-constrained card matching navbar
       ══════════════════════════════════════════ */}
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 pt-5 md:pt-8">
-        <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", minHeight: "520px", maxHeight: "780px" }}>
+        <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", maxHeight: "780px" }}>
           {/* Video */}
           <HeroVideo />
 
@@ -124,12 +124,12 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/50 via-transparent to-transparent" />
 
           {/* Content */}
-          <div className="relative z-10 h-full flex flex-col justify-center pb-16">
+          <div className="relative z-10 h-full flex flex-col justify-center pb-8 md:pb-16">
             <div className="px-6 md:px-10 lg:px-16 w-full">
               <div className="max-w-[500px]">
 
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-3 md:mb-6">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-[#1C9FD6] opacity-75" />
                     <span className="relative rounded-full h-1.5 w-1.5 bg-[#1C9FD6]" />
@@ -137,7 +137,7 @@ export default function Home() {
                   <span className="text-white/90 text-[11px] font-semibold tracking-[0.15em] uppercase">+12.000 pacientes satisfeitos</span>
                 </div>
 
-                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-white leading-[1.04] mb-5 tracking-tight">
+                <h1 className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-[4.25rem] font-bold text-white leading-[1.04] mb-2 md:mb-5 tracking-tight">
                   <span className="word-animate" style={{ animationDelay: "0ms" }}>O sorriso</span>{" "}
                   <span className="word-animate" style={{ animationDelay: "70ms" }}>que</span>
                   <br />
@@ -145,20 +145,20 @@ export default function Home() {
                   <span className="word-animate text-[#1C9FD6] italic" style={{ animationDelay: "210ms" }}>cuidado</span>
                 </h1>
 
-                <p className="text-white/65 text-base leading-[1.7] mb-8 max-w-[380px]" style={{ animation: "wordSlideUp 0.75s 0.35s both" }}>
+                <p className="hidden sm:block text-white/65 text-base leading-[1.7] mb-4 md:mb-8 max-w-[380px]" style={{ animation: "wordSlideUp 0.75s 0.35s both" }}>
                   28 anos a transformar sorrisos em Portugal. Tecnologia de ponta, equipa especializada.
                 </p>
 
-                <div className="flex flex-wrap gap-3" style={{ animation: "wordSlideUp 0.75s 0.5s both" }}>
+                <div className="flex flex-wrap gap-2 md:gap-3 mt-2 md:mt-0" style={{ animation: "wordSlideUp 0.75s 0.5s both" }}>
                   <Link
                     href="/contactos"
-                    className="btn-shimmer inline-flex items-center gap-2.5 bg-[#1C9FD6] text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#0D7DB5] hover:-translate-y-1 shadow-[0_4px_24px_rgba(28,159,214,0.5)] hover:shadow-[0_8px_40px_rgba(28,159,214,0.65)] transition-all duration-200"
+                    className="btn-shimmer inline-flex items-center gap-2 bg-[#1C9FD6] text-white font-semibold text-sm md:text-base px-5 md:px-7 py-2.5 md:py-3.5 rounded-full hover:bg-[#0D7DB5] hover:-translate-y-1 shadow-[0_4px_24px_rgba(28,159,214,0.5)] hover:shadow-[0_8px_40px_rgba(28,159,214,0.65)] transition-all duration-200"
                   >
                     Agendar Consulta <ArrowRight size={15} />
                   </Link>
                   <a
                     href="tel:275471751"
-                    className="btn-shimmer inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-full hover:bg-white/20 hover:-translate-y-1 transition-all duration-200"
+                    className="btn-shimmer inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold text-sm md:text-base px-5 md:px-7 py-2.5 md:py-3.5 rounded-full hover:bg-white/20 hover:-translate-y-1 transition-all duration-200"
                   >
                     <Phone size={14} /> 275 471 751
                   </a>
