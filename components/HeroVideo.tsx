@@ -25,7 +25,6 @@ export default function HeroVideo() {
       loop
       playsInline
       preload="auto"
-      poster="/img/hero-still.png"
     />
   );
 }
