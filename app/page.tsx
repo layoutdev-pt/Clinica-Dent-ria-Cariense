@@ -115,17 +115,50 @@ export default function Home() {
           HERO — width-constrained card matching navbar
       ══════════════════════════════════════════ */}
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 pt-5 md:pt-8">
+        {/* ══ MOBILE HERO — blue glow card (video + text below) ══ */}
+        <div className="md:hidden rounded-[24px] p-[2px]" style={{ background: "linear-gradient(145deg, #1C9FD6 0%, #0D84B8 40%, #1C9FD6 100%)", boxShadow: "0 0 28px rgba(28,159,214,0.5), 0 0 60px rgba(28,159,214,0.2)" }}>
+          <div className="rounded-[22px] overflow-hidden">
+            {/* Video */}
+            <div className="relative w-full" style={{ aspectRatio: "16/8" }}>
+              <HeroVideo />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/40 via-transparent to-transparent" />
+            </div>
+            {/* Text panel */}
+            <div className="bg-[#0D1E2C] px-5 pt-5 pb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1 mb-3">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-[#1C9FD6] opacity-75" />
+                  <span className="relative rounded-full h-1.5 w-1.5 bg-[#1C9FD6]" />
+                </span>
+                <span className="text-white/80 text-[10px] font-semibold tracking-[0.12em] uppercase">+12.000 pacientes satisfeitos</span>
+              </div>
+              <h1 className="font-display text-3xl font-bold text-white leading-[1.08] mb-2 tracking-tight">
+                O sorriso que<br />
+                <span className="text-[#1C9FD6] italic">merece cuidado</span>
+              </h1>
+              <p className="text-white/60 text-sm leading-relaxed mb-4">
+                28 anos a transformar sorrisos. Tecnologia de ponta, equipa especializada.
+              </p>
+              <div className="flex gap-2">
+                <Link href="/contactos" className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1C9FD6] text-white font-semibold text-sm px-4 py-3 rounded-full">
+                  Agendar Consulta <ArrowRight size={14} />
+                </Link>
+                <a href="tel:275471751" className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold text-sm px-4 py-3 rounded-full">
+                  <Phone size={14} /> Ligar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        {/* ── VIDEO ── same aspect ratio on all screens */}
-        <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", maxHeight: "780px" }}>
+        {/* ══ DESKTOP HERO — video with overlaid content ══ */}
+        <section className="hidden md:block relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", maxHeight: "780px" }}>
           <HeroVideo />
-
-          {/* Overlays — desktop only (content is overlaid on desktop) */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0D1E2C]/80 via-[#0D1E2C]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/50 via-transparent to-transparent" />
 
-          {/* Content — hidden on mobile, overlaid on desktop */}
-          <div className="hidden md:flex absolute inset-0 z-10 flex-col justify-center pb-16">
+          {/* Content */}
+          <div className="absolute inset-0 z-10 flex flex-col justify-center pb-16">
             <div className="px-10 lg:px-16 w-full">
               <div className="max-w-[500px]">
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
@@ -135,7 +168,6 @@ export default function Home() {
                   </span>
                   <span className="text-white/90 text-[11px] font-semibold tracking-[0.15em] uppercase">+12.000 pacientes satisfeitos</span>
                 </div>
-
                 <h1 className="font-display text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-white leading-[1.04] mb-5 tracking-tight">
                   <span className="word-animate" style={{ animationDelay: "0ms" }}>O sorriso</span>{" "}
                   <span className="word-animate" style={{ animationDelay: "70ms" }}>que</span>
@@ -143,22 +175,14 @@ export default function Home() {
                   <span className="word-animate text-[#1C9FD6] italic" style={{ animationDelay: "140ms" }}>merece</span>{" "}
                   <span className="word-animate text-[#1C9FD6] italic" style={{ animationDelay: "210ms" }}>cuidado</span>
                 </h1>
-
                 <p className="text-white/65 text-base leading-[1.7] mb-8 max-w-[380px]" style={{ animation: "wordSlideUp 0.75s 0.35s both" }}>
                   28 anos a transformar sorrisos em Portugal. Tecnologia de ponta, equipa especializada.
                 </p>
-
                 <div className="flex flex-wrap gap-3" style={{ animation: "wordSlideUp 0.75s 0.5s both" }}>
-                  <Link
-                    href="/contactos"
-                    className="btn-shimmer inline-flex items-center gap-2.5 bg-[#1C9FD6] text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#0D7DB5] hover:-translate-y-1 shadow-[0_4px_24px_rgba(28,159,214,0.5)] hover:shadow-[0_8px_40px_rgba(28,159,214,0.65)] transition-all duration-200"
-                  >
+                  <Link href="/contactos" className="btn-shimmer inline-flex items-center gap-2.5 bg-[#1C9FD6] text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#0D7DB5] hover:-translate-y-1 shadow-[0_4px_24px_rgba(28,159,214,0.5)] hover:shadow-[0_8px_40px_rgba(28,159,214,0.65)] transition-all duration-200">
                     Agendar Consulta <ArrowRight size={15} />
                   </Link>
-                  <a
-                    href="tel:275471751"
-                    className="btn-shimmer inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-full hover:bg-white/20 hover:-translate-y-1 transition-all duration-200"
-                  >
+                  <a href="tel:275471751" className="btn-shimmer inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-full hover:bg-white/20 hover:-translate-y-1 transition-all duration-200">
                     <Phone size={14} /> 275 471 751
                   </a>
                 </div>
@@ -166,8 +190,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Marquee — desktop only */}
-          <div className="hidden md:block absolute bottom-0 left-0 right-0 z-20 overflow-hidden bg-white/10 backdrop-blur-md border-t border-white/10 py-3.5">
+          {/* Marquee */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden bg-white/10 backdrop-blur-md border-t border-white/10 py-3.5">
             <div className="animate-marquee flex gap-10 whitespace-nowrap">
               {[...Array(4)].flatMap(() => [
                 { label: "Profissionais Experientes", icon: <Award size={13} className="text-white" /> },
@@ -186,46 +210,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll cue */}
-          <div className="absolute bottom-16 right-8 hidden md:flex flex-col items-center gap-1.5">
+          <div className="absolute bottom-16 right-8 flex flex-col items-center gap-1.5">
             <div className="animate-scroll-bounce text-white/40"><ChevronDown size={18} /></div>
           </div>
         </section>
-
-        {/* ── MOBILE CONTENT — below video ── */}
-        <div className="md:hidden bg-[#0D1E2C] rounded-b-[20px] px-5 pt-5 pb-6">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1 mb-3">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-[#1C9FD6] opacity-75" />
-              <span className="relative rounded-full h-1.5 w-1.5 bg-[#1C9FD6]" />
-            </span>
-            <span className="text-white/80 text-[10px] font-semibold tracking-[0.12em] uppercase">+12.000 pacientes satisfeitos</span>
-          </div>
-
-          <h1 className="font-display text-3xl font-bold text-white leading-[1.08] mb-2 tracking-tight">
-            O sorriso que<br />
-            <span className="text-[#1C9FD6] italic">merece cuidado</span>
-          </h1>
-
-          <p className="text-white/60 text-sm leading-relaxed mb-4">
-            28 anos a transformar sorrisos. Tecnologia de ponta, equipa especializada.
-          </p>
-
-          <div className="flex gap-2">
-            <Link
-              href="/contactos"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1C9FD6] text-white font-semibold text-sm px-4 py-3 rounded-full"
-            >
-              Agendar Consulta <ArrowRight size={14} />
-            </Link>
-            <a
-              href="tel:275471751"
-              className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold text-sm px-4 py-3 rounded-full"
-            >
-              <Phone size={14} /> Ligar
-            </a>
-          </div>
-        </div>
 
       </div>
 
