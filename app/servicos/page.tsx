@@ -158,7 +158,7 @@ export default function ServicosPage() {
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, rgba(28,159,214,0.2) 0%, transparent 60%)" }} />
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <SectionTag light centered>Os Nossos Serviços</SectionTag>
-          <h1 className="font-['DM Serif Display',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
             Cuidados dentários<br />
             <span className="text-[#1C9FD6]">para toda a família</span>
           </h1>
@@ -173,7 +173,7 @@ export default function ServicosPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
             <SectionTag>Os Nossos Tratamentos Principais</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl md:text-5xl font-bold text-[#0D1E2C] mt-4 mb-4">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] mt-4 mb-4">
               Tratamentos de Excelência
             </h2>
             <p className="text-[#5E7387] text-base max-w-2xl mx-auto">
@@ -190,7 +190,7 @@ export default function ServicosPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal className="text-center mb-14">
             <SectionTag>Mais Especialidades Clínicas</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-display text-4xl font-bold text-[#0D1E2C] mt-4">
               Todas as especialidades,<br />
               <span className="text-[#1C9FD6] italic">num só lugar</span>
             </h2>

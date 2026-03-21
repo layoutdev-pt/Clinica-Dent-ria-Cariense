@@ -175,25 +175,18 @@ export default function SobrePage() {
           <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center max-w-4xl mx-auto">
             {/* SCORING card */}
             <ScrollReveal className="flex-1">
-              <div className="bg-white rounded-[24px] border border-[#D5E4EE] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
-                <div
-                  className="p-8 flex flex-col items-center text-center"
-                  style={{ background: "linear-gradient(135deg, #0D1E2C 0%, #1a3349 60%, #1C9FD6 100%)" }}
-                >
-                  <div className="relative mb-5">
-                    <div className="w-24 h-24 rounded-full bg-white flex flex-col items-center justify-center shadow-lg border-4 border-[#1C9FD6]/30">
-                      <span className="text-[#1C9FD6] font-black text-lg leading-none">TOP</span>
-                      <span className="text-[#0D1E2C] font-black text-2xl leading-none">5%</span>
-                    </div>
-                    <div className="absolute -inset-2 rounded-full border-2 border-[#1C9FD6]/40 animate-pulse" />
-                  </div>
-                  <div className="text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-1">scoring®</div>
-                  <h3 className="font-display font-bold text-white text-xl leading-tight">
-                    Melhores PME<br />de Portugal
-                  </h3>
-                  <span className="mt-2 text-[#1C9FD6] text-sm font-semibold">Certificado 2025</span>
+              <div className="bg-white rounded-[24px] border border-[#D5E4EE] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+                {/* Imagem real do certificado SCORING */}
+                <div className="relative w-full" style={{ aspectRatio: "3/4", maxHeight: 320 }}>
+                  <Image
+                    src="/img/scoring.jpeg"
+                    alt="Certificado SCORING TOP 5% Melhores PME Portugal 2025"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-start gap-3 mb-4">
                     <div className="mt-0.5 w-5 h-5 rounded-full bg-[#E8F6FC] flex items-center justify-center flex-shrink-0">
                       <Star size={11} className="text-[#1C9FD6]" fill="#1C9FD6" />
@@ -231,21 +224,33 @@ export default function SobrePage() {
 
             {/* Google Rating card */}
             <ScrollReveal className="flex-1" delay={100}>
-              <div className="bg-white rounded-[24px] border border-[#D5E4EE] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
+              <div className="bg-white rounded-[24px] border border-[#D5E4EE] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
                 <div
                   className="p-8 flex flex-col items-center text-center"
                   style={{ background: "linear-gradient(135deg, #0D1E2C 0%, #1a3349 60%, #1C9FD6 100%)" }}
                 >
-                  <div className="relative mb-5">
-                    <div className="w-24 h-24 rounded-full bg-white flex flex-col items-center justify-center shadow-lg border-4 border-[#1C9FD6]/30">
-                      <span className="text-[#0D1E2C] font-black text-3xl leading-none">5.0</span>
-                      <div className="flex gap-0.5 mt-1">
-                        {[0,1,2,3,4].map(i => (
-                          <Star key={i} size={8} fill="#F59E0B" className="text-amber-400" />
-                        ))}
-                      </div>
+                  {/* Selo circular SCORING por baixo do número */}
+                  <div className="relative mb-5 flex items-center gap-5">
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white/20 shadow-lg flex-shrink-0">
+                      <Image
+                        src="/img/premio.jpeg"
+                        alt="Selo SCORING TOP 5%"
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
                     </div>
-                    <div className="absolute -inset-2 rounded-full border-2 border-[#1C9FD6]/40 animate-pulse" />
+                    <div className="relative">
+                      <div className="w-24 h-24 rounded-full bg-white flex flex-col items-center justify-center shadow-lg border-4 border-[#1C9FD6]/30">
+                        <span className="text-[#0D1E2C] font-black text-3xl leading-none">5.0</span>
+                        <div className="flex gap-0.5 mt-1">
+                          {[0,1,2,3,4].map(i => (
+                            <Star key={i} size={8} fill="#F59E0B" className="text-amber-400" />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="absolute -inset-2 rounded-full border-2 border-[#1C9FD6]/40 animate-pulse" />
+                    </div>
                   </div>
                   <div className="text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-1">Google Reviews</div>
                   <h3 className="font-display font-bold text-white text-xl leading-tight">

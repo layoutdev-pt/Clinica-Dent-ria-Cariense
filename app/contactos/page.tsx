@@ -55,7 +55,7 @@ export default function ContactosPage() {
         />
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <SectionTag light centered>Contactos</SectionTag>
-          <h1 className="font-['DM Serif Display',serif] text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
             Estamos prontos<br />
             <span className="text-[#1C9FD6] italic">para o receber</span>
           </h1>
@@ -95,7 +95,7 @@ export default function ContactosPage() {
         <div className="max-w-5xl mx-auto px-6">
           <ScrollReveal className="text-center mb-12">
             <SectionTag>Marcar Consulta</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4 mb-4">
+            <h2 className="font-display text-4xl font-bold text-[#0D1E2C] mt-4 mb-4">
               Marque a sua consulta
             </h2>
             <p className="text-[#5E7387] max-w-lg mx-auto">
@@ -113,7 +113,7 @@ export default function ContactosPage() {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="mb-12">
             <SectionTag>As Nossas Clínicas</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-display text-4xl font-bold text-[#0D1E2C] mt-4">
               Onde nos encontrar
             </h2>
           </ScrollReveal>
@@ -126,7 +126,7 @@ export default function ContactosPage() {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-14">
             <SectionTag>FAQ</SectionTag>
-            <h2 className="font-['DM Serif Display',serif] text-4xl font-bold text-[#0D1E2C] mt-4">
+            <h2 className="font-display text-4xl font-bold text-[#0D1E2C] mt-4">
               Perguntas frequentes
             </h2>
           </ScrollReveal>
