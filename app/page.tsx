@@ -237,13 +237,13 @@ export default function Home() {
                 </div>
 
                 {/* SCORING award badge — top left */}
-                <div className="absolute -top-5 -left-5 w-[100px] h-[100px] rounded-full shadow-[0_8px_40px_rgba(13,30,44,0.18)] z-10 overflow-hidden border-4 border-white">
+                <div className="absolute -top-5 -left-5 w-[110px] h-[110px] z-10">
                   <Image
-                    src="/img/premio.jpeg"
+                    src="/img/premio.png"
                     alt="SCORING TOP 5% Melhores PME Portugal 2025"
                     fill
-                    className="object-cover"
-                    sizes="100px"
+                    className="object-contain drop-shadow-lg"
+                    sizes="110px"
                   />
                 </div>
 

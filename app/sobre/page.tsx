@@ -231,13 +231,13 @@ export default function SobrePage() {
                 >
                   {/* Selo circular SCORING por baixo do número */}
                   <div className="relative mb-5 flex items-center gap-5">
-                    <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white/20 shadow-lg flex-shrink-0">
+                    <div className="relative w-24 h-24 flex-shrink-0">
                       <Image
-                        src="/img/premio.jpeg"
+                        src="/img/premio.png"
                         alt="Selo SCORING TOP 5%"
                         fill
-                        className="object-cover"
-                        sizes="80px"
+                        className="object-contain drop-shadow-lg"
+                        sizes="96px"
                       />
                     </div>
                     <div className="relative">
