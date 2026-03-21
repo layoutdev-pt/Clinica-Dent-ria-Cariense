@@ -125,7 +125,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/50 via-transparent to-transparent" />
 
           {/* Content — hidden on mobile, overlaid on desktop */}
-          <div className="hidden md:flex relative z-10 h-full flex-col justify-center pb-16">
+          <div className="hidden md:flex absolute inset-0 z-10 flex-col justify-center pb-16">
             <div className="px-10 lg:px-16 w-full">
               <div className="max-w-[500px]">
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
