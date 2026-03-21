@@ -189,7 +189,7 @@ export default function FeaturedServicesCarousel({ items }: { items: Service[] }
         </div>
         <div key={`mob-text-${contentKey}`} className={`mb-5 ${prev !== null ? (dir === 1 ? "svc-text-right" : "svc-text-left") : ""}`}>
           <p className="text-[#5E7387] text-sm leading-relaxed mb-4">{current.desc}</p>
-          <a href="/contactos" className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full" style={{ background: "#1C9FD6", color: "white" }}>
+          <a href="/contactos" className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full min-h-[44px]" style={{ background: "#1C9FD6", color: "white" }}>
             Marcar consulta <ArrowRight size={14} />
           </a>
         </div>

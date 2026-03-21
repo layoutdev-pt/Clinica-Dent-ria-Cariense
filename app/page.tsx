@@ -1,6 +1,38 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
+
+export const metadata: Metadata = {
+  title: "Clínica Dentária Cariense | Implantes, Ortodontia e Estética em Caria, Unhais da Serra e Peso",
+  description:
+    "Clínica Dentária Cariense — 20+ anos a cuidar do seu sorriso. Implantologia, Ortodontia, Branqueamento e 10+ especialidades em Caria, Unhais da Serra e Peso. Dentista em Belmonte, Covilhã, Fundão e Castelo Branco. Marque consulta: 275 471 751.",
+  keywords: [
+    "clínica dentária Caria",
+    "dentista Caria",
+    "dentista Unhais da Serra",
+    "dentista Peso",
+    "dentista Belmonte",
+    "dentista Covilhã",
+    "dentista Fundão",
+    "dentista Castelo Branco",
+    "implantologia Beira Interior",
+    "ortodontia interior Portugal",
+    "branqueamento dentário Cova da Beira",
+    "clínica dentária Serra da Estrela",
+    "médico dentista Cariense",
+    "saúde oral Covilhã",
+    "implantes dentários Fundão",
+  ],
+  alternates: { canonical: "https://www.clinicacariense.pt" },
+  openGraph: {
+    title: "Clínica Dentária Cariense | Implantes, Ortodontia e Estética Dental",
+    description:
+      "20+ anos de excelência em saúde oral. 3 clínicas em Caria, Unhais da Serra e Peso. Implantologia, Ortodontia, Branqueamento e 10+ especialidades. Marque consulta.",
+    url: "https://www.clinicacariense.pt",
+    images: [{ url: "/img/clinic-caria-ext.png", width: 1200, height: 630, alt: "Clínica Dentária Cariense" }],
+  },
+};
 import { ArrowRight, Phone, Star, MapPin, CheckCircle, ChevronDown, Award, Shield, Search, Users, ThumbsUp, Stethoscope } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import Counter from "@/components/Counter";
@@ -83,7 +115,7 @@ export default function Home() {
           HERO — width-constrained card matching navbar
       ══════════════════════════════════════════ */}
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 pt-5 md:pt-8">
-        <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", minHeight: "480px", maxHeight: "780px" }}>
+        <section className="relative w-full overflow-hidden rounded-[20px]" style={{ aspectRatio: "16/8", minHeight: "520px", maxHeight: "780px" }}>
           {/* Video */}
           <HeroVideo />
 
@@ -93,7 +125,7 @@ export default function Home() {
 
           {/* Content */}
           <div className="relative z-10 h-full flex flex-col justify-center pb-16">
-            <div className="px-10 md:px-16 w-full">
+            <div className="px-6 md:px-10 lg:px-16 w-full">
               <div className="max-w-[500px]">
 
                 {/* Badge */}
@@ -105,7 +137,7 @@ export default function Home() {
                   <span className="text-white/90 text-[11px] font-semibold tracking-[0.15em] uppercase">+12.000 pacientes satisfeitos</span>
                 </div>
 
-                <h1 className="font-display text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-white leading-[1.04] mb-5 tracking-tight">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-white leading-[1.04] mb-5 tracking-tight">
                   <span className="word-animate" style={{ animationDelay: "0ms" }}>O sorriso</span>{" "}
                   <span className="word-animate" style={{ animationDelay: "70ms" }}>que</span>
                   <br />
@@ -165,9 +197,9 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           STATS + GOOGLE RATING — white bg
       ══════════════════════════════════════════ */}
-      <section className="bg-white py-14 border-b border-[#EEF4F8]">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-0 lg:justify-between">
+      <section className="bg-white py-10 md:py-14 border-b border-[#EEF4F8]">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-4 sm:px-8 md:px-16">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0 lg:justify-between">
 
             {/* Google rating */}
             <div className="flex items-center gap-5 lg:w-72 flex-shrink-0">
@@ -197,7 +229,7 @@ export default function Home() {
             <div className="hidden lg:block w-px h-16 bg-[#EEF4F8]" />
 
             {/* Animated stats */}
-            <div className="grid grid-cols-3 gap-12 flex-1 lg:pl-12">
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 lg:gap-12 flex-1 lg:pl-12">
               {[
                 { target: 12, suffix: "K+", label: "Sorrisos Cuidados" },
                 { target: 98, suffix: "%", label: "Taxa de recomendação" },
@@ -218,13 +250,13 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           ABOUT (QUEM SOMOS) — light blue bg
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-[#EBF6FC]">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-14 md:py-24 bg-[#EBF6FC]">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-4 sm:px-8 md:px-16">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
             {/* Image with badge */}
             <ScrollReveal variant="slide-left">
-              <div className="relative h-[480px]">
+              <div className="relative h-[300px] sm:h-[380px] md:h-[480px]">
                 {/* Main image — full rounded */}
                 <div className="w-full h-full rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(13,30,44,0.14)]" style={{ borderRadius: 28 }}>
                   <Image
@@ -299,7 +331,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           TRATAMENTOS PRINCIPAIS — carousel
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F0F6FA] overflow-hidden">
+      <section className="py-14 md:py-24 bg-[#F0F6FA] overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-4">
@@ -475,7 +507,7 @@ export default function Home() {
           TEAM — mosaic layout
       ══════════════════════════════════════════ */}
       <section className="py-24 bg-[#F7FAFC]">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16">
           <ScrollReveal className="text-center mb-14">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] mb-2">
               Conheça a nossa{" "}
@@ -555,7 +587,7 @@ export default function Home() {
           TESTIMONIALS
       ══════════════════════════════════════════ */}
       <section className="py-24 bg-white overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16">
           <ScrollReveal className="mb-12">
             <div className="flex items-end justify-between flex-wrap gap-6">
               <div>
@@ -583,7 +615,7 @@ export default function Home() {
           CONTACT / LOCATIONS
       ══════════════════════════════════════════ */}
       <section className="py-24 bg-[#F7FAFC]">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16">
           <ScrollReveal className="text-center mb-14">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="w-8 h-px bg-[#1C9FD6]/40" />
@@ -614,7 +646,7 @@ export default function Home() {
           FAQ
       ══════════════════════════════════════════ */}
       <section className="py-24 bg-white">
-        <div className="max-w-[720px] mx-auto px-8 md:px-16">
+        <div className="max-w-[720px] mx-auto px-4 sm:px-8 md:px-16">
           <ScrollReveal className="text-center mb-14">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C]">
               Perguntas Frequentes
@@ -627,7 +659,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════════ */}
-      <div className="py-12 px-8 md:px-16 bg-[#F7FAFC]">
+      <div className="py-12 px-4 sm:px-8 md:px-16 bg-[#F7FAFC]">
         <CtaBanner />
       </div>
     </>

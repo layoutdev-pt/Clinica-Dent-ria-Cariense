@@ -22,7 +22,7 @@ export default function LocationSwitcher() {
           <button
             key={c.key}
             onClick={() => setActive(i)}
-            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+            className={`px-4 sm:px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 min-h-[44px] ${
               active === i
                 ? "bg-[#1C9FD6] text-white shadow-[0_2px_12px_rgba(28,159,214,0.4)]"
                 : "bg-white border border-[#D5E4EE] text-[#5E7387] hover:border-[#1C9FD6] hover:text-[#1C9FD6]"
@@ -35,7 +35,7 @@ export default function LocationSwitcher() {
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Map */}
-        <div className="rounded-[20px] overflow-hidden border border-[#D5E4EE] h-[380px] bg-[#E8F6FC]">
+        <div className="rounded-[20px] overflow-hidden border border-[#D5E4EE] h-[260px] sm:h-[320px] lg:h-[380px] bg-[#E8F6FC]">
           <iframe
             key={clinic.key}
             src={clinic.mapSrc}
@@ -50,7 +50,7 @@ export default function LocationSwitcher() {
 
         {/* Info */}
         <div className="space-y-5">
-          <h3 className="font-['DM Serif Display',serif] text-2xl font-bold text-[#0D1E2C]">{clinic.name}</h3>
+          <h3 className="font-display text-2xl font-bold text-[#0D1E2C]">{clinic.name}</h3>
 
           <div className="flex items-start gap-3">
             <div className="w-9 h-9 bg-[#E8F6FC] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">

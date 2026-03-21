@@ -79,7 +79,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden p-2 text-[#0D1E2C] hover:text-[#1C9FD6] transition-colors rounded-lg"
+              className="md:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#0D1E2C] hover:text-[#1C9FD6] transition-colors rounded-lg"
               aria-label={open ? "Fechar menu" : "Abrir menu"}
               aria-expanded={open}
             >

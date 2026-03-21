@@ -4,7 +4,12 @@ import { Mail, Phone, MessageCircle } from "lucide-react";
 export const metadata: Metadata = {
   title: "Contactos — Marque a sua Consulta",
   description:
-    "Contacte a Clínica Dentária Cariense. Ligue 275 471 751 ou preencha o formulário. Clínicas em Caria, Unhais da Serra e Peso. Respondemos em 24 horas.",
+    "Contacte a Clínica Dentária Cariense. Ligue 275 471 751 ou preencha o formulário. Clínicas em Caria, Unhais da Serra e Peso. Dentista em Belmonte, Covilhã, Fundão. Respondemos em 24 horas.",
+  keywords: [
+    "marcar consulta dentista Caria", "contacto clínica dentária Belmonte",
+    "dentista Covilhã contacto", "dentista Fundão marcação", "dentista Unhais da Serra",
+    "clínica dentária Peso Castelo Branco", "urgência dentária interior Portugal",
+  ],
   openGraph: {
     title: "Contactos | Clínica Dentária Cariense — Marque Consulta",
     description:
@@ -12,6 +17,46 @@ export const metadata: Metadata = {
     images: [{ url: "/img/clinic-caria-ext.png", width: 1200, height: 630, alt: "Contactos — Clínica Dentária Cariense" }],
   },
   alternates: { canonical: "https://www.clinicacariense.pt/contactos" },
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Em que localidades posso encontrar a Clínica Cariense?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A Clínica Dentária Cariense está presente em três localidades: Caria (sede principal), Peso e Unhais da Serra. Servimos também pacientes de Belmonte, Covilhã, Fundão, Castelo Branco e toda a região da Beira Interior.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Como posso marcar uma consulta?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Pode marcar a sua consulta através do formulário online, por telefone (275 471 751 para Caria, 275 971 342 para Unhais da Serra, 275 954 182 para Peso) ou diretamente nas nossas clínicas. Respondemos a todas as marcações com a máxima rapidez.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Que especialidades dentárias estão disponíveis?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Oferecemos mais de 12 especialidades: Implantologia, Ortodontia, Prótese Fixa e Removível, Branqueamento, Cirurgia Oral, Dentisteria, Endodontia, Odontopediatria, Periodontologia, Estética Dentária, Reabilitação Oral e Medicina Oral.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Qual é o horário de funcionamento?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A clínica de Caria funciona de segunda a sexta das 9h00 às 19h00. Contacte-nos para confirmar os horários das outras unidades.",
+          },
+        },
+      ],
+    }),
+  },
 };
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionTag from "@/components/SectionTag";
@@ -45,7 +90,7 @@ export default function ContactosPage() {
   return (
     <>
       {/* ── PAGE HERO ── */}
-      <section className="relative bg-[#0D1E2C] py-28 overflow-hidden">
+      <section className="relative bg-[#0D1E2C] py-16 md:py-28 overflow-hidden">
         <div
           className="absolute inset-0"
           style={{
@@ -53,9 +98,9 @@ export default function ContactosPage() {
               "radial-gradient(ellipse at 80% 30%, rgba(28,159,214,0.2) 0%, transparent 60%)",
           }}
         />
-        <div className="relative max-w-7xl mx-auto px-6 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <SectionTag light centered>Contactos</SectionTag>
-          <h1 className="font-display text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
             Estamos prontos<br />
             <span className="text-[#1C9FD6] italic">para o receber</span>
           </h1>

@@ -53,7 +53,7 @@ export default function SobrePage() {
       <section className="relative min-h-[100svh] bg-[#0D1E2C] flex flex-col md:flex-row overflow-hidden">
 
         {/* LEFT — text panel */}
-        <div className="relative z-10 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-28 md:py-0 md:w-[52%] flex-shrink-0">
+        <div className="relative z-10 flex flex-col justify-center px-6 md:px-16 lg:px-24 py-16 md:py-0 md:w-[52%] flex-shrink-0">
 
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-8">
@@ -80,7 +80,7 @@ export default function SobrePage() {
           </p>
 
           {/* Stats row */}
-          <div className="grid grid-cols-4 gap-4 mb-10 border-t border-white/10 pt-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 border-t border-white/10 pt-8">
             {STATS.map(({ target, suffix, label }, i) => (
               <div key={i}>
                 <div className="font-display font-extrabold text-white text-2xl md:text-3xl leading-none">
@@ -132,8 +132,8 @@ export default function SobrePage() {
       </section>
 
       {/* ── MISSION / STORY ── */}
-      <section className="py-28 bg-white">
-        <div className="max-w-[1100px] mx-auto px-8 md:px-16">
+      <section className="py-14 md:py-28 bg-white">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16">
           <ScrollReveal className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="w-8 h-px bg-[#1C9FD6]/40" />

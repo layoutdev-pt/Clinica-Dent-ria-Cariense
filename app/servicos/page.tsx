@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Serviços — Implantologia, Ortodontia, Estética e Mais",
   description:
     "12 especialidades dentárias numa só clínica: Implantologia, Ortodontia, Branqueamento, Endodontia, Odontopediatria, Estética Dentária e muito mais. Marque a sua consulta — 275 471 751.",
+  keywords: [
+    "implantologia Caria", "ortodontia Caria", "branqueamento dentário Covilhã",
+    "endodontia Fundão", "odontopediatria Belmonte", "estética dentária Castelo Branco",
+    "cirurgia oral Unhais da Serra", "prótese dentária interior Portugal",
+    "periodontologia Cova da Beira", "reabilitação oral Serra da Estrela",
+  ],
   openGraph: {
     title: "Serviços Dentários | Clínica Dentária Cariense",
     description:
@@ -14,6 +20,20 @@ export const metadata: Metadata = {
     images: [{ url: "/img/clinic-caria-ext.png", width: 1200, height: 630, alt: "Serviços Dentários — Clínica Cariense" }],
   },
   alternates: { canonical: "https://www.clinicacariense.pt/servicos" },
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      name: "Clínica Dentária Cariense",
+      url: "https://www.clinicacariense.pt/servicos",
+      medicalSpecialty: [
+        "Implantologia", "Ortodontia", "Branqueamento Dentário",
+        "Cirurgia Oral", "Endodontia", "Odontopediatria",
+        "Prótese Dentária", "Periodontologia", "Estética Dentária",
+        "Reabilitação Oral", "Medicina Oral", "Dentisteria Conservadora",
+      ],
+    }),
+  },
 };
 
 import ScrollReveal from "@/components/ScrollReveal";
@@ -154,11 +174,11 @@ export default function ServicosPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative bg-[#0D1E2C] py-28 overflow-hidden">
+      <section className="relative bg-[#0D1E2C] py-16 md:py-28 overflow-hidden">
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, rgba(28,159,214,0.2) 0%, transparent 60%)" }} />
-        <div className="relative max-w-7xl mx-auto px-6 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <SectionTag light centered>Os Nossos Serviços</SectionTag>
-          <h1 className="font-display text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-5 mb-6">
             Cuidados dentários<br />
             <span className="text-[#1C9FD6]">para toda a família</span>
           </h1>

@@ -21,11 +21,11 @@ export default function FloatingCTA() {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
+      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-500 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0 pointer-events-none"
       }`}
     >
-      <div className="relative bg-white rounded-2xl shadow-[0_8px_40px_rgba(13,30,44,0.18)] border border-[#D5E4EE] p-4 flex items-center gap-4 min-w-[260px]">
+      <div className="relative bg-white rounded-2xl shadow-[0_8px_40px_rgba(13,30,44,0.18)] border border-[#D5E4EE] p-4 flex items-center gap-3 sm:gap-4 w-[calc(100vw-2rem)] max-w-[300px] sm:min-w-[260px]">
         {/* Dismiss */}
         <button
           onClick={() => setDismissed(true)}
@@ -51,13 +51,13 @@ export default function FloatingCTA() {
         <div className="flex flex-col gap-1.5">
           <Link
             href="/contactos"
-            className="bg-[#1C9FD6] text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-[#0e87bc] transition-colors whitespace-nowrap"
+            className="bg-[#1C9FD6] text-white text-[11px] font-bold px-3 py-2.5 rounded-lg hover:bg-[#0e87bc] transition-colors whitespace-nowrap min-h-[44px] flex items-center"
           >
             Agendar →
           </Link>
           <a
             href="tel:275471751"
-            className="flex items-center justify-center gap-1 border border-[#D5E4EE] text-[#0D1E2C] text-[11px] font-semibold px-3 py-1.5 rounded-lg hover:border-[#1C9FD6] hover:text-[#1C9FD6] transition-colors"
+            className="flex items-center justify-center gap-1 border border-[#D5E4EE] text-[#0D1E2C] text-[11px] font-semibold px-3 py-2.5 rounded-lg hover:border-[#1C9FD6] hover:text-[#1C9FD6] transition-colors min-h-[44px]"
           >
             <Phone size={11} /> Ligar
           </a>
