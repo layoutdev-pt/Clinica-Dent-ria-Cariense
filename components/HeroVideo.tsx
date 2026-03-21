@@ -8,11 +8,19 @@ export default function HeroVideo() {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
+    // Force all required attributes imperatively for iOS Safari compatibility
     v.muted = true;
+    v.defaultMuted = true;
     v.loop = true;
-    v.play().catch(() => {
-      // autoplay blocked — video stays paused until user interaction
-    });
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+    v.setAttribute("x5-playsinline", ""); // WeChat/Android WebView
+    const tryPlay = () => { v.muted = true; v.play().catch(() => {}); };
+    tryPlay();
+    // Resume after tab becomes visible again
+    const onVisibility = () => { if (!document.hidden) tryPlay(); };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
   }, []);
 
   return (
