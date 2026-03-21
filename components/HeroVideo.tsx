@@ -8,23 +8,11 @@ export default function HeroVideo() {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    // These must be set before play() to satisfy autoplay policies
     v.muted = true;
-    v.playsInline = true;
     v.loop = true;
-
-    const tryPlay = () => {
-      v.play().catch(() => {
-        // Retry once after a short delay (handles some browser timing issues)
-        setTimeout(() => v.play().catch(() => {}), 500);
-      });
-    };
-
-    if (v.readyState >= 2) {
-      tryPlay();
-    } else {
-      v.addEventListener("canplay", tryPlay, { once: true });
-    }
+    v.play().catch(() => {
+      // autoplay blocked — video stays paused until user interaction
+    });
   }, []);
 
   return (
@@ -37,6 +25,7 @@ export default function HeroVideo() {
       loop
       playsInline
       preload="auto"
+      poster="/img/hero-still.png"
     />
   );
 }
