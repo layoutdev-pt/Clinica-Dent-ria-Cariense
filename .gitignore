@@ -45,3 +45,4 @@ sobre-full.png
 # Large video files (too large for GitHub — store locally or use external hosting)
 # public/hero.mp4 — 47MB, within GitHub limits, tracked
 img/*.mp4
+.env*.local
