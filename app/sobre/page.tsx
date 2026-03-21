@@ -175,49 +175,29 @@ export default function SobrePage() {
           <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center max-w-4xl mx-auto">
             {/* SCORING card */}
             <ScrollReveal className="flex-1">
-              <div className="bg-white rounded-[24px] border border-[#D5E4EE] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                {/* Imagem real do certificado SCORING */}
-                <div className="relative w-full" style={{ aspectRatio: "3/4", maxHeight: 320 }}>
-                  <Image
-                    src="/img/scoring.jpeg"
-                    alt="Certificado SCORING TOP 5% Melhores PME Portugal 2025"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="mt-0.5 w-5 h-5 rounded-full bg-[#E8F6FC] flex items-center justify-center flex-shrink-0">
-                      <Star size={11} className="text-[#1C9FD6]" fill="#1C9FD6" />
-                    </div>
-                    <p className="text-[#5E7387] text-sm leading-relaxed">
-                      Certificada pela SCORING® com IDS <strong className="text-[#0D1E2C]">"Excelente"</strong> —
-                      solidez financeira acessível apenas a{" "}
-                      <strong className="text-[#0D1E2C]">5% das PME nacionais</strong>.
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="mt-0.5 w-5 h-5 rounded-full bg-[#E8F6FC] flex items-center justify-center flex-shrink-0">
-                      <CheckCircle size={11} className="text-[#1C9FD6]" />
-                    </div>
-                    <p className="text-[#5E7387] text-sm leading-relaxed">
-                      Certificado emitido em 25 set. 2025, validado por auditoria independente.
-                    </p>
-                  </div>
-                  <div className="mt-5 pt-5 border-t border-[#EEF4F8] flex items-center justify-between">
-                    <span className="text-xs text-[#5E7387] font-medium">6º Ano Consecutivo</span>
-                    <a
-                      href="/docs/certificado-scoring-top5-2025.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      download
-                      className="inline-flex items-center gap-1.5 text-xs text-[#1C9FD6] font-bold hover:underline"
-                    >
-                      <Download size={12} />
-                      Ver certificado
-                    </a>
-                  </div>
+              <div className="bg-white rounded-[24px] border border-[#D5E4EE] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
+                {/* Imagem completa sem crop */}
+                <Image
+                  src="/img/scoring.jpeg"
+                  alt="Certificado SCORING TOP 5% Melhores PME Portugal 2025"
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Botão de download */}
+                <div className="px-6 py-4 border-t border-[#EEF4F8] flex items-center justify-between">
+                  <span className="text-xs text-[#5E7387] font-medium">6º Ano Consecutivo</span>
+                  <a
+                    href="/docs/certificado-scoring-top5-2025.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="inline-flex items-center gap-1.5 text-xs text-[#1C9FD6] font-bold hover:underline"
+                  >
+                    <Download size={12} />
+                    Ver certificado
+                  </a>
                 </div>
               </div>
             </ScrollReveal>
