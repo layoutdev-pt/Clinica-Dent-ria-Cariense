@@ -542,10 +542,10 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Mosaic grid — large left + right column with photo + CTA */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-3" style={{ height: "580px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-3 md:h-[580px]">
 
-            {/* LEFT — featured photo, explicit height */}
-            <div className="group relative rounded-[24px] overflow-hidden bg-[#0D1E2C]" style={{ height: "580px" }}>
+            {/* LEFT — featured photo */}
+            <div className="group relative rounded-[24px] overflow-hidden bg-[#0D1E2C] h-[300px] sm:h-[400px] md:h-full">
               <Image
                 src={TEAM_MEMBERS[0].img}
                 alt={TEAM_MEMBERS[0].name}
@@ -561,10 +561,10 @@ export default function Home() {
             </div>
 
             {/* RIGHT column — top photo + bottom CTA */}
-            <div className="flex flex-col gap-3" style={{ height: "580px" }}>
+            <div className="flex flex-col gap-3 md:h-[580px]">
 
-              {/* Top — second team member, 60% height */}
-              <div className="group relative rounded-[20px] overflow-hidden bg-[#0D1E2C]" style={{ height: "340px" }}>
+              {/* Top — second team member */}
+              <div className="group relative rounded-[20px] overflow-hidden bg-[#0D1E2C] h-[220px] sm:h-[280px] md:h-[340px]">
                 <Image
                   src={TEAM_MEMBERS[1].img}
                   alt={TEAM_MEMBERS[1].name}
@@ -610,7 +610,7 @@ export default function Home() {
           TESTIMONIALS
       ══════════════════════════════════════════ */}
       <section className="py-14 md:py-24 bg-white">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16 overflow-hidden">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16">
           <ScrollReveal className="mb-10">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
               <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] leading-[1.08]">
@@ -628,7 +628,10 @@ export default function Home() {
               </div>
             </div>
           </ScrollReveal>
-          <TestimonialsSlider />
+          {/* overflow-hidden only on desktop to contain 3D carousel without clipping mobile card */}
+          <div className="md:overflow-hidden">
+            <TestimonialsSlider />
+          </div>
         </div>
       </section>
 
