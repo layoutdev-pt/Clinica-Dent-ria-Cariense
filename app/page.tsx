@@ -541,16 +541,55 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          {/* Mosaic grid — large left + right column with photo + CTA */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-3 md:h-[580px]">
+          {/* ── MOBILE: 2-col square cards grid + CTA ── */}
+          <div className="md:hidden flex flex-col gap-3">
+            <div className="grid grid-cols-2 gap-3">
+              {[TEAM_MEMBERS[0], TEAM_MEMBERS[1]].map((member) => (
+                <div key={member.name} className="group relative rounded-[20px] overflow-hidden bg-[#0D1E2C] aspect-square">
+                  <Image
+                    src={member.img}
+                    alt={member.name}
+                    fill
+                    sizes="50vw"
+                    className="object-cover object-[center_10%] group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-[#0D1E2C]/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <div className="text-white font-bold text-xs leading-snug">{member.name}</div>
+                    <div className="text-[#1C9FD6] text-[10px] font-medium mt-0.5">{member.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/sobre"
+              className="group relative flex items-center justify-between rounded-[20px] overflow-hidden px-6 py-5"
+              style={{ background: "linear-gradient(160deg, #1289BE 0%, #1C9FD6 50%, #0D84B8 100%)" }}
+            >
+              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+              <div className="relative z-10">
+                <div className="text-white/70 text-xs font-bold uppercase tracking-[0.18em] mb-1">A nossa equipa</div>
+                <div className="font-display text-white text-lg font-bold leading-[1.2]">
+                  Conheça todos os <span className="font-normal italic">especialistas</span>
+                </div>
+                <div className="text-white/60 text-xs mt-1">5 profissionais dedicados</div>
+              </div>
+              <div className="relative z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0 ml-4 group-hover:scale-110 transition-transform duration-200">
+                <ArrowRight size={16} className="text-[#1C9FD6]" />
+              </div>
+            </Link>
+          </div>
+
+          {/* ── DESKTOP: mosaic layout ── */}
+          <div className="hidden md:grid md:grid-cols-[1fr_360px] gap-3 md:h-[580px]">
 
             {/* LEFT — featured photo */}
-            <div className="group relative rounded-[24px] overflow-hidden bg-[#0D1E2C] h-[300px] sm:h-[400px] md:h-full">
+            <div className="group relative rounded-[24px] overflow-hidden bg-[#0D1E2C] h-full">
               <Image
                 src={TEAM_MEMBERS[0].img}
                 alt={TEAM_MEMBERS[0].name}
                 fill
-                sizes="(max-width:768px) 100vw, 55vw"
+                sizes="55vw"
                 className="object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/80 via-transparent to-transparent" />
@@ -561,15 +600,15 @@ export default function Home() {
             </div>
 
             {/* RIGHT column — top photo + bottom CTA */}
-            <div className="flex flex-col gap-3 md:h-[580px]">
+            <div className="flex flex-col gap-3 h-full">
 
               {/* Top — second team member */}
-              <div className="group relative rounded-[20px] overflow-hidden bg-[#0D1E2C] h-[220px] sm:h-[280px] md:h-[340px]">
+              <div className="group relative rounded-[20px] overflow-hidden bg-[#0D1E2C] h-[340px]">
                 <Image
                   src={TEAM_MEMBERS[1].img}
                   alt={TEAM_MEMBERS[1].name}
                   fill
-                  sizes="(max-width:768px) 100vw, 30vw"
+                  sizes="30vw"
                   className="object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/75 via-transparent to-transparent" />
