@@ -609,17 +609,15 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16">
-          <ScrollReveal className="mb-12">
-            <div className="flex items-end justify-between flex-wrap gap-6">
-              <div>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] leading-[1.08]">
-                  O que dizem os<br />
-                  <span className="text-[#1C9FD6] italic">nossos pacientes</span>
-                </h2>
-              </div>
-              <div className="flex items-center gap-3 bg-[#F7FAFC] border border-[#EEF4F8] rounded-2xl px-5 py-3">
+      <section className="py-14 md:py-24 bg-white">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 md:px-16 overflow-hidden">
+          <ScrollReveal className="mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0D1E2C] leading-[1.08]">
+                O que dizem os<br />
+                <span className="text-[#1C9FD6] italic">nossos pacientes</span>
+              </h2>
+              <div className="flex items-center gap-3 bg-[#F7FAFC] border border-[#EEF4F8] rounded-2xl px-5 py-3 self-start sm:self-auto">
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => <Star key={i} size={13} className="text-[#1C9FD6] fill-[#1C9FD6]" />)}
                 </div>
