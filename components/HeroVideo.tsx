@@ -27,7 +27,7 @@ export default function HeroVideo() {
     <video
       ref={ref}
       className="absolute inset-0 w-full h-full object-cover"
-      src="/hero.mp4"
+      src="https://ge1temxvqllmetmu.public.blob.vercel-storage.com/clinica%20carience.mp4"
       autoPlay
       muted
       loop
