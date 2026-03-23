@@ -8,19 +8,36 @@ export default function HeroVideo() {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    // Force all required attributes imperatively for iOS Safari compatibility
+
+    // Set ALL attributes imperatively — React hydration can miss some on iOS Safari
     v.muted = true;
     v.defaultMuted = true;
     v.loop = true;
     v.setAttribute("playsinline", "");
     v.setAttribute("webkit-playsinline", "");
-    v.setAttribute("x5-playsinline", ""); // WeChat/Android WebView
-    const tryPlay = () => { v.muted = true; v.play().catch(() => {}); };
+    v.setAttribute("x5-playsinline", "");
+
+    const tryPlay = () => {
+      v.muted = true;
+      v.play().catch(() => {});
+    };
+
+    // Try immediately (works if video is already in cache or loading)
     tryPlay();
+
+    // Also try as soon as the browser has enough data to play
+    v.addEventListener("loadedmetadata", tryPlay);
+    v.addEventListener("canplay", tryPlay);
+
     // Resume after tab becomes visible again
     const onVisibility = () => { if (!document.hidden) tryPlay(); };
     document.addEventListener("visibilitychange", onVisibility);
-    return () => document.removeEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      v.removeEventListener("loadedmetadata", tryPlay);
+      v.removeEventListener("canplay", tryPlay);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
 
   return (
