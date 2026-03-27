@@ -42,8 +42,12 @@ export default function Footer() {
           <div>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Legal</h3>
             <div className="flex flex-col gap-2.5">
-              {["Termos e condições", "Política de Privacidade", "Política de Cookies"].map((l) => (
-                <a key={l} href="#" className="text-sm text-white/60 hover:text-[#1C9FD6] transition-colors duration-200">{l}</a>
+              {[
+                ["Termos e Condições", "/termos-e-condicoes"],
+                ["Política de Privacidade", "/politica-de-privacidade"],
+                ["Política de Cookies", "/politica-de-cookies"],
+              ].map(([label, href]) => (
+                <Link key={href} href={href} className="text-sm text-white/60 hover:text-[#1C9FD6] transition-colors duration-200">{label}</Link>
               ))}
               <a
                 href="https://www.livroreclamacoes.pt"
@@ -99,9 +103,9 @@ export default function Footer() {
             <a href="https://www.layoutagency.pt" target="_blank" className="text-[#1C9FD6]">Layout Agency</a>
           </span>
           <div className="flex gap-4">
-            {["Termos", "Privacidade", "Cookies"].map((l) => (
-              <a key={l} href="#" className="hover:text-[#1C9FD6] transition-colors">{l}</a>
-            ))}
+            <Link href="/termos-e-condicoes" className="hover:text-[#1C9FD6] transition-colors">Termos</Link>
+            <Link href="/politica-de-privacidade" className="hover:text-[#1C9FD6] transition-colors">Privacidade</Link>
+            <Link href="/politica-de-cookies" className="hover:text-[#1C9FD6] transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

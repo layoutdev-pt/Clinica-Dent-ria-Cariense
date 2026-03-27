@@ -31,8 +31,8 @@ function validate(fields: FormFields): FieldErrors {
     errors.nome = "Insira o seu nome completo.";
   if (!fields.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
     errors.email = "Insira um email válido.";
-  if (!fields.mensagem.trim() || fields.mensagem.trim().length < 10)
-    errors.mensagem = "A mensagem deve ter pelo menos 10 caracteres.";
+  if (!fields.mensagem.trim())
+    errors.mensagem = "Por favor, escreva uma mensagem.";
   if (!fields.privacidade)
     errors.privacidade = "Deve aceitar a política de privacidade.";
   return errors;
@@ -235,7 +235,7 @@ export default function ContactForm() {
             />
             <label htmlFor="privacidade" className="text-xs text-[#5E7387] leading-relaxed cursor-pointer">
               Ao enviar este formulário, aceita a nossa{" "}
-              <a href="#" className="text-[#1C9FD6] underline">política de privacidade</a>.{" "}
+              <a href="/politica-de-privacidade" className="text-[#1C9FD6] underline">política de privacidade</a>.{" "}
               <span className="text-red-400">*</span>
             </label>
           </div>

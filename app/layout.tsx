@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import CookieBanner from "@/components/CookieBanner";
 
 const BASE_URL = "https://www.clinicacariense.pt";
 
@@ -182,6 +183,7 @@ export default function RootLayout({
         <main className="pt-[68px]">{children}</main>
         <Footer />
         <FloatingCTA />
+        <CookieBanner />
       </body>
     </html>
   );

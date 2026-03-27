@@ -1,14 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const DESTINATION_EMAIL = "geral@clinicacariense.pt";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { nome, email, telefone, localizacao, mensagem } = body;
+    const { nome, email, telefone, localizacao, mensagem, privacidade } = body;
 
     // Server-side validation
     if (!nome || typeof nome !== "string" || nome.trim().length < 2) {
@@ -17,9 +17,12 @@ export async function POST(req: Request) {
     if (!email || typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "Email inválido." }, { status: 400 });
     }
-    if (!mensagem || typeof mensagem !== "string" || mensagem.trim().length < 10) {
-      return NextResponse.json({ error: "Mensagem demasiado curta." }, { status: 400 });
+    if (!mensagem || typeof mensagem !== "string" || !mensagem.trim()) {
+      return NextResponse.json({ error: "Mensagem em falta." }, { status: 400 });
     }
+
+    const consentDate = new Date().toLocaleString("pt-PT", { timeZone: "Europe/Lisbon" });
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "—";
 
     const { error } = await resend.emails.send({
       from: "Clínica Cariense <onboarding@resend.dev>",
@@ -54,6 +57,24 @@ export async function POST(req: Request) {
             <hr style="border:0;border-top:1px solid #D5E4EE;margin:16px 0"/>
             <p style="font-size:13px;color:#5E7387;margin:0 0 8px">Mensagem</p>
             <p style="font-size:14px;line-height:1.6;margin:0;white-space:pre-wrap">${mensagem.trim()}</p>
+            <hr style="border:0;border-top:1px solid #D5E4EE;margin:20px 0"/>
+            <div style="background:#F8FBFD;border:1px solid #D5E4EE;border-radius:8px;padding:14px 16px">
+              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#5E7387;margin:0 0 8px">Registo de Consentimento (RGPD)</p>
+              <table style="width:100%;border-collapse:collapse">
+                <tr>
+                  <td style="font-size:12px;color:#5E7387;padding:3px 0;width:140px">Política de privacidade</td>
+                  <td style="font-size:12px;font-weight:600;color:#0D1E2C">${privacidade ? "✓ Aceite" : "✗ Não aceite"}</td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;color:#5E7387;padding:3px 0">Data e hora</td>
+                  <td style="font-size:12px;color:#0D1E2C">${consentDate}</td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;color:#5E7387;padding:3px 0">IP (anonimizado)</td>
+                  <td style="font-size:12px;color:#0D1E2C">${ip}</td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       `,
