@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 };
 import { ArrowRight, Phone, Star, MapPin, CheckCircle, ChevronDown, Award, Shield, Search, Users, ThumbsUp, Stethoscope, Smile, Scissors, Heart, Baby, Sparkles, ScanLine, Layers, RefreshCw, FlaskConical } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import ServiceSquareCard from "@/components/ServiceSquareCard";
 import Counter from "@/components/Counter";
 import PatientTimeline from "@/components/PatientTimeline";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
@@ -475,6 +476,7 @@ export default function Home() {
                   {
                     title: "Cirurgia Oral",
                     desc: "Extracções, sisos e biópsias realizadas com máximo conforto e segurança.",
+                    longDesc: "A Cirurgia Oral engloba um conjunto de procedimentos clínicos realizados na cavidade oral que requerem técnica cirúrgica. Na Clínica Dentária Cariense realizamos extrações simples e complexas, incluindo dentes do siso inclusos ou semi-inclusos, remoção de quistos, biópsias de tecidos moles e tratamento de patologias ósseas.\n\nTodos os procedimentos são realizados com anestesia local eficaz garantindo sempre o máximo conforto do paciente. A nossa equipa acompanha o paciente em todo o processo pós-operatório para uma recuperação rápida e sem complicações.",
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 22l8-8-9-9-8 8 9 9z"/><path d="M2 22l4-4"/>
@@ -484,6 +486,7 @@ export default function Home() {
                   {
                     title: "Dentisteria",
                     desc: "Tratamento de cáries e restaurações estéticas focadas na preservação da estrutura original do dente.",
+                    longDesc: "A Dentisteria Conservadora tem como principal objetivo tratar a cárie dentária e restaurar os dentes danificados, preservando ao máximo a estrutura saudável original. Utilizamos materiais compósitos de última geração que mimetizam a cor e a translucidez do dente natural, garantindo um resultado estético excelente e uma função mastigatória plena.\n\nAs restaurações são realizadas com técnicas adesivas minimamente invasivas, evitando desgastes desnecessários. Esta área inclui também inlays, onlays e facetas diretas para casos de maior complexidade estética ou estrutural.",
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 2C9.2 2 7 4.2 7 7c0 1.5.6 2.8 1.5 3.8L10 21h4l1.5-10.2C16.4 9.8 17 8.5 17 7c0-2.8-2.2-5-5-5z"/>
@@ -492,7 +495,8 @@ export default function Home() {
                   },
                   {
                     title: "Periodontologia",
-                    desc: "Diagnóstico e tratamento de doenças das gengivas, fundamentais para a estabilidade da sua saúde oral.",
+                    desc: "Diagnóstico e tratamento de doenças das gengivas e periodontais, fundamentais para a estabilidade da sua saúde oral.",
+                    longDesc: "A Periodontologia é a especialidade que se ocupa da prevenção, diagnóstico e tratamento das doenças periodontais — infeções que afetam as gengivas e o osso de suporte dos dentes. A doença periodontal (periodontite) é a principal causa de perda de dentes nos adultos e está associada a doenças sistémicas como diabetes e doenças cardiovasculares.\n\nO tratamento inclui destartarização profunda (remoção de tártaro supra e subgengival), alisamentos radiculares e, em casos avançados, cirurgia periodontal. A manutenção periódica é essencial para controlar a progressão da doença e manter a saúde a longo prazo.",
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                         <path d="M5 17c3-6 11-6 14 0"/><path d="M7 13c2-4 8-4 10 0"/><circle cx="12" cy="7" r="3"/>
@@ -502,6 +506,7 @@ export default function Home() {
                   {
                     title: "Endodontia",
                     desc: "Tratamento de canais moderno e indolor. Salva o dente natural com instrumentação rotatória.",
+                    longDesc: "A Endodontia — vulgarmente conhecida como tratamento de canais ou desvitalização — é a especialidade responsável por tratar a polpa dentária infetada ou necrosada, salvando o dente natural e eliminando a dor de forma definitiva.\n\nNa Clínica Dentária Cariense utilizamos instrumentação rotatória de níquel-titânio e localizadores apicais eletrónicos para uma limpeza e conformação dos canais altamente precisa. O procedimento é realizado sob anestesia local eficaz, sendo praticamente indolor. Após o tratamento, o dente é restaurado e pode durar décadas em função normal.",
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                         <path d="M12 2C9.2 2 7 4.2 7 7c0 1.5.6 2.8 1.5 3.8L10 21h4l1.5-10.2C16.4 9.8 17 8.5 17 7c0-2.8-2.2-5-5-5z"/>
@@ -511,16 +516,7 @@ export default function Home() {
                   },
                 ].map((svc, i) => (
                   <ScrollReveal key={i} delay={i * 80}>
-                    <div className="group bg-white rounded-[20px] p-6 border border-[#EEF4F8] hover:border-[#1C9FD6]/20 hover:shadow-[0_12px_40px_rgba(28,159,214,0.1)] hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
-                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 bg-[#E8F6FC] text-[#1C9FD6]">
-                        {svc.icon}
-                      </div>
-                      <h3 className="font-bold text-[#0D1E2C] text-[1rem] mb-2">{svc.title}</h3>
-                      <p className="text-[#5E7387] text-sm leading-relaxed flex-1">{svc.desc}</p>
-                      <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-[#1C9FD6]">
-                        Saber mais <ArrowRight size={12} />
-                      </div>
-                    </div>
+                    <ServiceSquareCard svc={svc} />
                   </ScrollReveal>
                 ))}
               </div>

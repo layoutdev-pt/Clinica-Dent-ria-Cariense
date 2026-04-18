@@ -28,7 +28,7 @@ export default function ServiceModal({ title, icon, shortDesc, longDesc, onClose
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4"
       style={{ background: "rgba(13,30,44,0.55)", backdropFilter: "blur(4px)" }}
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
