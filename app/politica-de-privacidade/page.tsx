@@ -25,7 +25,7 @@ export default function PoliticaPrivacidade() {
           <div className="mt-6 p-5 bg-[#E8F6FC] rounded-2xl border border-[#D5E4EE] text-sm text-[#2A3A4A] space-y-1">
             <p><strong>Entidade responsável:</strong> Clínica Dentária Cariense (NIF: 504 420 470)</p>
             <p><strong>Morada:</strong> Cerca do Conde, Lote 41, Loja B/D, 6250-111 Caria, Portugal</p>
-            <p><strong>Contacto:</strong> <a href="mailto:geral@clinicacariense.pt" className="text-[#1C9FD6] hover:underline">geral@clinicacariense.pt</a> | Tel.: <a href="tel:+351275471751" className="text-[#1C9FD6] hover:underline">275 471 751</a> <span className="text-[#5E7387]">(Chamada para a rede fixa nacional)</span></p>
+            <p><strong>Contacto:</strong> <a href="mailto:cdcariense@gmail.com" className="text-[#1C9FD6] hover:underline">cdcariense@gmail.com</a> | Tel.: <a href="tel:+351275471751" className="text-[#1C9FD6] hover:underline">275 471 751</a> <span className="text-[#5E7387]">(Chamada para a rede fixa nacional)</span></p>
           </div>
         </div>
 
@@ -97,8 +97,8 @@ export default function PoliticaPrivacidade() {
             </h2>
             <p className="text-sm leading-relaxed text-[#3A4A5A]">
               O utilizador tem o direito legal de solicitar o acesso, retificação, limitação de tratamento ou apagamento dos seus dados pessoais (direito a ser esquecido). Para exercer qualquer um destes direitos, deverá enviar um pedido formal e por escrito para o e-mail:{" "}
-              <a href="mailto:geral@clinicacariense.pt" className="text-[#1C9FD6] hover:underline font-medium">
-                geral@clinicacariense.pt
+              <a href="mailto:cdcariense@gmail.com" className="text-[#1C9FD6] hover:underline font-medium">
+                cdcariense@gmail.com
               </a>.
             </p>
           </article>

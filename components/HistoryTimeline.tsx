@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const MILESTONES = [
   {
-    year: "2003",
+    year: "1999",
     title: "Abertura em Caria",
     desc: "Abertura da primeira clínica em Caria, com a missão de levar cuidados dentários de excelência ao interior de Portugal.",
     icon: (
@@ -50,7 +50,7 @@ const MILESTONES = [
     ),
   },
   {
-    year: "2024",
+    year: "Atualidade",
     title: "Referência regional",
     desc: "Mais de 12.000 pacientes tratados e reconhecimento regional como referência em saúde oral no interior de Portugal.",
     icon: (
@@ -100,11 +100,12 @@ function MilestoneStep({
       </div>
 
       {/* Center node — desktop */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 flex-col items-center z-10">
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-0 flex-col items-center z-10" style={{ paddingTop: 0 }}>
         <div
           style={{
             width: 52,
             height: 52,
+            flexShrink: 0,
             borderRadius: "50%",
             display: "flex",
             alignItems: "center",
@@ -119,21 +120,6 @@ function MilestoneStep({
         >
           {milestone.icon}
         </div>
-
-        {index < MILESTONES.length - 1 && (
-          <div style={{ width: 2, height: 70, background: "#EEF4F8", overflow: "hidden" }}>
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                background: "linear-gradient(to bottom, #1C9FD6, #1C9FD6)",
-                transform: isVisible ? "scaleY(1)" : "scaleY(0)",
-                transformOrigin: "top",
-                transition: `transform 0.7s ease ${parseFloat(delay) + 0.3}s`,
-              }}
-            />
-          </div>
-        )}
       </div>
 
       {/* Mobile node */}
@@ -193,8 +179,26 @@ export default function HistoryTimeline() {
 
   return (
     <div className="relative">
-      {/* Background line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#E2ECF4] -translate-x-1/2 hidden md:block" />
+      {/* Background track line — from top of first icon to top of last icon, offset by 26px (half icon) */}
+      <div
+        className="absolute hidden md:block -translate-x-1/2 pointer-events-none"
+        style={{ left: "50%", top: 26, bottom: 26, width: 2, background: "#E2ECF4", zIndex: 1 }}
+      />
+      {/* Animated fill line */}
+      <div
+        className="absolute hidden md:block -translate-x-1/2 pointer-events-none"
+        style={{
+          left: "50%",
+          top: 26,
+          bottom: 26,
+          width: 2,
+          background: "#1C9FD6",
+          zIndex: 2,
+          transformOrigin: "top",
+          transform: visibleSteps[MILESTONES.length - 1] ? "scaleY(1)" : `scaleY(${visibleSteps.filter(Boolean).length / MILESTONES.length})`,
+          transition: "transform 0.6s ease",
+        }}
+      />
 
       <div className="flex flex-col gap-0">
         {MILESTONES.map((milestone, i) => (

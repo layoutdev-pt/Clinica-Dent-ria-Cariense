@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
+import SectionTag from "@/components/SectionTag";
+import CtaBanner from "@/components/CtaBanner";
+import FeaturedServicesCarousel from "@/components/FeaturedServicesCarousel";
+import ServiceSquareCard from "@/components/ServiceSquareCard";
 
 export const metadata: Metadata = {
   title: "Serviços — Implantologia, Ortodontia, Estética e Mais",
@@ -36,10 +41,6 @@ export const metadata: Metadata = {
   },
 };
 
-import ScrollReveal from "@/components/ScrollReveal";
-import SectionTag from "@/components/SectionTag";
-import CtaBanner from "@/components/CtaBanner";
-import FeaturedServicesCarousel from "@/components/FeaturedServicesCarousel";
 
 /* ─── Dados ─────────────────────────── */
 
@@ -134,21 +135,66 @@ const IcoCog = () => (
 );
 
 const SECONDARY_SERVICES = [
-  { title: "Cirurgia Oral", desc: "Procedimentos seguros, da extração de dentes do siso ao tratamento de lesões complexas.", icon: <IcoScalpel /> },
-  { title: "Dentisteria", desc: "Tratamento de cáries e restaurações estéticas focadas na preservação da estrutura original do dente.", icon: <IcoTooth /> },
-  { title: "Endodontia", desc: "Desvitalizações seguras para tratar infeções e salvar dentes que, de outra forma, teriam de ser extraídos.", icon: <IcoCanal /> },
-  { title: "Odontopediatria", desc: "Cuidados preventivos num ambiente descontraído, garantindo que as crianças crescem sem medos.", icon: <IcoKid /> },
-  { title: "Periodontologia", desc: "Diagnóstico e tratamento de doenças das gengivas, fundamentais para a estabilidade da sua saúde oral.", icon: <IcoGum /> },
-  { title: "Estética Dentária", desc: "Tratamentos personalizados focados em melhorar a harmonia e a cor do seu sorriso de forma natural.", icon: <IcoStar /> },
-  { title: "Reabilitação Oral", desc: "A abordagem completa e integrada para restaurar a função mastigatória, a fonética e a estética de sorrisos com grandes desgastes.", icon: <IcoCog /> },
-  { title: "Medicina Oral", desc: "A área focada na prevenção, diagnóstico e tratamento de lesões nos tecidos moles da cavidade oral.", icon: <IcoShield /> },
-  { title: "Imagiologia", desc: "Radiografias digitais e CBCT para um diagnóstico preciso e seguro, com a mínima exposição a radiação.", icon: <IcoScan /> },
+  {
+    title: "Cirurgia Oral",
+    desc: "Procedimentos seguros, da extração de dentes do siso ao tratamento de lesões complexas.",
+    longDesc: "A Cirurgia Oral engloba um conjunto de procedimentos clínicos realizados na cavidade oral que requerem técnica cirúrgica. Na Clínica Dentária Cariense realizamos extrações simples e complexas, incluindo dentes do siso inclusos ou semi-inclusos, remoção de quistos, biópsias de tecidos moles e tratamento de patologias ósseas.\n\nTodos os procedimentos são realizados com anestesia local eficaz garantindo sempre o máximo conforto do paciente. A nossa equipa acompanha o paciente em todo o processo pós-operatório para uma recuperação rápida e sem complicações.",
+    icon: <IcoScalpel />,
+  },
+  {
+    title: "Dentisteria",
+    desc: "Tratamento de cáries e restaurações estéticas focadas na preservação da estrutura original do dente.",
+    longDesc: "A Dentisteria Conservadora tem como principal objetivo tratar a cárie dentária e restaurar os dentes danificados, preservando ao máximo a estrutura saudável original. Utilizamos materiais compósitos de última geração que mimetizam a cor e a translucidez do dente natural, garantindo um resultado estético excelente e uma função mastigatória plena.\n\nAs restaurações são realizadas com técnicas adesivas minimamente invasivas, evitando desgastes desnecessários. Esta área inclui também inlays, onlays e facetas diretas para casos de maior complexidade estética ou estrutural.",
+    icon: <IcoTooth />,
+  },
+  {
+    title: "Endodontia",
+    desc: "Desvitalizações seguras para tratar infeções e salvar dentes que, de outra forma, teriam de ser extraídos.",
+    longDesc: "A Endodontia — vulgarmente conhecida como tratamento de canais ou desvitalização — é a especialidade responsável por tratar a polpa dentária infetada ou necrosada, salvando o dente natural e eliminando a dor de forma definitiva.\n\nNa Clínica Dentária Cariense utilizamos instrumentação rotatória de níquel-titânio e localizadores apicais eletrónicos para uma limpeza e conformação dos canais altamente precisa. O procedimento é realizado sob anestesia local eficaz, sendo praticamente indolor. Após o tratamento, o dente é restaurado e pode durar décadas em função normal.",
+    icon: <IcoCanal />,
+  },
+  {
+    title: "Odontopediatria",
+    desc: "Cuidados preventivos num ambiente descontraído, garantindo que as crianças crescem sem medos.",
+    longDesc: "A Odontopediatria é a especialidade dedicada à saúde oral das crianças e adolescentes, desde o nascimento até à idade adulta. O nosso objetivo é criar uma experiência positiva nas primeiras visitas ao dentista, evitando o desenvolvimento de ansiedade ou fobia dentária.\n\nA nossa abordagem inclui consultas de prevenção e higiene oral, aplicação de selantes de fissuras, flúor tópico, restaurações em dentes de leite e acompanhamento do desenvolvimento da dentição. Trabalhamos de forma lúdica e adaptada à idade de cada criança, sempre num ambiente acolhedor e seguro.",
+    icon: <IcoKid />,
+  },
+  {
+    title: "Periodontologia",
+    desc: "Diagnóstico e tratamento de doenças das gengivas e periodontais, fundamentais para a estabilidade da sua saúde oral.",
+    longDesc: "A Periodontologia é a especialidade que se ocupa da prevenção, diagnóstico e tratamento das doenças periodontais — infeções que afetam as gengivas e o osso de suporte dos dentes. A doença periodontal (periodontite) é a principal causa de perda de dentes nos adultos e está associada a doenças sistémicas como diabetes e doenças cardiovasculares.\n\nO tratamento inclui destartarização profunda (remoção de tártaro supra e subgengival), alisamentos radiculares e, em casos avançados, cirurgia periodontal. A manutenção periódica é essencial para controlar a progressão da doença e manter a saúde a longo prazo.",
+    icon: <IcoGum />,
+  },
+  {
+    title: "Estética Dentária",
+    desc: "Tratamentos personalizados focados em melhorar a harmonia e a cor do seu sorriso de forma natural.",
+    longDesc: "A Estética Dentária engloba um conjunto de tratamentos que visam melhorar a aparência do sorriso, respeitando sempre a harmonia facial e as características naturais de cada paciente. Na Clínica Dentária Cariense realizamos um planeamento digital do sorriso antes de qualquer intervenção, para que o resultado final corresponda exatamente às suas expectativas.\n\nOs tratamentos mais comuns incluem branqueamento dentário profissional, facetas em cerâmica ou compósito, remodelação do contorno gengival e restaurações estéticas diretas. O objetivo é sempre um resultado natural, harmonioso e duradouro.",
+    icon: <IcoStar />,
+  },
+  {
+    title: "Reabilitação Oral",
+    desc: "A abordagem completa e integrada para restaurar a função mastigatória, a fonética e a estética de sorrisos.",
+    longDesc: "A Reabilitação Oral é uma área multidisciplinar que trata casos complexos onde vários dentes estão comprometidos ou ausentes, afetando a função mastigatória, a estética e a qualidade de vida do paciente. Inclui a combinação de implantes, próteses, tratamentos periodontais e restaurações para reconstruir a dentição de forma integrada e harmoniosa.\n\nO planeamento é rigoroso e envolve modelos de estudo, análise oclusal e frequentemente uma pré-visualização digital do resultado final. O tratamento é faseado e acompanhado de perto pela nossa equipa multidisciplinar, garantindo o sucesso a longo prazo.",
+    icon: <IcoCog />,
+  },
+  {
+    title: "Medicina Oral",
+    desc: "A área focada na prevenção, diagnóstico e tratamento de lesões nos tecidos moles da cavidade oral.",
+    longDesc: "A Medicina Oral é a especialidade que se dedica ao diagnóstico e tratamento de doenças que afetam os tecidos moles da boca — língua, gengivas, mucosa jugal, palato e lábios. É uma área de enorme importância na deteção precoce do cancro oral e de outras patologias sistémicas com manifestação na cavidade oral.\n\nAs consultas de Medicina Oral incluem rastreio de lesões suspeitas, biópsias, tratamento de aftas recorrentes, xerostomia (boca seca), líquen plano oral e outras condições. A deteção precoce é fundamental para o sucesso do tratamento — recomendamos consultas de rastreio anuais.",
+    icon: <IcoShield />,
+  },
+  {
+    title: "Imagiologia",
+    desc: "Radiografias digitais e CBCT para um diagnóstico preciso e seguro, com a mínima exposição a radiação.",
+    longDesc: "A Imagiologia Dentária é o conjunto de meios de diagnóstico por imagem utilizados em Medicina Dentária para avaliar estruturas que não são visíveis a olho nu — osso, raízes, nervos e seios maxilares. Na Clínica Dentária Cariense dispomos de radiografia digital periapical e panorâmica, com dose de radiação significativamente inferior à radiografia convencional.\n\nPara casos de maior complexidade (implantes, cirurgias ósseas, endodontia complexa), utilizamos tomografia computorizada de feixe cónico (CBCT), que fornece imagens tridimensionais de alta resolução para um planeamento cirúrgico preciso e seguro.",
+    icon: <IcoScan />,
+  },
 ];
 
 const WHY_US = [
   {
     icon: <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/></svg>,
-    title: "+28 Anos de História",
+    title: "+27 Anos de História",
     desc: "A confiança de gerações a cuidar do seu sorriso com rigor.",
   },
   {
@@ -320,18 +366,3 @@ export default function ServicosPage() {
   );
 }
 
-/* ─── Sub-componente: card quadrado igual homepage ── */
-function ServiceSquareCard({ svc }: { svc: { title: string; desc: string; icon: React.ReactNode } }) {
-  return (
-    <div className="group bg-white rounded-[20px] p-6 border border-[#EEF4F8] hover:border-[#1C9FD6]/20 hover:shadow-[0_12px_40px_rgba(28,159,214,0.1)] hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
-      <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 bg-[#E8F6FC] text-[#1C9FD6]">
-        {svc.icon}
-      </div>
-      <h3 className="font-bold text-[#0D1E2C] text-[1rem] mb-2">{svc.title}</h3>
-      <p className="text-[#5E7387] text-sm leading-relaxed flex-1">{svc.desc}</p>
-      <a href="#contacto" className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#1C9FD6] hover:gap-2.5 transition-all duration-200">
-        Saber mais <ArrowRight size={12} />
-      </a>
-    </div>
-  );
-}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle, Smartphone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contactos — Marque a sua Consulta",
@@ -73,10 +73,16 @@ const QUICK_CONTACTS = [
     action: { label: "Ligar agora", href: "tel:275471751" },
   },
   {
+    icon: <Smartphone size={22} className="text-[#1C9FD6]" />,
+    title: "Telemóvel",
+    lines: ["927 402 729 (Caria)", "275 971 728 (Unhais / Peso)"],
+    action: { label: "Ligar agora", href: "tel:927402729" },
+  },
+  {
     icon: <Mail size={22} className="text-[#1C9FD6]" />,
     title: "E-mail",
-    lines: ["geral@clinicacariense.pt", "Respondemos em 24h úteis"],
-    action: { label: "Enviar e-mail", href: "mailto:geral@clinicacariense.pt" },
+    lines: ["cdcariense@gmail.com", "Respondemos em 24h úteis"],
+    action: { label: "Enviar e-mail", href: "mailto:cdcariense@gmail.com" },
   },
   {
     icon: <MessageCircle size={22} className="text-[#1C9FD6]" />,
@@ -112,7 +118,7 @@ export default function ContactosPage() {
 
       {/* ── QUICK CONTACTS ── */}
       <section className="py-16 bg-white border-b border-[#D5E4EE]">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-5">
+        <div className="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-5">
           {QUICK_CONTACTS.map((c, i) => (
             <ScrollReveal key={i} delay={i * 80}>
               <div className="flex flex-col items-center text-center p-7 bg-[#F7FAFC] rounded-[20px] border border-[#D5E4EE] h-full">

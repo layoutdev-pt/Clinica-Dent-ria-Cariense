@@ -24,13 +24,13 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-[navbarDrop_0.5s_cubic-bezier(0.16,1,0.3,1)_both] ${
+        className={`fixed top-0 left-0 right-0 z-50 overflow-visible transition-all duration-300 animate-[navbarDrop_0.5s_cubic-bezier(0.16,1,0.3,1)_both] ${
           scrolled
             ? "bg-white shadow-[0_2px_24px_rgba(13,30,44,0.08)] border-b border-[#EEF4F8]"
             : "bg-white/95 backdrop-blur-sm"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-6 h-[68px] flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-6 h-[68px] flex items-center justify-between overflow-visible">
 
           {/* Left nav */}
           <nav className="hidden md:flex items-center gap-1" aria-label="Navegação principal">
@@ -55,11 +55,11 @@ export default function Navbar() {
           {/* Logo — center on desktop */}
           <Link
             href="/"
-            className="flex-shrink-0 absolute left-1/2 -translate-x-1/2"
+            className="flex-shrink-0 absolute left-1/2 -translate-x-1/2 overflow-visible z-10"
             aria-label="Clínica Dentária Cariense — Início"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/logo.png" alt="Clínica Dentária Cariense" className="h-14 w-auto object-contain" />
+            <img src="/img/logo.png" alt="Clínica Dentária Cariense" className="h-12 w-auto max-w-none object-contain" />
           </Link>
 
           {/* Right actions */}

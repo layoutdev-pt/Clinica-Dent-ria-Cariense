@@ -134,7 +134,7 @@ export default function TestimonialsSlider() {
       <div className="hidden md:block">
         <div
           className="relative flex items-center justify-center"
-          style={{ perspective: "1200px", height: 340 }}
+          style={{ perspective: "1200px", height: 380 }}
           {...touchHandlers}
         >
           {slots.map((offset) => {
@@ -180,7 +180,7 @@ export default function TestimonialsSlider() {
                 }}
               >
                 <div
-                  className="bg-white rounded-[20px] p-7 h-full"
+                  className={`bg-white rounded-[20px] p-7 ${isCenter ? "" : "h-full overflow-hidden"}`}
                   style={{
                     boxShadow: isCenter
                       ? "0 24px 64px rgba(13,30,44,0.15), 0 0 0 1.5px #1C9FD6"
@@ -191,7 +191,7 @@ export default function TestimonialsSlider() {
                   <div key={isCenter ? contentKey : undefined} className={isCenter ? cardContentAnim : ""}>
                     <StarRow />
                     <div className="font-display text-5xl text-[#1C9FD6]/15 leading-none mb-1 select-none">&ldquo;</div>
-                    <p className="text-sm text-[#2A3A4A] leading-[1.85] mb-5 line-clamp-4">{t.text}</p>
+                    <p className={`text-sm text-[#2A3A4A] leading-[1.85] mb-5 ${isCenter ? "" : "line-clamp-4"}`}>{t.text}</p>
                     <div className="flex items-center gap-3">
                       <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-[#E8F6FC] ring-2 ring-[#1C9FD6]/15">
                         <Image src={t.avatar} alt={t.name} width={44} height={44} className="object-cover w-full h-full" />

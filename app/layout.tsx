@@ -100,10 +100,10 @@ export default function RootLayout({
                   name: "Clínica Dentária Cariense",
                   url: BASE_URL,
                   description:
-                    "Clínica Dentária Cariense — 20+ anos de excelência em saúde oral no interior de Portugal.",
-                  foundingDate: "2003",
+                    "Clínica Dentária Cariense — 27+ anos de excelência em saúde oral no interior de Portugal.",
+                  foundingDate: "1999",
                   telephone: "+351275471751",
-                  email: "geral@clinicacariense.pt",
+                  email: "cdcariense@gmail.com",
                   aggregateRating: {
                     "@type": "AggregateRating",
                     ratingValue: "5.0",

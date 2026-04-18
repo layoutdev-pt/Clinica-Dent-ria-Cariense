@@ -17,10 +17,10 @@ export default function Footer() {
               Cuidamos do seu sorriso com rigor clínico, tecnologia de ponta e um atendimento verdadeiramente humano.
             </p>
             <div className="flex gap-2.5">
-              <a href="#" aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center text-white/70 hover:bg-[#1C9FD6] hover:text-white transition-all duration-200">
+              <a href="https://www.facebook.com/CDCariense" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center text-white/70 hover:bg-[#1C9FD6] hover:text-white transition-all duration-200">
                 <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
               </a>
-              <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center text-white/70 hover:bg-[#1C9FD6] hover:text-white transition-all duration-200">
+              <a href="https://www.instagram.com/cdcariense/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center text-white/70 hover:bg-[#1C9FD6] hover:text-white transition-all duration-200">
                 <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
             </div>
@@ -91,7 +91,7 @@ export default function Footer() {
                 <Mail size={15} className="text-[#1C9FD6] flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-white/40 mb-0.5">Email</div>
-                  <a href="mailto:geral@clinicacariense.pt" className="text-sm text-white/70 hover:text-[#1C9FD6] transition-colors">geral@clinicacariense.pt</a>
+                  <a href="mailto:cdcariense@gmail.com" className="text-sm text-white/70 hover:text-[#1C9FD6] transition-colors">cdcariense@gmail.com</a>
                 </div>
               </div>
             </div>

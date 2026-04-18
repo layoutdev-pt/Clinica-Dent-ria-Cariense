@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     images: [{ url: "/img/clinic-caria-ext.png", width: 1200, height: 630, alt: "Clínica Dentária Cariense" }],
   },
 };
-import { ArrowRight, Phone, Star, MapPin, CheckCircle, ChevronDown, Award, Shield, Search, Users, ThumbsUp, Stethoscope } from "lucide-react";
+import { ArrowRight, Phone, Star, MapPin, CheckCircle, ChevronDown, Award, Shield, Search, Users, ThumbsUp, Stethoscope, Smile, Scissors, Heart, Baby, Sparkles, ScanLine, Layers, RefreshCw, FlaskConical } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import Counter from "@/components/Counter";
 import PatientTimeline from "@/components/PatientTimeline";
@@ -65,7 +65,7 @@ const DENTAL_SPECIALTIES = [
   },
   {
     title: "Cirurgia Oral",
-    desc: "Extracções, sisos e biópsias com máximo conforto e sedação consciente disponível.",
+    desc: "Extracções, sisos e biópsias realizadas com máximo conforto e segurança.",
     img: "/img/service-surgery.png",
   },
   {
@@ -193,13 +193,25 @@ export default function Home() {
           {/* Marquee */}
           <div className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden bg-white/10 backdrop-blur-md border-t border-white/10 py-3.5">
             <div className="animate-marquee flex gap-10 whitespace-nowrap">
-              {[...Array(4)].flatMap(() => [
-                { label: "Profissionais Experientes", icon: <Award size={13} className="text-white" /> },
-                { label: "Tecnologia e Segurança", icon: <Shield size={13} className="text-white" /> },
+              {[...Array(2)].flatMap(() => [
+                { label: "Implantologia", icon: <ThumbsUp size={13} className="text-white" /> },
+                { label: "Ortodontia", icon: <Stethoscope size={13} className="text-white" /> },
+                { label: "Branqueamento Dentário", icon: <Sparkles size={13} className="text-white" /> },
+                { label: "Cirurgia Oral", icon: <Scissors size={13} className="text-white" /> },
+                { label: "Endodontia", icon: <Layers size={13} className="text-white" /> },
+                { label: "Odontopediatria", icon: <Baby size={13} className="text-white" /> },
+                { label: "Periodontologia", icon: <Heart size={13} className="text-white" /> },
+                { label: "Estética Dentária", icon: <Smile size={13} className="text-white" /> },
+                { label: "Prótese Fixa", icon: <RefreshCw size={13} className="text-white" /> },
+                { label: "Prótese Removível", icon: <FlaskConical size={13} className="text-white" /> },
+                { label: "Reabilitação Oral", icon: <Award size={13} className="text-white" /> },
+                { label: "Medicina Oral", icon: <Shield size={13} className="text-white" /> },
+                { label: "Imagiologia", icon: <ScanLine size={13} className="text-white" /> },
+                { label: "Dentisteria", icon: <Search size={13} className="text-white" /> },
                 { label: "Check-up e Diagnóstico", icon: <Search size={13} className="text-white" /> },
                 { label: "Atendimento Humanizado", icon: <Users size={13} className="text-white" /> },
-                { label: "Ortodontia", icon: <Stethoscope size={13} className="text-white" /> },
-                { label: "Implantologia", icon: <ThumbsUp size={13} className="text-white" /> },
+                { label: "Profissionais Experientes", icon: <Award size={13} className="text-white" /> },
+                { label: "Tecnologia e Segurança", icon: <Shield size={13} className="text-white" /> },
               ]).map((item, i) => (
                 <span key={i} className="flex items-center gap-2 text-white text-[11px] font-semibold tracking-[0.12em] uppercase">
                   <span className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">{item.icon}</span>
@@ -462,7 +474,7 @@ export default function Home() {
                 {[
                   {
                     title: "Cirurgia Oral",
-                    desc: "Extracções, sisos e biópsias com máximo conforto e sedação consciente disponível.",
+                    desc: "Extracções, sisos e biópsias realizadas com máximo conforto e segurança.",
                     icon: (
                       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 22l8-8-9-9-8 8 9 9z"/><path d="M2 22l4-4"/>

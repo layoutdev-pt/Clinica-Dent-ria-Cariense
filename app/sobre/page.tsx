@@ -5,11 +5,11 @@ import { Award, Heart, Users, Star, CheckCircle, ArrowRight, Download } from "lu
 export const metadata: Metadata = {
   title: "Sobre Nós — História, Equipa e Valores",
   description:
-    "Conheça a Clínica Dentária Cariense: fundada em 2003, com 20+ anos de excelência em saúde oral no interior de Portugal. Equipa multidisciplinar em 3 clínicas — Caria, Unhais da Serra e Peso.",
+    "Conheça a Clínica Dentária Cariense: fundada em 1999, com 27+ anos de excelência em saúde oral no interior de Portugal. Equipa multidisciplinar em 3 clínicas — Caria, Unhais da Serra e Peso.",
   openGraph: {
     title: "Sobre a Clínica Dentária Cariense | História e Equipa",
     description:
-      "20+ anos a transformar sorrisos no interior de Portugal. Conheça a nossa história, valores e equipa de especialistas.",
+      "27+ anos a transformar sorrisos no interior de Portugal. Conheça a nossa história, valores e equipa de especialistas.",
     images: [{ url: "/img/clinic-reception.png", width: 1200, height: 630, alt: "Clínica Dentária Cariense" }],
   },
   alternates: { canonical: "https://www.clinicacariense.pt/sobre" },
@@ -40,7 +40,7 @@ const VALUES = [
 ];
 
 const STATS = [
-  { target: 20, suffix: "+", label: "Anos de\nExperiência" },
+  { target: 27, suffix: "+", label: "Anos de\nExperiência" },
   { target: 12000, suffix: "+", label: "Pacientes\nAtivos" },
   { target: 12, suffix: "+", label: "Espe-\ncialidades" },
   { target: 3, suffix: "", label: "Clínicas" },
@@ -69,12 +69,12 @@ export default function SobrePage() {
               className="italic font-light"
               style={{ color: "#1C9FD6", fontSize: "clamp(2.2rem, 4.8vw, 4.4rem)" }}
             >
-              Três gerações.
+              Duas gerações.
             </span>
           </h1>
 
           <p className="text-white/60 text-base leading-relaxed max-w-md mb-10">
-            Fundada em 2003, a Clínica Dentária Cariense é hoje uma referência
+            Fundada em 1999, a Clínica Dentária Cariense é hoje uma referência
             regional em saúde oral — três unidades, uma equipa de especialistas
             e mais de doze mil pacientes satisfeitos.
           </p>
@@ -145,7 +145,7 @@ export default function SobrePage() {
               <span className="text-[#1C9FD6] italic font-light">o interior</span>
             </h2>
             <p className="text-[#5E7387] text-sm max-w-lg mx-auto leading-relaxed">
-              Fundada em 2003 com a missão de levar cuidados dentários de excelência às
+              Fundada em 1999 com a missão de levar cuidados dentários de excelência às
               populações do interior de Portugal. Hoje, com três clínicas e mais de 12.000
               pacientes, somos referência regional em saúde oral.
             </p>

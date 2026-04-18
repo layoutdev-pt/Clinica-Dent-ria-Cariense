@@ -50,7 +50,7 @@ const STEPS = [
     step: "04",
     title: "Tratamento",
     desc: "Realizamos o tratamento com tecnologia de ponta, máximo conforto e acompanhamento contínuo.",
-    detail: "Cada sessão é realizada por especialistas com equipamentos digitais de última geração. Oferecemos sedação consciente para pacientes com ansiedade dentária.",
+    detail: "Cada sessão é realizada por especialistas com equipamentos digitais de última geração, garantindo o máximo conforto e segurança.",
     color: "#1C9FD6",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
