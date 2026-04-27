@@ -1,7 +1,73 @@
 "use client";
 
-import { useState, type FormEvent, type ChangeEvent } from "react";
-import { ArrowRight, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useState, useRef, useEffect, type FormEvent, type ChangeEvent } from "react";
+import { ArrowRight, CheckCircle, AlertCircle, Loader2, ChevronDown, MapPin } from "lucide-react";
+
+const CLINICS = [
+  { value: "Clínica de Caria",           label: "Clínica de Caria" },
+  { value: "Clínica do Peso",            label: "Clínica do Peso" },
+  { value: "Clínica de Unhais da Serra", label: "Clínica de Unhais da Serra" },
+  { value: "Outras informações",         label: "Outras informações" },
+];
+
+function CustomSelect({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className={`w-full px-4 py-3 border rounded-xl text-sm text-left flex items-center justify-between gap-2 transition-all duration-200 bg-white focus:outline-none focus:ring-2 ${
+          open
+            ? "border-[#1C9FD6] ring-[#1C9FD6]/12 shadow-[0_0_0_3px_rgba(28,159,214,0.08)]"
+            : "border-[#D5E4EE] hover:border-[#1C9FD6]/50"
+        }`}
+      >
+        <span className="flex items-center gap-2 text-[#2A3A4A]">
+          <MapPin size={14} className="text-[#1C9FD6] flex-shrink-0" />
+          {value}
+        </span>
+        <ChevronDown
+          size={15}
+          className={`text-[#5E7387] flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 bg-white border border-[#D5E4EE] rounded-xl shadow-[0_8px_32px_rgba(13,30,44,0.12)] overflow-hidden">
+          {CLINICS.map((clinic) => {
+            const selected = clinic.value === value;
+            return (
+              <button
+                key={clinic.value}
+                type="button"
+                onClick={() => { onChange(clinic.value); setOpen(false); }}
+                className={`w-full px-4 py-3 text-sm text-left flex items-center gap-2.5 transition-colors duration-150 ${
+                  selected
+                    ? "bg-[#E8F6FC] text-[#1C9FD6] font-semibold"
+                    : "text-[#2A3A4A] hover:bg-[#F4FAFD] hover:text-[#0D1E2C]"
+                }`}
+              >
+                <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${selected ? "bg-[#1C9FD6]" : "bg-transparent"}`} />
+                {clinic.label}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 type FormFields = {
   nome: string;
@@ -188,20 +254,13 @@ export default function ContactForm() {
 
         {/* Localização */}
         <div>
-          <label htmlFor="localizacao" className="block text-xs font-semibold text-[#0D1E2C] mb-1.5 tracking-wide">
+          <label className="block text-xs font-semibold text-[#0D1E2C] mb-1.5 tracking-wide">
             Localização
           </label>
-          <select
-            id="localizacao" name="localizacao"
+          <CustomSelect
             value={fields.localizacao}
-            onChange={handleChange}
-            className={`${inputCls("localizacao")} select-field`}
-          >
-            <option>Clínica de Caria</option>
-            <option>Clínica do Peso</option>
-            <option>Clínica de Unhais da Serra</option>
-            <option>Outras informações</option>
-          </select>
+            onChange={(v) => setFields((f) => ({ ...f, localizacao: v }))}
+          />
         </div>
 
         {/* Mensagem */}
