@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -25,13 +26,14 @@ export default function ServiceModal({ title, icon, shortDesc, longDesc, onClose
     };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[999] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       style={{ background: "rgba(13,30,44,0.55)", backdropFilter: "blur(4px)" }}
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
+
       <div
         className="relative bg-white rounded-[28px] shadow-[0_32px_80px_rgba(13,30,44,0.22)] w-full max-w-lg overflow-hidden"
         style={{ animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both" }}
@@ -82,6 +84,7 @@ export default function ServiceModal({ title, icon, shortDesc, longDesc, onClose
           to   { opacity: 1; transform: scale(1) translateY(0); }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body
   );
 }
