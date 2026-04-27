@@ -30,7 +30,7 @@ export default function Navbar() {
             : "bg-white/95 backdrop-blur-sm"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-6 h-[68px] flex items-center justify-between overflow-visible">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 h-[68px] grid grid-cols-[1fr_auto_1fr] items-center gap-2">
 
           {/* Left nav */}
           <nav className="hidden md:flex items-center gap-1" aria-label="Navegação principal">
@@ -51,19 +51,35 @@ export default function Navbar() {
               );
             })}
           </nav>
+          {/* Mobile: hamburger takes left slot */}
+          <div className="flex md:hidden items-center">
+            <button
+              onClick={() => setOpen(!open)}
+              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#0D1E2C] hover:text-[#1C9FD6] transition-colors rounded-lg"
+              aria-label={open ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={open}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
 
-          {/* Logo — center on desktop */}
+          {/* Logo — center column, always has its own space */}
           <Link
             href="/"
-            className="flex-shrink-0 absolute left-1/2 -translate-x-1/2 overflow-visible z-10"
+            className="flex items-center justify-center py-1"
             aria-label="Clínica Dentária Cariense — Início"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/logo.png" alt="Clínica Dentária Cariense" className="h-12 w-auto max-w-none object-contain" />
+            <img
+              src="/img/logo.png"
+              alt="Clínica Dentária Cariense"
+              className="h-10 sm:h-12 w-auto object-contain"
+              style={{ maxWidth: "260px" }}
+            />
           </Link>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center gap-3 justify-end">
             <a
               href="tel:275471751"
               className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-[#0D1E2C] hover:text-[#1C9FD6] transition-colors duration-200"
@@ -77,14 +93,6 @@ export default function Navbar() {
             >
               Marcar Consulta
             </Link>
-            <button
-              onClick={() => setOpen(!open)}
-              className="md:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#0D1E2C] hover:text-[#1C9FD6] transition-colors rounded-lg"
-              aria-label={open ? "Fechar menu" : "Abrir menu"}
-              aria-expanded={open}
-            >
-              {open ? <X size={22} /> : <Menu size={22} />}
-            </button>
           </div>
         </div>
       </header>

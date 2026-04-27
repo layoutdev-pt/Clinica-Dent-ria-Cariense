@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
@@ -11,7 +10,7 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/img/logo-white.png" alt="Clínica Dentária Cariense" className="h-9 w-auto object-contain" />
+              <img src="/img/logo-white.png" alt="Clínica Dentária Cariense" className="h-9 w-auto object-contain" style={{ maxWidth: "240px" }} />
             </div>
             <p className="text-sm leading-7 text-white/60 mb-5">
               Cuidamos do seu sorriso com rigor clínico, tecnologia de ponta e um atendimento verdadeiramente humano.
