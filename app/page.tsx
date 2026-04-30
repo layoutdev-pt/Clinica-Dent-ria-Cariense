@@ -52,32 +52,32 @@ const DENTAL_SPECIALTIES = [
   {
     title: "Implantologia",
     desc: "A solução definitiva para dentes perdidos com resultado permanente e natural.",
-    img: "/img/service-implant.png",
+    img: "/img/service-implantologia.png",
   },
   {
     title: "Ortodontia",
     desc: "Alinhamento dentário para todas as idades com aparelhos fixos ou alinhadores invisíveis.",
-    img: "/img/service-ortho.png",
+    img: "/img/service-ortodontia.png",
   },
   {
     title: "Branqueamento",
     desc: "Clareamento profissional seguro — até 8 tons mais claros em consultório ou domiciliar.",
-    img: "/img/service-whitening.png",
+    img: "/img/service-branqueamento.png",
+  },
+  {
+    title: "Prótese Fixa",
+    desc: "Coroas e pontes dentárias resistentes para reabilitar dentes danificados com estética natural.",
+    img: "/img/service-protese-fixa.png",
+  },
+  {
+    title: "Prótese Removível",
+    desc: "Soluções práticas e confortáveis para substituição de dentes ausentes, adaptadas a cada paciente.",
+    img: "/img/service-protese-removivel.png",
   },
   {
     title: "Cirurgia Oral",
     desc: "Extracções, sisos e biópsias realizadas com máximo conforto e segurança.",
     img: "/img/service-surgery.png",
-  },
-  {
-    title: "Endodontia",
-    desc: "Tratamento de canais moderno e indolor. Salva o dente natural com instrumentação rotatória.",
-    img: "/img/service-endo.png",
-  },
-  {
-    title: "Odontopediatria",
-    desc: "Cuidados especializados para crianças num ambiente acolhedor e sem ansiedade.",
-    img: "/img/service-kids.png",
   },
 ];
 
@@ -386,32 +386,32 @@ export default function Home() {
             {
               title: "Implantologia",
               desc: "Soluções fixas e definitivas para substituir dentes perdidos. Utilizamos implantes de titânio altamente biocompatíveis para recuperar a sua função mastigatória e devolver-lhe um sorriso 100% natural.",
-              img: "/img/service-implant.png",
-              photos: ["/img/service-surgery.png", "/img/service-ortho.png", "/img/service-endo.png"],
+              img: "/img/service-implantologia.png",
+              photos: ["/img/service-protese-fixa.png", "/img/service-ortodontia.png", "/img/service-branqueamento.png"],
             },
             {
               title: "Ortodontia",
               desc: "Corrigimos o posicionamento dos dentes e maxilares para uma mordida perfeita. Dispomos de várias soluções, desde os aparelhos tradicionais aos sistemas estéticos e invisíveis.",
-              img: "/img/service-ortho.png",
-              photos: ["/img/service-implant.png", "/img/service-whitening.png", "/img/service-kids.png"],
+              img: "/img/service-ortodontia.png",
+              photos: ["/img/service-implantologia.png", "/img/service-branqueamento.png", "/img/service-protese-removivel.png"],
             },
             {
               title: "Prótese Fixa",
               desc: "Reabilitação estética e funcional através de coroas e pontes dentárias altamente resistentes. Ideal para dentes muito danificados, devolvendo a força, a forma e a cor natural ao seu sorriso.",
-              img: "/img/service-endo.png",
-              photos: ["/img/service-ortho.png", "/img/service-surgery.png", "/img/service-implant.png"],
+              img: "/img/service-protese-fixa.png",
+              photos: ["/img/service-ortodontia.png", "/img/service-implantologia.png", "/img/service-protese-removivel.png"],
             },
             {
               title: "Prótese Removível",
               desc: "Soluções práticas, confortáveis e personalizadas para a substituição de dentes ausentes. Garantimos um planeamento rigoroso para uma adaptação fácil, melhorando a sua mastigação e estética.",
-              img: "/img/service-surgery.png",
-              photos: ["/img/service-whitening.png", "/img/service-endo.png", "/img/service-kids.png"],
+              img: "/img/service-protese-removivel.png",
+              photos: ["/img/service-branqueamento.png", "/img/service-protese-fixa.png", "/img/service-implantologia.png"],
             },
             {
               title: "Branqueamento Dentário",
               desc: "Tratamentos clínicos seguros e eficazes para eliminar manchas e pigmentações. Recupere a luminosidade e a brancura do seu sorriso com um procedimento controlado que protege o seu esmalte.",
-              img: "/img/service-whitening.png",
-              photos: ["/img/service-implant.png", "/img/service-ortho.png", "/img/service-surgery.png"],
+              img: "/img/service-branqueamento.png",
+              photos: ["/img/service-implantologia.png", "/img/service-ortodontia.png", "/img/service-protese-fixa.png"],
             },
           ]} />
         </div>
