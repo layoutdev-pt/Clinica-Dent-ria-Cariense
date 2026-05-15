@@ -122,7 +122,11 @@ export default function RootLayout({
                         addressCountry: "PT",
                       },
                       telephone: "+351275471751",
-                      openingHours: "Mo-Fr 09:00-19:00",
+                      openingHoursSpecification: [
+                        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "13:00" },
+                        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "15:00", closes: "19:00" },
+                        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "09:00", closes: "13:00" },
+                      ],
                     },
                     {
                       "@type": "Dentist",
@@ -135,6 +139,9 @@ export default function RootLayout({
                         addressCountry: "PT",
                       },
                       telephone: "+351275971342",
+                      openingHoursSpecification: [
+                        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Thursday"], opens: "15:00", closes: "19:00" },
+                      ],
                     },
                     {
                       "@type": "Dentist",
@@ -147,6 +154,9 @@ export default function RootLayout({
                         addressCountry: "PT",
                       },
                       telephone: "+351275954182",
+                      openingHoursSpecification: [
+                        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Wednesday"], opens: "15:00", closes: "19:00" },
+                      ],
                     },
                   ],
                   medicalSpecialty: [

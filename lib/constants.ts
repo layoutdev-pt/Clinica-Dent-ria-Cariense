@@ -20,6 +20,11 @@ export const CLINICS = [
     img: "/img/clinic-caria-ext.png",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d268.5!2d-7.3679504!3d40.2958249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d196bd57c11a5%3A0x322f263faff1fe34!2sCl%C3%ADnica+Dent%C3%A1ria+Cariense!5e0!3m2!1spt!2spt!4v1",
+    hours: [
+      { day: "Segunda a Sexta", time: "09:00 – 13:00 | 15:00 – 19:00" },
+      { day: "Sábado", time: "09:00 – 13:00" },
+      { day: "Domingo", time: "Encerrado" },
+    ],
   },
   {
     key: "unhais",
@@ -30,8 +35,13 @@ export const CLINICS = [
     address: "Avenida 1º de Maio, 43-A",
     postal: "6215-517 Unhais da Serra",
     img: "/img/clinic-unhais-ext.png",
+    // Alt. 4: correct map — Av. 1º de Maio 43-A (not nº 80)
     mapSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d300!2d-7.6221671!3d40.258805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d2f832cebbe77%3A0x5297bfe230127d92!2sAv.+Primeiro+de+Maio+80%2C+6215-681+Unhais+da+Serra!5e0!3m2!1spt!2spt!4v2",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d300!2d-7.6221671!3d40.258805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d2f832cebbe77%3A0x5297bfe230127d92!2sAv.+1%C2%BA+de+Maio+43-A%2C+6215-517+Unhais+da+Serra!5e0!3m2!1spt!2spt!4v4",
+    hours: [
+      { day: "Quinta-feira", time: "15:00 – 19:00" },
+      { day: "Restantes dias", time: "Encerrado" },
+    ],
   },
   {
     key: "peso",
@@ -44,6 +54,10 @@ export const CLINICS = [
     img: "/img/clinic-peso-interior.png",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d400!2d-7.5624421!3d40.1951342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d3b1b382981c3%3A0xe33c98de915576fd!2sCentro+Social+Comunit%C3%A1rio+do+Peso!5e0!3m2!1spt!2spt!4v3",
+    hours: [
+      { day: "Quarta-feira", time: "15:00 – 19:00" },
+      { day: "Restantes dias", time: "Encerrado" },
+    ],
   },
 ] as const;
 

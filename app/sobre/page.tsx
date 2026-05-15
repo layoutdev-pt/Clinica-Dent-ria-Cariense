@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Award, Heart, Users, Star, CheckCircle, ArrowRight, Download, MapPin } from "lucide-react";
+import { Award, Heart, Users, Star, CheckCircle, ArrowRight, Download } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sobre Nós — História, Equipa e Valores",
@@ -20,6 +20,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Counter from "@/components/Counter";
 import CtaBanner from "@/components/CtaBanner";
 import HistoryTimeline from "@/components/HistoryTimeline";
+import ClinicGalleryCarousel from "@/components/ClinicGalleryCarousel";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
 const VALUES = [
@@ -47,10 +48,44 @@ const STATS = [
   { target: 3, suffix: "", label: "Clínicas" },
 ];
 
-const CLINICS_LIST = [
-  { name: "Clínica de Caria", tag: "Sede Principal", img: "/img/clinic-caria.jpg", address: "Cerca do Conde, Lote 41, Loja B/D, Caria" },
-  { name: "Clínica de Unhais da Serra", tag: "", img: "/img/clinic-unhais.jpg", address: "Avenida 1º de Maio, 43-A, Unhais da Serra" },
-  { name: "Espaço Saúde do Peso", tag: "", img: "/img/clinic-peso.jpg", address: "Rua Santa Maria Madalena, nº10, Peso" },
+// Alt. 2: per-clinic gallery data — update photos here when new images are added
+const CLINIC_GALLERIES = [
+  {
+    name: "Clínica de Caria",
+    tag: "Sede Principal",
+    coverImg: "/img/gallery-caria-sala-espera.jpg",
+    photos: [
+      { src: "/img/gallery-caria-sala-espera.jpg", label: "Sala de Espera" },
+      { src: "/img/gallery-caria-entrada.jpg", label: "Entrada" },
+      { src: "/img/gallery-caria-gabinete-1.jpg", label: "Gabinete 1" },
+      { src: "/img/gallery-caria-gabinete-2a.jpg", label: "Gabinete 2" },
+      { src: "/img/gallery-caria-gabinete-2b.jpg", label: "Gabinete 2 — vista alternativa" },
+      { src: "/img/gallery-caria-laboratorio.jpg", label: "Laboratório" },
+      { src: "/img/gallery-caria-raio-x-1.jpg", label: "Raio-X" },
+      { src: "/img/gallery-caria-raio-x-2.jpg", label: "Raio-X — detalhe" },
+      { src: "/img/gallery-caria-exterior.png", label: "Exterior" },
+    ],
+  },
+  {
+    name: "Clínica de Unhais da Serra",
+    tag: "",
+    coverImg: "/img/gallery-unhais-rececao-1.png",
+    photos: [
+      { src: "/img/gallery-unhais-rececao-1.png", label: "Receção" },
+      { src: "/img/gallery-unhais-rececao-2.png", label: "Receção — vista alternativa" },
+      { src: "/img/gallery-unhais-gabinete.png", label: "Gabinete" },
+      { src: "/img/gallery-unhais-exterior.png", label: "Exterior" },
+    ],
+  },
+  {
+    name: "Espaço Saúde do Peso",
+    tag: "",
+    coverImg: "/img/gallery-peso-gabinete-1.png",
+    photos: [
+      { src: "/img/gallery-peso-gabinete-1.png", label: "Gabinete" },
+      { src: "/img/gallery-peso-gabinete-2.png", label: "Gabinete — vista alternativa" },
+    ],
+  },
 ];
 
 export default function SobrePage() {
@@ -123,54 +158,24 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* ── AS NOSSAS CLÍNICAS ── */}
+      {/* ── INSTALAÇÕES — galeria por clínica (Alt. 2) ── */}
       <section className="py-24 bg-[#F7FAFC] border-y border-[#D5E4EE]">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-14">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="w-8 h-px bg-[#1C9FD6]/40" />
-              <span className="text-[#1C9FD6] text-xs font-bold uppercase tracking-[0.2em]">As Nossas Unidades</span>
+              <span className="text-[#1C9FD6] text-xs font-bold uppercase tracking-[0.2em]">As Nossas Instalações</span>
               <span className="w-8 h-px bg-[#1C9FD6]/40" />
             </div>
             <h2 className="font-display font-extrabold text-[#0D1E2C] mt-2" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-              Três clínicas,{" "}
-              <span className="text-[#1C9FD6] italic font-light">sempre perto de si</span>
+              Espaços modernos,{" "}
+              <span className="text-[#1C9FD6] italic font-light">ao seu serviço</span>
             </h2>
             <p className="text-[#5E7387] text-sm mt-3 max-w-lg mx-auto leading-relaxed">
-              Presente em Caria, Unhais da Serra e Peso para que a excelência em saúde oral esteja sempre ao alcance de todos.
+              Clique em qualquer clínica para ver a galeria completa de fotos.
             </p>
           </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {CLINICS_LIST.map((clinic, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div className="group bg-white rounded-[24px] overflow-hidden border border-[#D5E4EE] hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="relative h-56 overflow-hidden">
-                    <Image
-                      src={clinic.img}
-                      alt={clinic.name}
-                      fill
-                      sizes="(max-width:768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {clinic.tag && (
-                      <span className="absolute top-3 left-3 bg-[#1C9FD6] text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
-                        {clinic.tag}
-                      </span>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/50 via-transparent to-transparent" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display font-bold text-[#0D1E2C] text-base mb-2">{clinic.name}</h3>
-                    <div className="flex items-start gap-2 text-[#5E7387] text-sm">
-                      <MapPin size={13} className="text-[#1C9FD6] flex-shrink-0 mt-0.5" />
-                      <span>{clinic.address}</span>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ClinicGalleryCarousel clinics={CLINIC_GALLERIES} />
         </div>
       </section>
 
@@ -244,48 +249,6 @@ export default function SobrePage() {
                 </div>
               </ScrollReveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── INSTALAÇÕES — galeria mosaic ── */}
-      <section className="py-24 bg-[#F7FAFC]">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal className="text-center mb-14">
-            <div className="inline-flex items-center gap-3 mb-5">
-              <span className="w-8 h-px bg-[#1C9FD6]/40" />
-              <span className="text-[#1C9FD6] text-xs font-bold uppercase tracking-[0.2em]">As Nossas Instalações</span>
-              <span className="w-8 h-px bg-[#1C9FD6]/40" />
-            </div>
-            <h2 className="font-display font-extrabold text-[#0D1E2C] mt-2" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-              Espaços modernos,{" "}
-              <span className="text-[#1C9FD6] italic font-light">ao seu serviço</span>
-            </h2>
-          </ScrollReveal>
-
-          {/* Mosaic grid: large left + 2 right stacked */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <ScrollReveal className="md:row-span-2">
-              <div className="group relative overflow-hidden rounded-[24px] h-64 md:h-full min-h-[320px]">
-                <Image src="/img/clinic-reception.png" alt="Receção Principal" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/70 via-transparent to-transparent" />
-                <span className="absolute bottom-5 left-5 text-white font-bold text-base">Receção</span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={80}>
-              <div className="group relative overflow-hidden rounded-[24px] aspect-[16/9]">
-                <Image src="/img/clinic-office-1.png" alt="Gabinete Clínico" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/60 via-transparent to-transparent" />
-                <span className="absolute bottom-4 left-4 text-white font-bold text-sm">Gabinete Clínico</span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={160}>
-              <div className="group relative overflow-hidden rounded-[24px] aspect-[16/9]">
-                <Image src="/img/clinic-office-2.png" alt="Sala de Tratamentos" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/60 via-transparent to-transparent" />
-                <span className="absolute bottom-4 left-4 text-white font-bold text-sm">Sala de Tratamentos</span>
-              </div>
-            </ScrollReveal>
           </div>
         </div>
       </section>

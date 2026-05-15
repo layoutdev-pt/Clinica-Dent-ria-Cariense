@@ -20,8 +20,8 @@ const CLINICS = [
     postal: "6215-517",
     phone: "275 971 342",
     mobile: "927 402 728",
-    img: "/img/clinic-unhais-ext.png",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d300!2d-7.6221671!3d40.258805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d2f832cebbe77%3A0x5297bfe230127d92!2sAv.+Primeiro+de+Maio+80%2C+6215-681+Unhais+da+Serra!5e0!3m2!1spt!2spt!4v2",
+    img: "/img/gallery-unhais-exterior.png",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d300!2d-7.6221671!3d40.258805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d2f832cebbe77%3A0x5297bfe230127d92!2sAv.+1%C2%BA+de+Maio+43-A%2C+6215-517+Unhais+da+Serra!5e0!3m2!1spt!2spt!4v4",
   },
   {
     name: "Espaço Saúde do Peso",
@@ -29,7 +29,7 @@ const CLINICS = [
     postal: "6200-622",
     phone: "275 954 182",
     mobile: "927 402 728",
-    img: "/img/clinic-peso-interior.png",
+    img: "/img/gallery-peso-gabinete-1.png",
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d400!2d-7.5624421!3d40.1951342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3d3b1b382981c3%3A0xe33c98de915576fd!2sCentro+Social+Comunit%C3%A1rio+do+Peso!5e0!3m2!1spt!2spt!4v3",
   },
 ];

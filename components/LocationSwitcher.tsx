@@ -4,12 +4,6 @@ import { useState } from "react";
 import { Phone, MapPin, Clock } from "lucide-react";
 import { CLINICS } from "@/lib/constants";
 
-const HOURS = [
-  { day: "Segunda a Sexta", time: "09:00 – 13:00 | 14:30 – 19:00" },
-  { day: "Sábado", time: "09:00 – 13:00" },
-  { day: "Domingo", time: "Encerrado" },
-];
-
 export default function LocationSwitcher() {
   const [active, setActive] = useState(0);
   const clinic = CLINICS[active];
@@ -79,7 +73,7 @@ export default function LocationSwitcher() {
             <div>
               <div className="text-xs font-semibold text-[#5E7387] uppercase tracking-widest mb-1">Horário</div>
               <div className="space-y-1">
-                {HOURS.map((h, i) => (
+                {clinic.hours.map((h, i) => (
                   <div key={i} className="flex items-center justify-between text-sm gap-4">
                     <span className="text-[#5E7387]">{h.day}</span>
                     <span className="text-[#0D1E2C] font-medium">{h.time}</span>
