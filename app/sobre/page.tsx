@@ -228,7 +228,7 @@ export default function SobrePage() {
               Uma equipa dedicada, com formação de excelência e um só objetivo: o seu bem-estar.
             </p>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {TEAM_MEMBERS.map((member, i) => (
               <ScrollReveal key={i} delay={i * 80}>
                 <div className="group overflow-hidden rounded-[20px] border border-[#D5E4EE] bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -237,7 +237,7 @@ export default function SobrePage() {
                       src={member.img}
                       alt={member.name}
                       fill
-                      sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
+                      sizes="(max-width:768px) 50vw, 33vw"
                       className="object-cover object-[center_10%] group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D1E2C]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
