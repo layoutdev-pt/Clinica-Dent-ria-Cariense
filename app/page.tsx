@@ -580,7 +580,7 @@ export default function Home() {
                 <div className="font-display text-white text-lg font-bold leading-[1.2]">
                   Conheça todos os <span className="font-normal italic">especialistas</span>
                 </div>
-                <div className="text-white/60 text-xs mt-1">5 profissionais dedicados</div>
+                <div className="text-white/60 text-xs mt-1">6 profissionais dedicados</div>
               </div>
               <div className="relative z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0 ml-4 group-hover:scale-110 transition-transform duration-200">
                 <ArrowRight size={16} className="text-[#1C9FD6]" />
@@ -642,7 +642,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-white/70 text-xs">5 profissionais dedicados</span>
+                  <span className="text-white/70 text-xs">6 profissionais dedicados</span>
                   <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
                     <ArrowRight size={16} className="text-[#1C9FD6]" />
                   </div>

@@ -67,6 +67,7 @@ export const TEAM_MEMBERS = [
   { name: "São", role: "Assistente Dentária", img: "/img/team-sao.jpg" },
   { name: "Maria Eduarda", role: "Assistente Dentária", img: "/img/team-maria-eduarda.jpg" },
   { name: "Tatiana", role: "Secretária", img: "/img/team-tatiana.jpg" },
+  { name: "Patrícia", role: "Assistente Dentária", img: "/img/team-patricia.jpg" },
 ] as const;
 
 export const TESTIMONIALS = [
